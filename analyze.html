@@ -82,7 +82,12 @@
         .voice-stop-btn { animation: none !important; }
         [style*="animation"] { animation: none !important; }
         [style*="transition"] { transition: none !important; }
-        .alba-card, .alba-card * { transform: none !important; }
+        /* Ensure visibility is not hidden by animations */
+        main, section, .alba-card, .chart-container, canvas { 
+            opacity: 1 !important; 
+            visibility: visible !important; 
+            display: block !important;
+        }
     </style>
 
     <div class="space-bg-fixed">
