@@ -143,17 +143,17 @@
   }
 
   .payment-icons {
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   .payment-icons img {
-    width: 28px;
+    width: 36px;
   }
 
   .payment-icons-link {
-    height: 40px;
-    width: calc(100% + 12px);
+    height: 48px;
+    width: calc(100% + 20px);
   }
 
   .product-card .product-info {

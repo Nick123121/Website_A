@@ -1249,7 +1249,7 @@ footer.footer{
   /* Показываем кнопку меню только на мобильных */
   .menu-toggle{
     display:flex !important;
-    z-index:1002;
+    z-index:10002;
   }
 
   /* На мобильных меню скрыто по умолчанию; выезжает справа и занимает 1/3 ширины */
@@ -1272,7 +1272,7 @@ footer.footer{
     margin:0;
     padding:8px 0;
     flex-wrap:nowrap;
-    z-index:1001;
+    z-index:10001;
     overflow:hidden;
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
