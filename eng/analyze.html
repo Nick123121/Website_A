@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlbaSpace – Animasyon Stratejisi</title>
+    <title>AlbaSpace – Animation Strategy</title>
     
     <link rel="stylesheet" href="/assets/css/site.css" />
     
@@ -33,7 +33,7 @@
             z-index: -1;
             background: url('/assets/images/space-bg.jpg') no-repeat center center;
             background-size: cover;
-            opacity: 0.8;
+            opacity: 0.4;
         }
         .space-overlay {
             position: absolute;
@@ -94,27 +94,27 @@
         <div class="space-overlay"></div>
     </div>
 
-    <div data-include="/header-tr.html"></div>
+    <div data-include="/header-en.html"></div>
 
     <main class="max-w-[1200px] mx-auto px-4 py-12 mb-20">
 
         <section class="text-center mb-16 mt-8">
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                Çizgi Filmimizi <span class="text-accent">Satabilir Miyiz?</span>
+                Can We Sell Our Cartoon? <span class="text-accent">Sell Our Cartoon?</span>
             </h1>
             <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Netflix, Amazon ve Disney+ Edinme Modelleri Üzerine Araştırma Analizi.
+                Research Analysis on Netflix, Amazon and Disney+ Acquisition Models.
             </p>
             <div class="mt-6 inline-block bg-[#00c2ff]/10 border border-[#00c2ff]/30 rounded-full px-6 py-2">
-                <span class="text-accent font-bold">Karar:</span> <span class="text-slate-200">Evet, ancak strateji platforma göre değişir.</span>
+                <span class="text-accent font-bold">Decision:</span> <span class="text-slate-200">Yes, but the strategy varies by platform.</span>
             </div>
         </section>
 
         <nav class="flex flex-wrap justify-center gap-4 mb-16">
-            <a href="#market" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Pazar Analizi</a>
-            <a href="#buyers" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Alıcı Profilleri</a>
-            <a href="#money" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Gelir Modelleri</a>
-            <a href="#strategy" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Yol Haritası</a>
+            <a href="#market" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Market Analysis</a>
+            <a href="#buyers" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Buyer Profiles</a>
+            <a href="#money" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Revenue Models</a>
+            <a href="#strategy" class="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-[#00c2ff] hover:text-black transition text-sm font-medium border border-slate-700">Roadmap</a>
         </nav>
 
         <section id="market" class="mb-24 scroll-mt-24">
@@ -122,29 +122,29 @@
                 <div>
                     <div class="flex items-center gap-3 mb-6">
                         <i data-lucide="globe" class="text-accent w-8 h-8"></i>
-                        <h2 class="text-3xl font-bold text-white">İzleyici Savaşı</h2>
+                        <h2 class="text-3xl font-bold text-white">Viewer War</h2>
                     </div>
                     
                     <p class="text-slate-300 mb-6 text-lg leading-relaxed">
-                        Çizgi filminizi kime satacağınızı anlamak için, önce izleyiciye kimin sahip olduğunu anlamalısınız. Netflix devrime öncülük etse de, pazar artık bölünmüş durumda.
+                        To understand who to sell your cartoon to, you first need to understand who owns the audience. Although Netflix led the revolution, the market is now divided.
                     </p>
                     
                     <p class="text-slate-400 mb-6">
-                        <strong>Netflix</strong>, "Yetişkin Animasyonu" için hacimsel liderdir. <strong>Amazon</strong> uyuyan bir devdir; <strong>Disney+</strong> ise dış IP'lere (Fikri Mülkiyet) çoğunlukla kapalı bir "Duvarlı Bahçe"dir.
+                        <strong>Netflix</strong> is the volume leader for "Adult Animation". <strong>Amazon</strong> is a sleeping giant; <strong>Disney+</strong> is mostly a "Walled Garden" closed to external IPs (Intellectual Property).
                     </p>
 
                     <div class="bg-[#00c2ff]/10 p-5 rounded-xl border border-[#00c2ff]/30">
-                        <strong class="text-accent block mb-2">💡 İçgörü:</strong> 
-                        <span class="text-slate-200">Netflix en yüksek "abone kaybı" (churn) oranına sahiptir, bu da onları taze bağımsız IP'ler için en olası alıcı yapar.</span>
+                        <strong class="text-accent block mb-2">💡 Insight:</strong> 
+                        <span class="text-slate-200">Netflix has the highest "subscriber churn" rate, making them the most likely buyer for fresh independent IPs.</span>
                     </div>
                 </div>
                 
                 <div class="alba-card flex flex-col items-center justify-center">
-                    <h3 class="text-xl font-bold mb-6 text-center text-white">Küresel Abone Payı</h3>
+                    <h3 class="text-xl font-bold mb-6 text-center text-white">Global Subscriber Share</h3>
                     <div class="chart-container">
                         <canvas id="marketShareChart"></canvas>
                     </div>
-                    <p class="text-xs text-slate-500 mt-4 text-center">Kaynak: Küresel Yayın Akışı Tahminleri 2024</p>
+                    <p class="text-xs text-slate-500 mt-4 text-center">Source: Global Streaming Forecasts 2024</p>
                 </div>
             </div>
         </section>
@@ -152,41 +152,41 @@
         <section id="buyers" class="mb-24 scroll-mt-24">
             <div class="flex items-center gap-3 mb-8">
                 <i data-lucide="scan-face" class="text-accent w-8 h-8"></i>
-                <h2 class="text-3xl font-bold text-white">Alıcı DNA'sı: Ne Arıyorlar?</h2>
+                <h2 class="text-3xl font-bold text-white">Buyer DNA: What Are They Looking For?</h2>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
                 <div class="alba-card border-t-4 border-t-red-600">
                     <h3 class="text-xl font-bold text-red-500 mb-2">NETFLIX</h3>
-                    <p class="text-sm text-slate-400 mb-4">"Binge" Fabrikası. Anime ve Yetişkin Komedisi sever.</p>
+                    <p class="text-sm text-slate-400 mb-4">"Binge" Factory. Loves Anime and Adult Comedy.</p>
                     <ul class="text-sm space-y-2 text-slate-300">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Sunumlara Açık</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Yüksek Bütçe</li>
-                        <li class="flex items-center"><i data-lucide="x" class="w-4 h-4 text-red-400 mr-2"></i> Tam Münhasırlık Şart</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Open to Submissions</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> High Budget</li>
+                        <li class="flex items-center"><i data-lucide="x" class="w-4 h-4 text-red-400 mr-2"></i> Full Exclusivity Required</li>
                     </ul>
                 </div>
                 <div class="alba-card border-t-4 border-t-blue-400">
                     <h3 class="text-xl font-bold text-blue-400 mb-2">AMAZON PRIME</h3>
-                    <p class="text-sm text-slate-400 mb-4">Hibrit Model. Niş içerikler için iyidir.</p>
+                    <p class="text-sm text-slate-400 mb-4">Hybrid Model. Good for niche content.</p>
                     <ul class="text-sm space-y-2 text-slate-300">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Kendin Yayınlayabilirsin</li>
-                        <li class="flex items-center"><i data-lucide="minus" class="w-4 h-4 text-yellow-400 mr-2"></i> Orta Bütçe</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Münhasır Olmayan Seçenek</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> You Can Self-Publish</li>
+                        <li class="flex items-center"><i data-lucide="minus" class="w-4 h-4 text-yellow-400 mr-2"></i> Medium Budget</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Non-Exclusive Option</li>
                     </ul>
                 </div>
                 <div class="alba-card border-t-4 border-t-indigo-600">
-                    <h3 class="text-xl font-bold text-indigo-400 mb-2">DISNEY+</h3>
-                    <p class="text-sm text-slate-400 mb-4">Kapalı Kale. Neredeyse tamamen iç IP (Marvel, Pixar).</p>
+                    <h3 class="text-xl font-bold text-indigo-600 mb-2">DISNEY+</h3>
+                    <p class="text-sm text-slate-400 mb-4">Closed Castle. Almost entirely internal IP (Marvel, Pixar).</p>
                     <ul class="text-sm space-y-2 text-slate-300">
-                        <li class="flex items-center"><i data-lucide="x" class="w-4 h-4 text-red-400 mr-2"></i> Kapalı Ekosistem</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Devasa Pazarlama</li>
-                        <li class="flex items-center"><i data-lucide="alert-triangle" class="w-4 h-4 text-yellow-400 mr-2"></i> Marka Güvenliği Takıntısı</li>
+                        <li class="flex items-center"><i data-lucide="x" class="w-4 h-4 text-red-400 mr-2"></i> Closed Ecosystem</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i> Massive Marketing</li>
+                        <li class="flex items-center"><i data-lucide="alert-triangle" class="w-4 h-4 text-yellow-400 mr-2"></i> Brand Security Obsession</li>
                     </ul>
                 </div>
             </div>
 
             <div class="alba-card">
-                <h3 class="text-xl font-bold mb-4 text-center text-white">Platform Uyumluluk Analizi</h3>
+                <h3 class="text-xl font-bold mb-4 text-center text-white">Platform Compatibility Analysis</h3>
                 <div class="chart-container mx-auto">
                     <canvas id="buyerRadarChart"></canvas>
                 </div>
@@ -201,35 +201,35 @@
         <section id="money" class="mb-24 scroll-mt-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="alba-card h-full">
-                    <h3 class="text-xl font-bold mb-6 text-center text-white">Tahmini Gelir Modelleri</h3>
+                    <h3 class="text-xl font-bold mb-6 text-center text-white">Estimated Revenue Models</h3>
                     <div class="chart-container">
                         <canvas id="revenueChart"></canvas>
                     </div>
                     <div class="mt-4 text-xs text-slate-500 text-center">
-                        *Tahminler, 1 sezonluk animasyon dizisi içindir.
+                        *Estimates are for a 1-season animated series.
                     </div>
                 </div>
                 
                 <div>
                     <div class="flex items-center gap-3 mb-6">
                         <i data-lucide="coins" class="text-accent w-8 h-8"></i>
-                        <h2 class="text-3xl font-bold text-white">Parayı Göster</h2>
+                        <h2 class="text-3xl font-bold text-white">Show Me the Money</h2>
                     </div>
                     
                     <div class="space-y-4">
                         <div class="p-5 rounded-xl border-l-4 border-indigo-500 bg-slate-900/50">
-                            <h4 class="font-bold text-lg text-white">1. Maliyet + Prim (Netflix)</h4>
-                            <p class="text-sm text-slate-400 mt-1">Maliyetlerin %100'ü + %20 kar. Anında para kazanırsınız ama IP'yi (mülkiyeti) kaybedersiniz.</p>
+                            <h4 class="font-bold text-lg text-white">1. Cost + Premium (Netflix)</h4>
+                            <p class="text-sm text-slate-400 mt-1">100% of costs + 20% profit. You get money instantly but lose the IP (ownership).</p>
                         </div>
 
                         <div class="p-5 rounded-xl border-l-4 border-teal-500 bg-slate-900/50">
-                            <h4 class="font-bold text-lg text-white">2. Lisans Ücreti (Amazon/Hulu)</h4>
-                            <p class="text-sm text-slate-400 mt-1">1-3 yıl kiralamak için sabit ücret. IP sizde kalır ama üretim riskini siz alırsınız.</p>
+                            <h4 class="font-bold text-lg text-white">2. License Fee (Amazon/Hulu)</h4>
+                            <p class="text-sm text-slate-400 mt-1">Fixed fee to rent for 1-3 years. IP stays with you but you take the production risk.</p>
                         </div>
 
                         <div class="p-5 rounded-xl border-l-4 border-yellow-500 bg-slate-900/50">
-                            <h4 class="font-bold text-lg text-white">3. Gelir Paylaşımı (AVOD)</h4>
-                            <p class="text-sm text-slate-400 mt-1">İzlenme başına kuruş öderler. Peşin para yok. Arşiv içerik için iyidir.</p>
+                            <h4 class="font-bold text-lg text-white">3. Revenue Sharing (AVOD)</h4>
+                            <p class="text-sm text-slate-400 mt-1">They pay per view. No upfront money. Good for archive content.</p>
                         </div>
                     </div>
                 </div>
@@ -239,11 +239,11 @@
         <section id="strategy" class="mb-24 scroll-mt-24">
             <div class="flex items-center gap-3 mb-8">
                 <i data-lucide="map" class="text-accent w-8 h-8"></i>
-                <h2 class="text-3xl font-bold text-white">Anlaşmaya Giden Yol</h2>
+                <h2 class="text-3xl font-bold text-white">The Path to Agreement</h2>
             </div>
             
             <p class="text-slate-300 mb-10">
-                Netflix.com'a bir PDF yükleyemezsiniz. Bir sözleşme almak için "Kapı Bekçilerini" aşmalısınız.
+                You can't upload a PDF to Netflix.com. To get a contract, you have to get past the "Gatekeepers".
             </p>
 
             <div class="relative">
@@ -252,29 +252,29 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                     <div class="alba-card bg-[#0b1120] border-accent/20">
                         <div class="text-4xl mb-3">📦</div>
-                        <h4 class="font-bold text-white mb-2">1. Paket</h4>
-                        <p class="text-xs text-slate-400">Dosya (Bible), Pilot Senaryo, Tanıtım Videosu.</p>
+                        <h4 class="font-bold text-white mb-2">1. Package</h4>
+                        <p class="text-xs text-slate-400">File (Bible), Pilot Script, Promotional Video.</p>
                     </div>
                     <div class="md:hidden flex justify-center text-slate-600"><i data-lucide="arrow-down"></i></div>
 
                     <div class="alba-card bg-[#0b1120] border-accent/20">
                         <div class="text-4xl mb-3">🤝</div>
-                        <h4 class="font-bold text-white mb-2">2. Ajan</h4>
-                        <p class="text-xs text-slate-400">CAA, WME veya FilmHub. Giriş anahtarı onlardadır.</p>
+                        <h4 class="font-bold text-white mb-2">2. Agent</h4>
+                        <p class="text-xs text-slate-400">CAA, WME or FilmHub. The key to entry is with them.</p>
                     </div>
                      <div class="md:hidden flex justify-center text-slate-600"><i data-lucide="arrow-down"></i></div>
 
                     <div class="alba-card bg-[#0b1120] border-accent/20">
                         <div class="text-4xl mb-3">🎤</div>
-                        <h4 class="font-bold text-white mb-2">3. Sunum</h4>
-                        <p class="text-xs text-slate-400">Yöneticilerle toplantı. Odak nokta: İzleyiciyi tutmak.</p>
+                        <h4 class="font-bold text-white mb-2">3. Presentation</h4>
+                        <p class="text-xs text-slate-400">Meeting with executives. Focus point: Retaining the audience.</p>
                     </div>
                      <div class="md:hidden flex justify-center text-slate-600"><i data-lucide="arrow-down"></i></div>
 
                     <div class="alba-card border-green-500/50 bg-green-900/10">
                         <div class="text-4xl mb-3">✍️</div>
-                        <h4 class="font-bold text-white mb-2">4. Sözleşme</h4>
-                        <p class="text-xs text-slate-400">Anlaşma Notu -> İmza -> Ödeme Planı.</p>
+                        <h4 class="font-bold text-white mb-2">4. Contract</h4>
+                        <p class="text-xs text-slate-400">Agreement Note -> Signature -> Payment Schedule.</p>
                     </div>
                 </div>
             </div>
@@ -283,44 +283,44 @@
         <section class="mb-16">
             <div class="alba-card">
                 <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold text-white">Başarı Olasılığı Matrisi</h3>
+                    <h3 class="text-2xl font-bold text-white">Success Probability Matrix</h3>
                     <div class="text-xs bg-slate-800 text-accent px-3 py-1 rounded-full border border-slate-700">
-                        Veri: Bağımsız Animasyon Anlaşmaları 2024
+                        Data: Independent Animation Deals 2024
                     </div>
                 </div>
                 <p class="text-slate-400 mb-6 text-sm">
-                    Bu grafik, <strong>Proje Kalitesi/Cilası</strong> ile <strong>Platformun Niş İlgisi</strong> karşılaştırmasına dayalı olarak bir anlaşma olasılığını haritalandırır.
+                    This chart maps the probability of a deal based on the comparison of <strong>Project Quality/Polish</strong> with <strong>Platform's Niche Interest</strong>.
                 </p>
                 <div class="chart-container" style="max-width: 800px; height: 400px;">
                     <canvas id="probabilityChart"></canvas>
                 </div>
                 <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs text-center text-slate-500">
-                    <div>🟣 Yüksek Bütçeli Orijinal</div>
-                    <div>🔵 Satın Alma (Bitmiş Film)</div>
-                    <div>🔴 Ortak Yapım (Co-Pro)</div>
-                    <div>🟡 Red Bölgesi</div>
+                    <div>🟣 High Budget Original</div>
+                    <div>🔵 Acquisition (Finished Film)</div>
+                    <div>🔴 Co-Production</div>
+                    <div>🟡 Red Zone</div>
                 </div>
             </div>
         </section>
 
         <div class="bg-gradient-to-r from-slate-900 to-slate-800 p-8 rounded-2xl border border-slate-700">
-            <h2 class="text-2xl font-bold mb-6 text-white border-b border-slate-700 pb-2">Stratejik Tavsiye</h2>
+            <h2 class="text-2xl font-bold mb-6 text-white border-b border-slate-700 pb-2">Strategic Recommendation</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <p class="mb-4 text-slate-300 leading-relaxed">
-                        Temsilcisi olmayan yeni bir stüdyo için doğrudan Netflix veya Disney'e gitmek neredeyse imkansızdır.
+                        For a new studio without representation, going directly to Netflix or Disney is almost impossible.
                     </p>
                     <p class="text-slate-200">
-                        <strong class="text-accent">En İyi Hamleniz:</strong> Bir "Tanıtım Videosu" (1-2 dk) ve güçlü bir Sunum Dosyası (Pitch Bible) hazırlayın. Amazon/Tubi erişimi için <strong>FilmHub</strong> gibi toplayıcılara yaklaşın veya animasyon pazarlarında (Annecy) bir <strong>Satış Temsilcisi</strong> bulun.
+                        <strong class="text-accent">Your Best Move:</strong> Prepare a "Promotional Video" (1-2 min) and a strong Presentation File (Pitch Bible). Approach aggregators like <strong>FilmHub</strong> for Amazon/Tubi access or find a <strong>Sales Representative</strong> at animation markets (Annecy).
                     </p>
                 </div>
                 <div class="border-l border-slate-600 pl-6">
-                    <h4 class="font-bold text-accent mb-4">Başlangıç Kontrol Listesi:</h4>
+                    <h4 class="font-bold text-accent mb-4">Starting Checklist:</h4>
                     <ul class="space-y-3 text-sm text-slate-400">
-                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> Hedef Kitleyi Belirle (Çocuk 6-11 vs Yetişkin)</li>
-                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> "Kavram Kanıtı" (Proof of Concept) Üret</li>
-                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> Türünüzdeki En İyi 10 Satış Temsilcisini Listeleyin</li>
-                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> Hukuk danışmanlığı için bütçe ayırın</li>
+                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> Define Target Audience (Kids 6-11 vs Adult)</li>
+                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> Produce "Proof of Concept"</li>
+                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> List the Top 10 Sales Representatives in Your Genre</li>
+                        <li class="flex items-center"><i data-lucide="square" class="w-4 h-4 mr-2"></i> Allocate budget for legal advice</li>
                     </ul>
                 </div>
             </div>
@@ -328,7 +328,7 @@
 
     </main>
 
-    <div data-include="/footer-tr.html"></div>
+    <div data-include="/footer-en.html"></div>
 
     <script>
         // Init Icons
@@ -377,7 +377,7 @@
         new Chart(marketCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Netflix', 'Amazon Prime', 'Disney+', 'Diğerleri'],
+                labels: ['Netflix', 'Amazon Prime', 'Disney+', 'Others'],
                 datasets: [{
                     data: [260, 210, 150, 300],
                     backgroundColor: ['#E50914', '#00A8E1', '#4f46e5', '#475569'],
@@ -400,7 +400,7 @@
         new Chart(radarCtx, {
             type: 'radar',
             data: {
-                labels: ['Yetişkin Anim.', 'Çocuk/Aile', 'Bağımsız Dostu', 'Bütçe', 'Münhasırlık'],
+                labels: ['Adult Anim.', 'Kids/Family', 'Indie Friendly', 'Budget', 'Exclusivity'],
                 datasets: [
                     {
                         label: 'Netflix',
@@ -448,9 +448,9 @@
         new Chart(revCtx, {
             type: 'bar',
             data: {
-                labels: ['Maliyet + Prim', 'Lisans Ücreti', 'Gelir Payı'].map(l => wrapLabel(l, 16)),
+                labels: ['Cost + Premium', 'License Fee', 'Revenue Share'].map(l => wrapLabel(l, 16)),
                 datasets: [{
-                    label: 'Potansiyel Kazanç',
+                    label: 'Potential Earnings',
                     data: [500, 150, 30],
                     backgroundColor: ['#6C63FF', '#4BC0C0', '#FFCE56'],
                     borderRadius: 6
@@ -476,13 +476,13 @@
             type: 'bubble',
             data: {
                 datasets: [{
-                    label: 'Anlaşma Bölgesi',
+                    label: 'Deal Zone',
                     data: [
-                        { x: 90, y: 90, r: 20, type: 'Netflix Orijinali' },
-                        { x: 80, y: 60, r: 15, type: 'Amazon Özel' },
-                        { x: 70, y: 80, r: 10, type: 'Hulu Lisansı' },
+                        { x: 90, y: 90, r: 20, type: 'Netflix Original' },
+                        { x: 80, y: 60, r: 15, type: 'Amazon Exclusive' },
+                        { x: 70, y: 80, r: 10, type: 'Hulu License' },
                         { x: 40, y: 30, r: 8, type: 'Tub/Pluto (Rev Share)' },
-                        { x: 95, y: 20, r: 5, type: 'Red (Yanlış Uyum)' }
+                        { x: 95, y: 20, r: 5, type: 'Red (Wrong Fit)' }
                     ],
                     backgroundColor: (ctx) => {
                         const val = ctx.raw?.x;
@@ -497,11 +497,11 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: { 
-                        title: { display: true, text: 'Üretim Kalitesi / Cila', color: '#94a3b8' },
+                        title: { display: true, text: 'Production Quality / Polish', color: '#94a3b8' },
                         min: 0, max: 100, grid: { color: '#334155' }
                     },
                     y: { 
-                        title: { display: true, text: 'Platform Niş Uyumu', color: '#94a3b8' },
+                        title: { display: true, text: 'Platform Niche Fit', color: '#94a3b8' },
                         min: 0, max: 100, grid: { color: '#334155' }
                     }
                 },
