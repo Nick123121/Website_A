@@ -102,13 +102,13 @@
 
   <style>
     /* Отключаем все анимации и переходы на этой странице */
-    *, *::before, *::after {
-      animation: none !important;
-      transition: none !important;
-      scroll-behavior: auto !important;
-    }
-    /* На всякий случай отменяем трансформы */
-    [style*="transform"] { transform: none !important; }
+    * { animation: none !important; transition: none !important; }
+    *::before, *::after { animation: none !important; transition: none !important; }
+    body { scroll-behavior: auto !important; }
+    .voice-bar { animation: none !important; }
+    .voice-stop-btn { animation: none !important; }
+    [style*="animation"] { animation: none !important; }
+    [style*="transition"] { transition: none !important; }
   </style>
 
   <div data-include="/header-tr.html"></div>
