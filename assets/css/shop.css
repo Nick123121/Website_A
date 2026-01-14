@@ -83,9 +83,15 @@
   z-index: 2;
 }
 .payment-icons img {
-  width: 52px;
+  /* Keep icons crisp and preserve aspect ratio by limiting their
+     maximum width and ensuring the height is automatic. Use
+     object-fit: contain to avoid distortion when browsers apply
+     unexpected intrinsic sizing. */
+  max-width: 52px;
+  width: auto;
   height: auto;
   display: block;
+  object-fit: contain;
   opacity: 0.95;
   position: relative;
   z-index: 3;
@@ -148,7 +154,14 @@
   }
 
   .payment-icons img {
-    width: 36px;
+    /* On small screens prefer a fixed visual height so icons look
+       consistent and aren't stretched by surrounding layout rules. */
+    width: auto;
+    height: 36px;
+    max-height: 36px;
+    max-width: 48px;
+    object-fit: contain;
+    display: block;
   }
 
   .payment-icons-link {
@@ -391,6 +404,13 @@
   font-size: 16px;
   background: transparent;
   color: var(--text-main);
+}
+
+/* Ensure mobile menu appears above page content — fixes stacking issues */
+@media (max-width: 768px) {
+  /* Make sure the toggle and navigation sit above all other contexts */
+  .menu-toggle { z-index: 200001 !important; }
+  .main-nav { z-index: 200000 !important; }
 }
 
 .qty-control .qty-input:focus {
