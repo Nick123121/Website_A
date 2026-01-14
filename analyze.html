@@ -73,6 +73,17 @@
 </head>
 <body class="antialiased selection:bg-[#00c2ff] selection:text-black">
 
+    <style>
+        /* Disable animations/transitions on this analysis page */
+        *, *::before, *::after {
+            animation: none !important;
+            transition: none !important;
+            scroll-behavior: auto !important;
+        }
+        /* Prevent hover transforms */
+        .alba-card, .alba-card * { transform: none !important; }
+    </style>
+
     <div class="space-bg-fixed">
         <div class="space-overlay"></div>
     </div>

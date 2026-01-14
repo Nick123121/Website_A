@@ -45,18 +45,17 @@ body{
   body {
     /* Force scrolling attachment to prevent zoom/stretch on iOS */
     background-attachment: scroll !important;
-    /* Use mobile-optimized background image */
-    background-image: url('/assets/images/111apacebackgroundformobile.jpg') !important;
-    /* Fit to screen width without distortion */
-    background-size: 100vw auto !important;
+    /* Use a dark-blue gradient background on mobile (dark -> slightly lighter) */
+    background-image: none !important;
+    /* Keep positioning safe, but use gradient as primary background */
     background-position: center center !important;
-    /* Default gradient for non-index pages */
-    background: linear-gradient(to bottom, #040418, #030007) !important;
+    background-size: auto !important;
+    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
   }
 
-  /* For index pages, keep the space background */
+  /* Apply same dark-blue gradient to index/home pages on mobile */
   body.home-page, body.index-page {
-    background: #020617 url('/assets/images/space-bg.jpg') center/cover scroll no-repeat !important;
+    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
   }
 }
 

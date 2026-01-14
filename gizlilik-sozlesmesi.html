@@ -107,6 +107,16 @@
 </head>
 <body>
 
+  <style>
+    /* Отключаем все анимации и переходы на этой странице */
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+    [style*="transform"] { transform: none !important; }
+  </style>
+
   <div data-include="/header-tr.html"></div>
 
   <main class="page">
