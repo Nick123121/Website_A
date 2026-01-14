@@ -34,7 +34,10 @@
   }
 
   // Toggle handler uses active nav
-  toggle.addEventListener('click', function () {
+  toggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
     var activeNav = getActiveNav();
     var isOpen = activeNav.classList.toggle('nav-open');
     toggle.classList.toggle('is-open', isOpen);

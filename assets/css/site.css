@@ -1249,10 +1249,12 @@ footer.footer{
   .menu-toggle{
     display:flex !important;
     z-index:100002;
+    pointer-events: auto !important;
   }
 
   /* На мобильных меню скрыто по умолчанию; выезжает справа и занимает 1/3 ширины */
-  .main-nav{
+  .main-nav,
+  .mobile-portal-nav{
     position:fixed;
     top:56px; /* под шапкой */
     right:12px;
@@ -1279,13 +1281,16 @@ footer.footer{
     visibility: hidden;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
   }
 
   /* Показываем меню когда оно открыто; добавляем статическое свечение, похожее на кнопки */
-  .main-nav.nav-open{
+  .main-nav.nav-open,
+  .mobile-portal-nav.nav-open{
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
     box-shadow:
       0 12px 34px rgba(56,189,248,0.6),
       0 0 40px rgba(56,189,248,0.18) inset;
@@ -1293,7 +1298,8 @@ footer.footer{
   }
 
   /* Меню пункты на мобильных */
-  .main-nav a{
+  .main-nav a,
+  .mobile-portal-nav a{
     padding:12px 18px;
     font-size:14px;
     display:block;
@@ -1305,12 +1311,18 @@ footer.footer{
     border-bottom:none;
   }
 
+  .mobile-portal-nav a:last-child{
+    border-bottom:none;
+  }
+
   /* Mobile dropdown */
-  .main-nav .dropdown {
+  .main-nav .dropdown,
+  .mobile-portal-nav .dropdown {
     position: static;
   }
 
-  .main-nav .dropdown-menu {
+  .main-nav .dropdown-menu,
+  .mobile-portal-nav .dropdown-menu {
     position: static;
     display: none;
     background: transparent;
@@ -1322,11 +1334,13 @@ footer.footer{
     padding-left: 20px;
   }
 
-  .main-nav .dropdown.active .dropdown-menu {
+  .main-nav .dropdown.active .dropdown-menu,
+  .mobile-portal-nav .dropdown.active .dropdown-menu {
     display: block;
   }
 
-  .main-nav .dropdown-menu a {
+  .main-nav .dropdown-menu a,
+  .mobile-portal-nav .dropdown-menu a {
     padding: 8px 18px 8px 38px;
     font-size: 13px;
     border-bottom: none;

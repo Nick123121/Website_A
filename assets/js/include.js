@@ -34,54 +34,8 @@ runAfterDomReady(() => {
   const ensurePreloaderScript = createPreloaderLoader();
   const ensureModelPreloader = createModelPreloaderLoader();
   const ensureModelNavLoader = createModelNavLoader();
-  // 5. Mobile nav override
-  if (!document.getElementById("albaspace-nav-override-style")) {
-    const navStyle = document.createElement("style");
-    navStyle.id = "albaspace-nav-override-style";
-    navStyle.textContent = `
-      @media (max-width: 768px) {
-        nav.main-nav {
-          position: absolute;
-          top: calc(100% + 10px);
-          right: 12px;
-          width: 33vw;
-          max-width: 420px;
-          min-width: 220px;
-          background: #020617;
-          border: 1px solid rgba(15, 23, 42, 0.8);
-          border-radius: 10px;
-          box-shadow: 0 18px 45px rgba(56,189,248,0.25);
-          flex-direction: column;
-          padding: 8px 0;
-          z-index: 1001;
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
-          display: flex;
-          opacity: 0;
-          transform: translateY(-8px);
-          transform-origin: top center;
-          transition: opacity .28s ease, transform .28s ease;
-          pointer-events: none;
-          overflow: hidden;
-          will-change: opacity, transform;
-        }
-        nav.main-nav.nav-open {
-          opacity: 1;
-          transform: translateY(0);
-          pointer-events: auto;
-        }
-        nav.main-nav a {
-          padding: 12px 18px;
-          font-size: 14px;
-          border-bottom: 1px solid rgba(15,23,42,0.6);
-          color: var(--text-main);
-          display: block;
-        }
-        nav.main-nav a:last-child { border-bottom: none; }
-      }
-    `;
-    document.head.appendChild(navStyle);
-  }
+  // 5. Mobile nav override - REMOVED, using site.css mobile styles instead
+  // The override was causing pointer-events issues with menu toggle
   // 6. Load includes (Header / Footer)
   const includes = document.querySelectorAll("[data-include], [data-include-html]");
   if (includes.length) {
