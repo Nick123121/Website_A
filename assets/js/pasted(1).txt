@@ -1,0 +1,231 @@
+<!-- ALBAMEN WIDGET CONTAINER -->
+<div class="albamen-widget-container flex flex-col gap-4 max-w-md mx-auto p-4">
+
+    <!-- 1. КНОПКА ТЕКСТОВОГО ЧАТА (Существующая) -->
+    <!-- Нажатие вызывает твою старую функцию openTextChat() -->
+    <div onclick="openTextChat()" class="cursor-pointer group relative bg-slate-800 rounded-2xl p-1 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-600 hover:border-blue-400">
+        <div class="flex items-center gap-4 bg-slate-900 rounded-xl p-4">
+            <!-- Аватарка (Замени ссылку на свою картинку) -->
+            <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500 shadow-lg">
+                <img src="https://albaspace.com.tr/assets/img/albamen-face.png" alt="Albamen" class="w-full h-full object-cover"> 
+            </div>
+            <div class="flex-1">
+                <h3 class="text-white font-bold text-lg">Albamen ile Yazış</h3>
+                <p class="text-slate-400 text-sm">Sorularını yazarak sor 📝</p>
+            </div>
+            <div class="text-blue-400 text-2xl group-hover:translate-x-1 transition">→</div>
+        </div>
+    </div>
+
+    <!-- 2. КНОПКА ГОЛОСОВОГО ЧАТА (Новая) -->
+    <div id="voiceBtnContainer" onclick="toggleVoiceSession()" class="cursor-pointer group relative bg-gradient-to-r from-blue-900 to-slate-900 rounded-2xl p-1 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-500/30 hover:border-red-500/50">
+        <div class="flex items-center gap-4 bg-slate-900/90 rounded-xl p-4 backdrop-blur-sm">
+            <!-- Иконка микрофона -->
+            <div id="micIconStatus" class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-3xl shadow-lg transition-all">
+                🎙️
+            </div>
+            
+            <div class="flex-1">
+                <h3 class="text-white font-bold text-lg">Canlı Sesli Sohbet</h3>
+                <p id="voiceStatusText" class="text-slate-400 text-sm">Tıkla ve Konuş (Live) 🔊</p>
+            </div>
+            
+            <!-- Анимация волны (скрыта по умолчанию) -->
+            <div id="voiceWave" class="hidden flex gap-1 items-center h-8">
+                <div class="w-1 h-3 bg-red-500 animate-pulse"></div>
+                <div class="w-1 h-6 bg-red-500 animate-pulse delay-75"></div>
+                <div class="w-1 h-4 bg-red-500 animate-pulse delay-150"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: Ввод Имени (Если нет в памяти) -->
+    <div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="bg-slate-800 p-6 rounded-2xl shadow-2xl max-w-sm w-full border border-slate-600">
+            <h3 class="text-xl text-white font-bold mb-2 text-center">Tanışalım! 👋</h3>
+            <p class="text-slate-400 text-sm text-center mb-4">Albamen seninle daha iyi konuşmak için adını bilmek istiyor.</p>
+            
+            <input type="text" id="userNameInput" placeholder="Adın ne?" class="w-full mb-3 p-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 outline-none">
+            <input type="number" id="userAgeInput" placeholder="Yaşın kaç?" class="w-full mb-4 p-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 outline-none">
+            
+            <div class="flex gap-2">
+                <button onclick="closeAuthModal()" class="flex-1 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-500">İptal</button>
+                <button onclick="saveAndStartVoice()" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 font-bold">Başla 🚀</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- СКРИПТЫ (LOGIC) -->
+<script>
+    // === 1. НАСТРОЙКИ ===
+    // Вставь сюда URL своего НОВОГО воркера (worker_live_audio.js)
+    const VOICE_WORKER_URL = "wss://albamen-voice.YOUR-SUBDOMAIN.workers.dev"; 
+
+    // === 2. ФУНКЦИИ ТЕКСТОВОГО ЧАТА ===
+    function openTextChat() {
+        // Сюда вставь логику открытия твоего старого чата
+        // Например: document.getElementById('chat-widget').style.display = 'block';
+        alert("Burada eski mesajlaşma botu açılacak."); 
+    }
+
+    // === 3. ФУНКЦИИ ГОЛОСОВОГО ЧАТА ===
+    let audioContext = null;
+    let websocket = null;
+    let isVoiceActive = false;
+    let processor = null;
+    let inputSource = null;
+
+    // UI элементы
+    const micIconStatus = document.getElementById('micIconStatus');
+    const voiceStatusText = document.getElementById('voiceStatusText');
+    const voiceWave = document.getElementById('voiceWave');
+    const authModal = document.getElementById('authModal');
+
+    function toggleVoiceSession() {
+        if (isVoiceActive) {
+            stopVoiceChat();
+        } else {
+            // Проверяем, знаем ли мы имя
+            const name = localStorage.getItem('albamen_userName');
+            if (!name) {
+                // Если имени нет - открываем модалку
+                authModal.classList.remove('hidden');
+            } else {
+                // Если имя есть - сразу запускаем
+                startVoiceChat();
+            }
+        }
+    }
+
+    function closeAuthModal() {
+        authModal.classList.add('hidden');
+    }
+
+    function saveAndStartVoice() {
+        const name = document.getElementById('userNameInput').value;
+        const age = document.getElementById('userAgeInput').value;
+        
+        if(name) {
+            localStorage.setItem('albamen_userName', name);
+            localStorage.setItem('albamen_userAge', age);
+            closeAuthModal();
+            startVoiceChat();
+        }
+    }
+
+    async function startVoiceChat() {
+        try {
+            voiceStatusText.innerText = "Bağlanıyor...";
+            
+            // Получаем данные для URL
+            const name = localStorage.getItem('albamen_userName') || "";
+            const age = localStorage.getItem('albamen_userAge') || "";
+            const wsUrl = `${VOICE_WORKER_URL}?name=${encodeURIComponent(name)}&age=${encodeURIComponent(age)}`;
+
+            // Инициализация аудио
+            audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+            
+            websocket = new WebSocket(wsUrl);
+
+            websocket.onopen = async () => {
+                isVoiceActive = true;
+                updateUI(true);
+                await startMicrophone();
+            };
+
+            websocket.onmessage = async (event) => {
+                const response = JSON.parse(event.data);
+                if (response.serverContent?.modelTurn?.parts) {
+                    for (const part of response.serverContent.modelTurn.parts) {
+                        if (part.inlineData && part.inlineData.mimeType.startsWith('audio/')) {
+                            playAudioChunk(part.inlineData.data);
+                        }
+                    }
+                }
+            };
+
+            websocket.onclose = () => stopVoiceChat();
+            websocket.onerror = () => stopVoiceChat();
+
+        } catch (e) {
+            console.error(e);
+            stopVoiceChat();
+        }
+    }
+
+    function stopVoiceChat() {
+        isVoiceActive = false;
+        if(websocket) websocket.close();
+        if(audioContext) audioContext.close();
+        if(inputSource) inputSource.disconnect();
+        if(processor) processor.disconnect();
+        updateUI(false);
+    }
+
+    function updateUI(isActive) {
+        if (isActive) {
+            micIconStatus.classList.remove('bg-blue-600');
+            micIconStatus.classList.add('bg-red-600', 'animate-pulse');
+            micIconStatus.innerText = "🛑";
+            voiceStatusText.innerText = "Dinliyorum... Konuş!";
+            voiceWave.classList.remove('hidden');
+        } else {
+            micIconStatus.classList.add('bg-blue-600');
+            micIconStatus.classList.remove('bg-red-600', 'animate-pulse');
+            micIconStatus.innerText = "🎙️";
+            voiceStatusText.innerText = "Tıkla ve Konuş (Live) 🔊";
+            voiceWave.classList.add('hidden');
+        }
+    }
+
+    // --- АУДИО УТИЛИТЫ ---
+    async function startMicrophone() {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, sampleRate: 24000 } });
+        inputSource = audioContext.createMediaStreamSource(stream);
+        processor = audioContext.createScriptProcessor(4096, 1, 1);
+
+        processor.onaudioprocess = (e) => {
+            if (!websocket || websocket.readyState !== WebSocket.OPEN) return;
+            const inputData = e.inputBuffer.getChannelData(0);
+            // Конвертация в PCM16 Base64
+            const pcm16 = new Int16Array(inputData.length);
+            for (let i = 0; i < inputData.length; i++) {
+                let s = Math.max(-1, Math.min(1, inputData[i]));
+                pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+            }
+            
+            let binary = '';
+            const bytes = new Uint8Array(pcm16.buffer);
+            for (let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+            const base64Audio = window.btoa(binary);
+
+            websocket.send(JSON.stringify({
+                realtime_input: { media_chunks: [{ mime_type: "audio/pcm", data: base64Audio }] }
+            }));
+        };
+
+        inputSource.connect(processor);
+        processor.connect(audioContext.destination);
+    }
+
+    let nextStartTime = 0;
+    function playAudioChunk(base64String) {
+        const binaryString = window.atob(base64String);
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) bytes[i] = binaryString.charCodeAt(i);
+        const int16Data = new Int16Array(bytes.buffer);
+        const float32Data = new Float32Array(int16Data.length);
+        for (let i = 0; i < int16Data.length; i++) float32Data[i] = int16Data[i] / 32768.0;
+
+        const buffer = audioContext.createBuffer(1, float32Data.length, 24000);
+        buffer.getChannelData(0).set(float32Data);
+        const source = audioContext.createBufferSource();
+        source.buffer = buffer;
+        source.connect(audioContext.destination);
+        const playTime = Math.max(audioContext.currentTime, nextStartTime);
+        source.start(playTime);
+        nextStartTime = playTime + buffer.duration;
+    }
+</script>

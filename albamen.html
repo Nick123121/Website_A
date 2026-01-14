@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Albamen Uzay Keşfi</title>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat;
+        color: #ffffff;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 600; }
+      p { margin: 0; }
+      a { color: #8ab4f8; text-decoration: none; }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* =========================
+         GLOW CONTAINERS (NO TEXT GLOW)
+         ========================= */
+      .glow-box{
+        background: rgba(2, 6, 23, 0.55);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 18px;
+        padding: 18px 18px;
+        box-shadow:
+          0 0 0 1px rgba(56, 189, 248, 0.12),
+          0 12px 40px rgba(0, 0, 0, 0.65),
+          0 0 28px rgba(56, 189, 248, 0.18);
+      }
+
+      .glow-box.glow-strong{
+        box-shadow:
+          0 0 0 1px rgba(244, 114, 182, 0.14),
+          0 18px 60px rgba(0, 0, 0, 0.72),
+          0 0 40px rgba(168, 85, 247, 0.22),
+          0 0 28px rgba(56, 189, 248, 0.18);
+      }
+
+      .glow-box.compact{
+        padding: 14px 14px;
+        border-radius: 16px;
+      }
+
+      /* Slight container glow for existing cards (still NO text glow) */
+      .feature-card,
+      .timeline-item-content,
+      .planet-content,
+      .value-card{
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.55),
+          0 0 24px rgba(56, 189, 248, 0.12);
+      }
+
+      /* =========================
+         HERO
+         ========================= */
+      .hero {
+        min-height: 80vh;
+        padding: 120px 0 80px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-inner {
+        width: min(920px, 92vw);
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 700;
+        line-height: 1.2;
+        background: linear-gradient(90deg, #00d4ff, #7209b7, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        margin-top: 1rem;
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: #d1dce9;
+      }
+
+      .btn {
+        padding: 0.9rem 1.6rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        display: inline-block;
+      }
+
+      .hero .btn {
+        margin-top: 1.6rem;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border-radius: 30px;
+        background-image: linear-gradient(90deg, #7209b7, #00b4d8);
+        color: #ffffff;
+        transition: transform 0.2s ease;
+      }
+
+      .hero .btn:hover { transform: translateY(-3px); }
+
+      /* =========================
+         AI SECTION
+         ========================= */
+      .ai-section { padding: 80px 0; }
+
+      .section-title {
+        text-align: center;
+        margin: 0 auto 2rem;
+        max-width: 820px;
+      }
+
+      .section-title h2 {
+        font-size: 2.4rem;
+        background: linear-gradient(90deg, #f72585, #7209b7, #00d4ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-title p {
+        color: #a3b5d3;
+        margin-top: 0.9rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .feature-card {
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      .feature-card svg {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+        fill: #00d4ff;
+      }
+
+      .feature-card h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      .feature-card p {
+        color: #a3b5d3;
+        font-size: 0.95rem;
+      }
+
+      /* =========================
+         BOOK SECTION
+         ========================= */
+      .book-section {
+        padding: 80px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .book-section .image {
+        flex: 1 1 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .book-section .content { flex: 1 1 50%; }
+
+      .book-section .content h2 {
+        font-size: 2.3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #00d4ff, #7209b7, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .book-section .content p {
+        color: #c1c9d9;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .book-section .content .specs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .book-section .content .spec {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+      }
+
+      .book-section .content .buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .book-section .content .btn.primary {
+        background-image: linear-gradient(90deg, #7209b7, #00b4d8);
+        color: #ffffff;
+      }
+
+      .book-section .content .btn.secondary {
+        background-color: transparent;
+        border: 1px solid #7209b7;
+        color: #00d4ff;
+      }
+
+      /* =========================
+         PRODUCT GALLERY + ZOOM (Albamen)
+         ========================= */
+      .product-gallery{
+        width: min(460px, 92vw);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .product-main{
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(2,6,23,0.45);
+        box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+        touch-action: manipulation;
+      }
+
+      .product-main img{
+        width: 100%;
+        height: auto;
+        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .product-thumbs{
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 6px 2px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .product-thumbs::-webkit-scrollbar{ height: 8px; }
+      .product-thumbs::-webkit-scrollbar-thumb{
+        background: rgba(255,255,255,0.18);
+        border-radius: 999px;
+      }
+
+      .thumb{
+        flex: 0 0 auto;
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        padding: 0;
+        cursor: pointer;
+        overflow: hidden;
+        scroll-snap-align: start;
+        transition: transform .12s ease, border-color .12s ease, filter .12s ease;
+      }
+
+      .thumb:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+      .thumb.is-active{
+        border-color: rgba(56,189,248,0.7);
+        box-shadow: 0 0 0 2px rgba(56,189,248,0.18);
+      }
+
+      .thumb img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Desktop magnifier */
+      .zoom-result{
+        display: none;
+        width: 100%;
+        height: 320px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(2,6,23,0.55);
+        box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+        background-repeat: no-repeat;
+        background-size: 200% 200%;
+      }
+
+      .zoom-lens{
+        display: none;
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.22);
+        background: rgba(56,189,248,0.10);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .12s ease;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .zoom-result{ display: block; }
+        .zoom-lens{ display: block; }
+      }
+
+      /* Mobile fullscreen modal (tap to zoom) */
+      .img-modal{
+        position: fixed;
+        inset: 0;
+        display: none;
+        z-index: 10000;
+        background: rgba(0,0,0,0.85);
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+      }
+
+      .img-modal.open{ display: flex; }
+
+      .img-modal img{
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 20px 70px rgba(0,0,0,0.75);
+      }
+
+      .img-modal-close{
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(2,6,23,0.55);
+        color: #fff;
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      /* =========================
+         TIMELINE
+         ========================= */
+      .timeline-section { padding: 80px 0; }
+
+      .timeline-section h2 {
+        text-align: center;
+        font-size: 2.4rem;
+        background: linear-gradient(90deg, #f72585, #7209b7, #00d4ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+
+      .timeline {
+        position: relative;
+        margin: 4rem auto;
+        max-width: 900px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 1rem 2rem;
+      }
+
+      .timeline-item:nth-child(odd) { left: 0; }
+      .timeline-item:nth-child(even) { left: 50%; }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #00d4ff;
+        border: 3px solid #ffffff;
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd)::after { right: -6px; }
+      .timeline-item:nth-child(even)::after { left: -6px; }
+
+      .timeline-item-content {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .timeline-item-content h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.5rem;
+        color: #00d4ff;
+      }
+
+      .timeline-item-content p {
+        color: #a3b5d3;
+        font-size: 0.95rem;
+      }
+
+      /* =========================
+         PLANETS
+         ========================= */
+      .planet-section {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .planet-section h2 {
+        font-size: 2.4rem;
+        background: linear-gradient(90deg, #00d4ff, #7209b7, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+      }
+
+      /* Styles for interactive row */
+      .space-system-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 40px 0;
+        flex-wrap: wrap;
+        min-height: 200px;
+      }
+
+      .celestial-body {
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        background: radial-gradient(circle at 30% 30%, var(--body-color), #000);
+        box-shadow: 0 0 15px var(--glow-color);
+      }
+
+      .sun {
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle at center, #fff 0%, #ffcc00 30%, #ff4500 100%);
+        box-shadow: 0 0 40px rgba(255, 69, 0, 0.8);
+      }
+
+      .planet {
+        width: var(--body-size);
+        height: var(--body-size);
+      }
+
+      /* Hover Effects */
+      .celestial-body:hover {
+        transform: scale(1.3) translateY(-20px);
+        box-shadow: 0 15px 30px var(--glow-color), 0 0 40px var(--glow-color);
+        z-index: 10;
+      }
+
+      /* Active State (Selected) */
+      .celestial-body.active {
+        outline: 3px solid rgba(255,255,255,0.8);
+        outline-offset: 6px;
+        box-shadow: 0 0 25px var(--glow-color), 0 0 50px var(--glow-color);
+        transform: scale(1.2);
+        z-index: 20;
+      }
+
+      .celestial-body.active:hover {
+        transform: scale(1.3) translateY(-10px);
+      }
+
+      .celestial-body .label {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+        font-weight: 600;
+        color: #a3b5d3;
+        white-space: nowrap;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      .celestial-body.active .label {
+        opacity: 1;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      }
+
+      .audio-btn {
+        margin-top: 15px;
+        background: linear-gradient(90deg, #7209b7, #00d4ff) !important;
+        transition: 0.3s;
+      }
+      
+      .audio-btn:hover {
+        filter: brightness(1.2);
+        transform: translateY(-2px);
+      }
+
+      .planet-content-wrapper {
+        margin-top: 30px;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .planet-content-wrapper.animating {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+      /* =========================
+         QUOTE & VALUES
+         ========================= */
+      .quote-section {
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .quote-section blockquote {
+        font-size: 1.7rem;
+        font-weight: 500;
+        line-height: 1.35;
+        color: #ffffff;
+        margin: 0 0 0.8rem;
+      }
+
+      .quote-section cite {
+        display: block;
+        font-size: 1rem;
+        color: #a3b5d3;
+      }
+
+      .values {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+
+      .value-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .value-card h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        color: #00d4ff;
+      }
+
+      .value-card p {
+        color: #a3b5d3;
+        font-size: 0.95rem;
+      }
+
+      /* =========================
+         Footer address restructure helpers
+         ========================= */
+      .footer-address {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-address .address-block { margin-bottom: 1rem; }
+      .footer-address .address-block p:first-child {
+        font-weight: 600;
+        color: #00d4ff;
+        margin-bottom: 4px;
+      }
+
+      /* =========================
+         Ensure icon sizes (safety)
+         ========================= */
+      .site-header .header-social img,
+      .site-header .header-social svg,
+      .top-lang-switch .lang-flag img,
+      .top-lang-switch .lang-flag svg {
+        width: 22px;
+        height: 22px;
+        display: block;
+      }
+      .footer-social img { width: 22px; height: 22px; display: block; }
+
+      /* =========================
+         Responsive
+         ========================= */
+      @media (max-width: 768px) {
+        .timeline::before { left: 20px; }
+        .timeline-item {
+          width: 100%;
+          left: 0 !important;
+          padding-left: 60px;
+          margin-bottom: 30px;
+        }
+        .timeline-item::after {
+          left: 22px !important;
+          right: auto;
+        }
+      }
+
+      .ai-placeholder{
+        height:100%;
+        border-radius:14px;
+        border:1px dashed rgba(148,163,184,0.35);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        padding:18px;
+        background:rgba(15,23,42,0.55);
+        line-height:1.5;
+        color:#cbd5f5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div data-include-html="/header-tr.html"></div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="glow-box glow-strong">
+          <h1>Hazırsan uzaydaş... Kemerini bağla.</h1>
+          <p>Albamen ile evreni keşfet.</p>
+
+          <a href="https://albamen.space/#" class="btn">
+            Uzaya Başla
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section container">
+      <div class="section-title">
+        <div class="glow-box compact">
+          <h2>Albamen AI Uzayın Bilgi Asistanı</h2>
+          <p>Evrenin sırlarını keşfetmek için tasarlanımış, çocuk dostu yapay zekâ asistanı.</p>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2c-2.1 0-4.1.8-5.6 2.3l-4.7 4.7 6.3 6.3 4.7-4.7c1.5-1.5 2.3-3.5 2.3-5.6s-.8-4.1-2.3-5.6zM2 17.3l3.7-3.7 6.3 6.3-3.7 3.7H2v-6.3z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Uzay Uzmanı</h3>
+            <p>Bilimsel sorulara kesin ve anlaşılır yanıtlar sunar.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm0 14c-2.5 0-4.71-1.28-6-3.22l1.63-1.16a6 6 0 0 0 8.74 0l1.63 1.16A9 9 0 0 1 12 19zm4.5-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Çocuk Dostu</h3>
+            <p>Çocuklar ve yetişkinler için uygun, eğlenceli ve güvenli yanıtlar verir.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Türk Uzay Mirası</h3>
+            <p>Türk astronotlar, Mars görevleri ve uzay araçları hakkında bilgiler sunar.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13 2L4 13h6l-1 9 9-12h-6l1-10z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Anlık Yanıtlar</h3>
+            <p>Sorularını anında yanıtlayan hızlı ve interaktif bir deneyim sunar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="book-section container">
+      <div class="image">
+        <div class="product-gallery" id="albamenGallery">
+          <div class="product-main" id="albamenMain" aria-label="Albamen görsel büyütme">
+            <img
+              id="albamenMainImg"
+              src="/assets/images/albamenvelara.jpg"
+              alt="Albamen ve Lara Uzayda"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="zoom-lens" id="albamenLens" aria-hidden="true"></div>
+          </div>
+
+          <div class="product-thumbs" id="albamenThumbs" aria-label="Ürün görselleri">
+            <button class="thumb is-active" type="button" data-src="/assets/images/albamenvelara.jpg">
+              <img src="/assets/images/albamenvelara.jpg" alt="Kapak" loading="lazy" decoding="async" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/2025-12-16_07-25-13.png">
+              <img src="/assets/images/2025-12-16_07-25-13.png" alt="Arka kapak" loading="lazy" decoding="async" />
+            </button>
+
+
+            <button class="thumb" type="button" data-src="/assets/images/Screenshot_2025-10-10-19-44-51-208_com.instagram.android.jpg">
+              <img src="/assets/images/Screenshot_2025-10-10-19-44-51-208_com.instagram.android.jpg" alt="İç sayfa 1" loading="lazy" decoding="async" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/Screenshot_2025-10-10-19-44-55-420_com.instagram.android.jpg">
+              <img src="/assets/images/Screenshot_2025-10-10-19-44-55-420_com.instagram.android.jpg" alt="İç sayfa 2" loading="lazy" decoding="async" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/Screenshot_2025-10-10-19-45-00-351_com.instagram.android.jpg">
+              <img src="/assets/images/Screenshot_2025-10-10-19-45-00-351_com.instagram.android.jpg" alt="İç sayfa 3" loading="lazy" decoding="async" />
+            </button>
+          </div>
+
+          <div class="zoom-result" id="albamenZoom" aria-hidden="true"></div>
+        </div>
+
+        <div class="img-modal" id="albamenModal" aria-hidden="true">
+          <button class="img-modal-close" type="button" id="albamenModalClose" aria-label="Kapat">×</button>
+          <img id="albamenModalImg" alt="Albamen büyük görüntü" />
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="glow-box glow-strong" style="padding: 22px;">
+          <h2>Türkiye’nin İlk Çocuk Uzay Ansiklopedisi</h2>
+          <p>
+            Albamen ve Lara ile uzayın derinliklerine yolculuğa çık. Türk astronotların
+            hikayeleri, Mars görevleri ve evrenin sırları bu kitapta seni bekliyor.
+
+            <br /><br />
+
+            Bu kitap, fütürist, stemist ve otodidakt nesil için son teknoloji ile yazılan Türkiye'nin İlk Süper Kahramanı
+            Albamen'in anlatımıyla Çocuk Uzay Ansiklopedisi özelliğinde bir bilgi kaynağıdır. İçinde artırılmış gerçeklik,
+            yapay zeka ve karekod uygulamarıyla hazırlanan kahraman astronotlarımız Alper Gezeravcı ve Tuva Cihangir
+            Atasever'in uzayda yaptığı deneyler, uzay araçları, Mars görevleri, önemli bilim insanlarımız gibi birçok bilgi
+            yer almaktadır. Geleceğin bilim insanı veya astronotu olarak okumaya başlmadan önce uzay araçlarını yanında görmek
+            için akıllı telefonunu ya da tabletini hazırla. Hadi uzaydaş, kemerini bağla, uzay yolculuğu başlıyooooor!
+          </p>
+
+          <div class="specs">
+            <div class="spec">125 sayfa renkli içerik</div>
+            <div class="spec">Sert kapak, premium baskı</div>
+            <div class="spec">Artırılmış gerçeklik deneyimi</div>
+            <div class="spec">QR kod ile etkileşim</div>
+          </div>
+
+          <div class="buttons">
+            <a
+              href="https://iglooyayinevi.com/albamen-ve-lara-uzayda"
+              class="btn primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Kitabı İncele
+            </a>
+
+            <a
+              href="https://iglooyayinevi.com/albamen-ve-lara-uzayda"
+              class="btn primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Satın Al
+            </a>
+
+            <a
+              href="https://albaspace.com.tr/atlas.html"
+              class="btn secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AR Deneyimi
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section container">
+      <div class="glow-box compact" style="max-width: 820px; margin: 0 auto 18px;">
+        <h2>Yıldızlara Uzanan Yolculuk</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>2024 – İlk Türk Astronot</h3>
+              <p>
+                Alper Gezeravci, Uluslararası Uzay İstasyonu'nda 13 bilimsel deney
+                gerçekleştirerek ülkemiz adına tarihe geçti.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>2024 – İkinci Türk Astronot</h3>
+              <p>
+                Tuva Cihangir Atasever, uzayda araştırmalar ve deneyler
+                gerçekleştirerek bir sonraki nesle ilham veriyor.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>Devam – Uzay Deneyleri</h3>
+              <p>
+                Türk bilim insanları tarafından yürütülen mikro yerçekimi deneyleri
+                devam ediyor ve geleceğin teknolojilerine katkı sağlıyor.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>Gelecek – Türkiye’nin Uzay Vizyonu</h3>
+              <p>
+                2030 hedefleri arasında kendi uydumuzu fırlatmak ve derin uzay
+                görevlerine katılmak bulunuyor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="planet-section container">
+      <div class="glow-box compact" style="max-width: 760px; margin: 0 auto 30px;">
+        <h2>Güneş Sistemi'ni Keşfet</h2>
+        <p style="color: #a3b5d3; font-size: 0.9rem;">Gezegenlerin üzerine gelerek onları büyütün, detayları görmek için tıklayın.</p>
+      </div>
+
+      <div class="space-system-row">
+        <div class="celestial-body sun active" data-id="sun" style="--body-color: #ff4500; --glow-color: rgba(255, 69, 0, 0.6);" role="button">
+          <span class="label">Güneş</span>
+        </div>
+
+        <div class="celestial-body planet" data-id="mercury" style="--body-size: 35px; --body-color: #97979f; --glow-color: rgba(151, 151, 159, 0.4);" role="button">
+          <span class="label">Merkür</span>
+        </div>
+        <div class="celestial-body planet" data-id="venus" style="--body-size: 45px; --body-color: #e3bb76; --glow-color: rgba(227, 187, 118, 0.4);" role="button">
+          <span class="label">Venüs</span>
+        </div>
+        <div class="celestial-body planet" data-id="earth" style="--body-size: 48px; --body-color: #2271b3; --glow-color: rgba(34, 113, 179, 0.5);" role="button">
+          <span class="label">Dünya</span>
+        </div>
+        <div class="celestial-body planet" data-id="mars" style="--body-size: 40px; --body-color: #e27b58; --glow-color: rgba(226, 123, 88, 0.4);" role="button">
+          <span class="label">Mars</span>
+        </div>
+        <div class="celestial-body planet" data-id="jupiter" style="--body-size: 75px; --body-color: #d39c7e; --glow-color: rgba(211, 156, 126, 0.3);" role="button">
+          <span class="label">Jüpiter</span>
+        </div>
+        <div class="celestial-body planet" data-id="saturn" style="--body-size: 65px; --body-color: #c5ab6e; --glow-color: rgba(197, 171, 110, 0.3);" role="button">
+          <span class="label">Satürn</span>
+        </div>
+        <div class="celestial-body planet" data-id="uranus" style="--body-size: 55px; --body-color: #b5e3e3; --glow-color: rgba(181, 227, 227, 0.4);" role="button">
+          <span class="label">Uranüs</span>
+        </div>
+        <div class="celestial-body planet" data-id="neptune" style="--body-size: 53px; --body-color: #4b70dd; --glow-color: rgba(75, 112, 221, 0.4);" role="button">
+          <span class="label">Neptün</span>
+        </div>
+      </div>
+
+      <div class="planet-content-wrapper" id="planetDetailBox">
+        <div class="glow-box glow-strong">
+          <h3 id="planetTitle">Güneş</h3>
+          <p id="planetDesc">Güneş sisteminin merkezinde yer alan, devasa bir plazma küresidir. Tüm yaşamın enerji kaynağıdır.</p>
+          <button class="btn audio-btn" id="playAudioBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+            Sesli Dinle
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="glow-box glow-strong" style="max-width: 860px; margin: 0 auto;">
+        <blockquote>"Gelecek, merak eden çocuklarla kurulur."</blockquote>
+        <cite>İdris Albayrak, Albamen AI Kurucusu</cite>
+      </div>
+
+      <div class="values container">
+        <div class="value-card">
+          <div class="glow-box compact">
+            <h3>STEM Odaklı</h3>
+            <p>Çocukları bilim ve mühendislik alanlarında yeni keşifler yapmaya teşvik eder.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="glow-box compact">
+            <h3>Otodidakt</h3>
+            <p>Kendi kendine öğrenen ve meraklı bireyler yetiştirir.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="glow-box compact">
+            <h3>Hayal Gücü</h3>
+            <p>Büyük düşler kurarak bilimi ve hayal gücünü birleştirir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div data-include-html="/footer-tr.html"></div>
+
+    <script src="/assets/js/include.js"></script>
+
+    <script>
+      // ===========================
+      // 1. PLANET INTERACTION LOGIC
+      // ===========================
+      const planetData = {
+        sun: {
+          title: "Güneş",
+          desc: "Güneş sisteminin merkezinde yer alan, devasa bir plazma küresidir. Tüm yaşamın enerji kaynağıdır. Güneş olmasaydı, Dünya'da yaşam olmazdı."
+        },
+        mercury: {
+          title: "Merkür",
+          desc: "Güneş'e en yakın gezegendir. Yüzeyi kraterlerle doludur ve atmosferi çok incedir. Gündüzleri çok sıcak, geceleri ise dondurucu soğuktur."
+        },
+        venus: {
+          title: "Venüs",
+          desc: "Gökyüzündeki en parlak gezegendir. Kalın atmosferi ısıyı tuttuğu için Güneş sisteminin en sıcak gezegenidir. Diğer gezegenlerin aksine ters yöne döner."
+        },
+        earth: {
+          title: "Dünya",
+          desc: "Bizim evimiz! Üzerinde yaşam olduğu bilinen tek gezegendir. Yüzeyinin büyük bir kısmı sularla kaplıdır ve yaşamı koruyan bir atmosferi vardır."
+        },
+        mars: {
+          title: "Mars",
+          desc: "Kızıl Gezegen olarak bilinir. Rengini demir oksitli toprağından alır. Güneş sistemindeki en büyük volkan olan Olympos Mons burada bulunur."
+        },
+        jupiter: {
+          title: "Jüpiter",
+          desc: "Güneş sisteminin en büyük gezegenidir. Gaz devidir ve sert bir yüzeyi yoktur. Üzerindeki 'Büyük Kırmızı Leke' aslında devasa bir fırtınadır."
+        },
+        saturn: {
+          title: "Satürn",
+          desc: "Etrafındaki muhteşem halkalarıyla ünlüdür. Bu halkalar buz ve kaya parçalarından oluşur. Jüpiter'den sonraki en büyük ikinci gezegendir."
+        },
+        uranus: {
+          title: "Uranüs",
+          desc: "Buz devi olarak sınıflandırılır. Atmosferindeki metan gazı ona mavi-yeşil bir renk verir. Güneş etrafında yan yatmış bir varil gibi döner."
+        },
+        neptune: {
+          title: "Neptün",
+          desc: "Güneş'e en uzak gezegendir. Çok soğuktur ve çok şiddetli rüzgarlar eser. Koyu mavi rengiyle derin okyanusları andırır."
+        }
+      };
+
+      const planets = document.querySelectorAll('.celestial-body');
+      const titleEl = document.getElementById('planetTitle');
+      const descEl = document.getElementById('planetDesc');
+      const detailBox = document.getElementById('planetDetailBox');
+      const playBtn = document.getElementById('playAudioBtn');
+
+      planets.forEach(planet => {
+        planet.addEventListener('click', function() {
+          // 1. Remove active class from all
+          planets.forEach(p => p.classList.remove('active'));
+
+          // 2. Add active class to clicked
+          this.classList.add('active');
+
+          // 3. Update Text
+          const id = this.getAttribute('data-id');
+          const data = planetData[id];
+
+          if (data) {
+            // Simple fade effect
+            detailBox.classList.remove('animating');
+            void detailBox.offsetWidth; // trigger reflow
+            detailBox.classList.add('animating');
+
+            titleEl.textContent = data.title;
+            descEl.textContent = data.desc;
+          }
+        });
+      });
+
+      // Optional: Button click handler
+      if(playBtn) {
+        playBtn.addEventListener('click', () => {
+          alert('Ses dosyası oynatılıyor... (Demo)');
+        });
+      }
+
+
+      // ===========================
+      // 2. BOOK GALLERY LOGIC (Simple)
+      // ===========================
+      const thumbs = document.querySelectorAll('.thumb');
+      const mainImg = document.getElementById('albamenMainImg');
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+          // Update active state
+          thumbs.forEach(t => t.classList.remove('is-active'));
+          this.classList.add('is-active');
+
+          // Update main image
+          const newSrc = this.getAttribute('data-src');
+          if(mainImg && newSrc) {
+             mainImg.src = newSrc;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

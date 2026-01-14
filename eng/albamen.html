@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Albamen — Space Discovery</title>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat;
+        color: #ffffff;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 600; }
+      p { margin: 0; }
+      a { color: #8ab4f8; text-decoration: none; }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* =========================
+         GLOW CONTAINERS
+         ========================= */
+      .glow-box{
+        background: rgba(2, 6, 23, 0.55);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 18px;
+        padding: 18px 18px;
+        box-shadow:
+          0 0 0 1px rgba(56, 189, 248, 0.12),
+          0 12px 40px rgba(0, 0, 0, 0.65),
+          0 0 28px rgba(56, 189, 248, 0.18);
+      }
+
+      .glow-box.glow-strong{
+        box-shadow:
+          0 0 0 1px rgba(244, 114, 182, 0.14),
+          0 18px 60px rgba(0, 0, 0, 0.72),
+          0 0 40px rgba(168, 85, 247, 0.22),
+          0 0 28px rgba(56, 189, 248, 0.18);
+      }
+
+      .glow-box.compact{
+        padding: 14px 14px;
+        border-radius: 16px;
+      }
+
+      .feature-card,
+      .timeline-item-content,
+      .planet-content,
+      .value-card{
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.55),
+          0 0 24px rgba(56, 189, 248, 0.12);
+      }
+
+      /* =========================
+         HERO
+         ========================= */
+      .hero {
+        min-height: 80vh;
+        padding: 120px 0 80px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-inner {
+        width: min(920px, 92vw);
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 700;
+        line-height: 1.2;
+        background: linear-gradient(90deg, #00d4ff, #7209b7, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        margin-top: 1rem;
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: #d1dce9;
+      }
+
+      .btn {
+        padding: 0.9rem 1.6rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        display: inline-block;
+      }
+
+      .hero .btn {
+        margin-top: 1.6rem;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border-radius: 30px;
+        background-image: linear-gradient(90deg, #7209b7, #00b4d8);
+        color: #ffffff;
+        transition: transform 0.2s ease;
+      }
+
+      .hero .btn:hover { transform: translateY(-3px); }
+
+      /* =========================
+         AI SECTION
+         ========================= */
+      .ai-section { padding: 80px 0; }
+
+      .section-title {
+        text-align: center;
+        margin: 0 auto 2rem;
+        max-width: 820px;
+      }
+
+      .section-title h2 {
+        font-size: 2.4rem;
+        background: linear-gradient(90deg, #f72585, #7209b7, #00d4ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-title p {
+        color: #a3b5d3;
+        margin-top: 0.9rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .feature-card {
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      .feature-card svg {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+        fill: #00d4ff;
+      }
+
+      .feature-card h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      .feature-card p {
+        color: #a3b5d3;
+        font-size: 0.95rem;
+      }
+
+      /* =========================
+         BOOK SECTION (Simplified)
+         ========================= */
+      .book-section {
+        padding: 80px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .book-section .image {
+        flex: 1 1 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .book-section .content { flex: 1 1 50%; }
+
+      .book-section .content h2 {
+        font-size: 2.3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #00d4ff, #7209b7, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .book-section .content p {
+        color: #c1c9d9;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .book-section .content .specs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .book-section .content .spec {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+      }
+
+      .book-section .content .buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .book-section .content .btn.primary {
+        background-image: linear-gradient(90deg, #7209b7, #00b4d8);
+        color: #ffffff;
+      }
+
+      .book-section .content .btn.secondary {
+        background-color: transparent;
+        border: 1px solid #7209b7;
+        color: #00d4ff;
+      }
+
+      /* PRODUCT GALLERY (Simple - No Zoom) */
+      .product-gallery{
+        width: min(460px, 92vw);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .product-main{
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(2,6,23,0.45);
+        box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+      }
+
+      .product-main img{
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .product-thumbs{
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 6px 2px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .product-thumbs::-webkit-scrollbar{ height: 8px; }
+      .product-thumbs::-webkit-scrollbar-thumb{
+        background: rgba(255,255,255,0.18);
+        border-radius: 999px;
+      }
+
+      .thumb{
+        flex: 0 0 auto;
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        padding: 0;
+        cursor: pointer;
+        overflow: hidden;
+        scroll-snap-align: start;
+        transition: transform .12s ease, border-color .12s ease, filter .12s ease;
+      }
+
+      .thumb:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+      .thumb.is-active{
+        border-color: rgba(56,189,248,0.7);
+        box-shadow: 0 0 0 2px rgba(56,189,248,0.18);
+      }
+
+      .thumb img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Mobile fullscreen modal (tap to zoom) */
+      .img-modal{
+        position: fixed;
+        inset: 0;
+        display: none;
+        z-index: 10000;
+        background: rgba(0,0,0,0.85);
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+      }
+      .img-modal.open{ display: flex; }
+      .img-modal img{
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 20px 70px rgba(0,0,0,0.75);
+      }
+      .img-modal-close{
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(2,6,23,0.55);
+        color: #fff;
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      /* =========================
+         TIMELINE
+         ========================= */
+      .timeline-section { padding: 80px 0; }
+
+      .timeline-section h2 {
+        text-align: center;
+        font-size: 2.4rem;
+        background: linear-gradient(90deg, #f72585, #7209b7, #00d4ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+
+      .timeline {
+        position: relative;
+        margin: 4rem auto;
+        max-width: 900px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 1rem 2rem;
+      }
+
+      .timeline-item:nth-child(odd) { left: 0; }
+      .timeline-item:nth-child(even) { left: 50%; }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #00d4ff;
+        border: 3px solid #ffffff;
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd)::after { right: -6px; }
+      .timeline-item:nth-child(even)::after { left: -6px; }
+
+      .timeline-item-content {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .timeline-item-content h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.5rem;
+        color: #00d4ff;
+      }
+
+      .timeline-item-content p {
+        color: #a3b5d3;
+        font-size: 0.95rem;
+      }
+
+      /* =========================
+         PLANETS (UPDATED for Interaction)
+         ========================= */
+      .planet-section {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .planet-section h2 {
+        font-size: 2.4rem;
+        background: linear-gradient(90deg, #00d4ff, #7209b7, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+      }
+
+      /* Space System Row */
+      .space-system-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 40px 0;
+        flex-wrap: wrap;
+        min-height: 200px;
+      }
+
+      .celestial-body {
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        background: radial-gradient(circle at 30% 30%, var(--body-color), #000);
+        box-shadow: 0 0 15px var(--glow-color);
+      }
+
+      .sun {
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle at center, #fff 0%, #ffcc00 30%, #ff4500 100%);
+        box-shadow: 0 0 40px rgba(255, 69, 0, 0.8);
+      }
+
+      .planet {
+        width: var(--body-size);
+        height: var(--body-size);
+      }
+
+      /* Hover Effects */
+      .celestial-body:hover {
+        transform: scale(1.3) translateY(-20px);
+        box-shadow: 0 15px 30px var(--glow-color), 0 0 40px var(--glow-color);
+        z-index: 10;
+      }
+
+      /* Active State (Selected) */
+      .celestial-body.active {
+        outline: 3px solid rgba(255,255,255,0.8);
+        outline-offset: 6px;
+        box-shadow: 0 0 25px var(--glow-color), 0 0 50px var(--glow-color);
+        transform: scale(1.2);
+        z-index: 20;
+      }
+
+      .celestial-body.active:hover {
+        transform: scale(1.3) translateY(-10px);
+      }
+
+      .celestial-body .label {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+        font-weight: 600;
+        color: #a3b5d3;
+        white-space: nowrap;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      .celestial-body.active .label {
+        opacity: 1;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      }
+
+      .audio-btn {
+        margin-top: 15px;
+        background: linear-gradient(90deg, #7209b7, #00d4ff) !important;
+        transition: 0.3s;
+      }
+      
+      .audio-btn:hover {
+        filter: brightness(1.2);
+        transform: translateY(-2px);
+      }
+
+      .planet-content-wrapper {
+        margin-top: 30px;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .planet-content-wrapper.animating {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+      /* =========================
+         QUOTE & VALUES
+         ========================= */
+      .quote-section {
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .quote-section blockquote {
+        font-size: 1.7rem;
+        font-weight: 500;
+        line-height: 1.35;
+        color: #ffffff;
+        margin: 0 0 0.8rem;
+      }
+
+      .quote-section cite {
+        display: block;
+        font-size: 1rem;
+        color: #a3b5d3;
+      }
+
+      .values {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+
+      .value-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .value-card h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        color: #00d4ff;
+      }
+
+      .value-card p {
+        color: #a3b5d3;
+        font-size: 0.95rem;
+      }
+
+      /* =========================
+         Footer & Utils
+         ========================= */
+      .footer-address {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-address .address-block { margin-bottom: 1rem; }
+      .footer-address .address-block p:first-child {
+        font-weight: 600;
+        color: #00d4ff;
+        margin-bottom: 4px;
+      }
+
+      .site-header .header-social img,
+      .site-header .header-social svg,
+      .top-lang-switch .lang-flag img,
+      .top-lang-switch .lang-flag svg {
+        width: 22px;
+        height: 22px;
+        display: block;
+      }
+      .footer-social img { width: 22px; height: 22px; display: block; }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .timeline::before { left: 20px; }
+        .timeline-item {
+          width: 100%;
+          left: 0 !important;
+          padding-left: 60px;
+          margin-bottom: 30px;
+        }
+        .timeline-item::after {
+          left: 22px !important;
+          right: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div data-include-html="/header-en.html"></div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="glow-box glow-strong">
+          <h1>Ready for space?<br />Fasten your seatbelt.</h1>
+          <p>Explore the universe with Albamen.</p>
+
+          <a href="https://albamen.space/#" class="btn">
+            Start Exploring
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section container">
+      <div class="section-title">
+        <div class="glow-box compact">
+          <h2>Albamen AI — The Space Knowledge Assistant</h2>
+          <p>A child-friendly AI assistant designed to discover the secrets of the universe.</p>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2c-2.1 0-4.1.8-5.6 2.3l-4.7 4.7 6.3 6.3 4.7-4.7c1.5-1.5 2.3-3.5 2.3-5.6s-.8-4.1-2.3-5.6zM2 17.3l3.7-3.7 6.3 6.3-3.7 3.7H2v-6.3z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Space Expert</h3>
+            <p>Provides accurate and clear answers to scientific questions.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm0 14c-2.5 0-4.71-1.28-6-3.22l1.63-1.16a6 6 0 0 0 8.74 0l1.63 1.16A9 9 0 0 1 12 19zm4.5-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Child-friendly</h3>
+            <p>Offers engaging, safe and age-appropriate answers for kids and adults alike.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Turkish Space Heritage</h3>
+            <p>Provides information about Turkish astronauts, Mars missions and space vehicles.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13 2L4 13h6l-1 9 9-12h-6l1-10z" />
+          </svg>
+          <div class="glow-box compact">
+            <h3>Instant Answers</h3>
+            <p>Provides a fast, interactive experience that answers questions instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="book-section container">
+      <div class="image">
+        <div class="product-gallery" id="albamenGallery">
+          <div class="product-main" id="albamenMain">
+            <img
+              id="albamenMainImg"
+              src="/assets/images/albamenvelara.jpg"
+              alt="Albamen and Lara in Space"
+              loading="eager"
+            />
+          </div>
+
+          <div class="product-thumbs" id="albamenThumbs">
+            <button class="thumb is-active" type="button" data-src="/assets/images/albamenvelara.jpg">
+              <img src="/assets/images/albamenvelara.jpg" alt="Cover" loading="lazy" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/2025-12-16_07-25-13.png">
+              <img src="/assets/images/2025-12-16_07-25-13.png" alt="Back cover" loading="lazy" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/Screenshot_2025-10-10-19-44-51-208_com.instagram.android.jpg">
+              <img src="/assets/images/Screenshot_2025-10-10-19-44-51-208_com.instagram.android.jpg" alt="Inner page 1" loading="lazy" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/Screenshot_2025-10-10-19-44-55-420_com.instagram.android.jpg">
+              <img src="/assets/images/Screenshot_2025-10-10-19-44-55-420_com.instagram.android.jpg" alt="Inner page 2" loading="lazy" />
+            </button>
+
+            <button class="thumb" type="button" data-src="/assets/images/Screenshot_2025-10-10-19-45-00-351_com.instagram.android.jpg">
+              <img src="/assets/images/Screenshot_2025-10-10-19-45-00-351_com.instagram.android.jpg" alt="Inner page 3" loading="lazy" />
+            </button>
+          </div>
+          
+          <div class="img-modal" id="albamenModal" aria-hidden="true">
+            <button class="img-modal-close" type="button" id="albamenModalClose" aria-label="Close">×</button>
+            <img id="albamenModalImg" alt="Albamen large view" />
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="glow-box glow-strong" style="padding: 22px;">
+          <h2>Turkey's First Children's Space Encyclopedia</h2>
+          <p>
+            Embark on a journey into the depths of space with Albamen and Lara.
+            Stories of Turkish astronauts, Mars missions and the secrets of the universe await in this book.
+            <br /><br />
+            This book is crafted with cutting-edge technology for future scientists, STEM learners and autodidacts — Turkey's first super-hero for young readers.
+            Presented by Albamen, this children's space encyclopedia includes augmented reality, AI and QR-code enabled features starring our hero astronauts Alper Gezeravcı and Tuva Cihangir Atasever.
+            It contains many topics such as experiments in space, spacecraft, Mars missions, and notable Turkish scientists.
+            Before you start reading as a future scientist or astronaut, have your smartphone or tablet ready to see spacecraft up close.
+            Come on, space-friend, buckle up—the space journey begins!
+          </p>
+
+          <div class="specs">
+            <div class="spec">125 pages color content</div>
+            <div class="spec">Hardcover, premium print</div>
+            <div class="spec">Augmented Reality experience</div>
+            <div class="spec">QR code interaction</div>
+          </div>
+
+          <div class="buttons">
+            <a
+              href="https://iglooyayinevi.com/albamen-ve-lara-uzayda"
+              class="btn primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Preview the Book
+            </a>
+
+            <a
+              href="https://iglooyayinevi.com/albamen-ve-lara-uzayda"
+              class="btn primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy
+            </a>
+
+            <a
+              href="https://albaspace.com.tr/atlas.html"
+              class="btn secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AR Experience
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section container">
+      <div class="glow-box compact" style="max-width: 820px; margin: 0 auto 18px;">
+        <h2>Journey to the Stars</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>2024 – First Turkish Astronaut</h3>
+              <p>
+                Alper Gezeravci conducted 13 scientific experiments on the International Space Station and made history for our country.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>2024 – Second Turkish Astronaut</h3>
+              <p>
+                Tuva Cihangir Atasever conducts research and experiments in space, inspiring the next generation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>Ongoing – Space Experiments</h3>
+              <p>
+                Microgravity experiments conducted by Turkish scientists continue and contribute to future technologies.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="glow-box compact">
+              <h3>The Future — Turkey's Space Vision</h3>
+              <p>
+                Among the 2030 goals are launching our own satellite and participating in deep space missions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="planet-section container">
+      <div class="glow-box compact" style="max-width: 760px; margin: 0 auto 30px;">
+        <h2>Discover the Solar System</h2>
+        <p style="color: #a3b5d3; font-size: 0.9rem;">Hover over or click planets to learn more.</p>
+      </div>
+
+      <div class="space-system-row">
+        <div class="celestial-body sun active" data-id="sun" style="--body-color: #ff4500; --glow-color: rgba(255, 69, 0, 0.6);" role="button">
+          <span class="label">Sun</span>
+        </div>
+
+        <div class="celestial-body planet" data-id="mercury" style="--body-size: 35px; --body-color: #97979f; --glow-color: rgba(151, 151, 159, 0.4);" role="button">
+          <span class="label">Mercury</span>
+        </div>
+        <div class="celestial-body planet" data-id="venus" style="--body-size: 45px; --body-color: #e3bb76; --glow-color: rgba(227, 187, 118, 0.4);" role="button">
+          <span class="label">Venus</span>
+        </div>
+        <div class="celestial-body planet" data-id="earth" style="--body-size: 48px; --body-color: #2271b3; --glow-color: rgba(34, 113, 179, 0.5);" role="button">
+          <span class="label">Earth</span>
+        </div>
+        <div class="celestial-body planet" data-id="mars" style="--body-size: 40px; --body-color: #e27b58; --glow-color: rgba(226, 123, 88, 0.4);" role="button">
+          <span class="label">Mars</span>
+        </div>
+        <div class="celestial-body planet" data-id="jupiter" style="--body-size: 75px; --body-color: #d39c7e; --glow-color: rgba(211, 156, 126, 0.3);" role="button">
+          <span class="label">Jupiter</span>
+        </div>
+        <div class="celestial-body planet" data-id="saturn" style="--body-size: 65px; --body-color: #c5ab6e; --glow-color: rgba(197, 171, 110, 0.3);" role="button">
+          <span class="label">Saturn</span>
+        </div>
+        <div class="celestial-body planet" data-id="uranus" style="--body-size: 55px; --body-color: #b5e3e3; --glow-color: rgba(181, 227, 227, 0.4);" role="button">
+          <span class="label">Uranus</span>
+        </div>
+        <div class="celestial-body planet" data-id="neptune" style="--body-size: 53px; --body-color: #4b70dd; --glow-color: rgba(75, 112, 221, 0.4);" role="button">
+          <span class="label">Neptune</span>
+        </div>
+      </div>
+
+      <div class="planet-content-wrapper" id="planetDetailBox">
+        <div class="glow-box glow-strong">
+          <h3 id="planetTitle">The Sun</h3>
+          <p id="planetDesc">The massive sphere of plasma at the center of the Solar System. The energy source for all life.</p>
+          <button class="btn audio-btn" id="playAudioBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+            Listen
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="glow-box glow-strong" style="max-width: 860px; margin: 0 auto;">
+        <blockquote>"The future is built by curious children."</blockquote>
+        <cite>İdris Albayrak, Founder of Albamen AI</cite>
+      </div>
+
+      <div class="values container">
+        <div class="value-card">
+          <div class="glow-box compact">
+            <h3>STEM-Focused</h3>
+            <p>Encourages children to make new discoveries in science and engineering.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="glow-box compact">
+            <h3>Self-taught</h3>
+            <p>Cultivates self-directed, curious learners.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="glow-box compact">
+            <h3>Imagination</h3>
+            <p>Combines science and creativity by encouraging big dreams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div data-include-html="/footer-en.html"></div>
+
+    <script src="/assets/js/include.js"></script>
+
+    <script>
+      // ===========================
+      // 1. PLANET INTERACTION LOGIC (English Data)
+      // ===========================
+      const planetData = {
+        sun: {
+          title: "The Sun",
+          desc: "The massive sphere of plasma at the center of the Solar System. It is the energy source for all life. Without the Sun, life on Earth would not exist."
+        },
+        mercury: {
+          title: "Mercury",
+          desc: "The closest planet to the Sun. Its surface is covered in craters, and it has a very thin atmosphere. It is extremely hot during the day and freezing at night."
+        },
+        venus: {
+          title: "Venus",
+          desc: "The brightest planet in the sky. Its thick atmosphere traps heat, making it the hottest planet in the Solar System. Unlike others, it spins in the opposite direction."
+        },
+        earth: {
+          title: "Earth",
+          desc: "Our home! The only planet known to support life. Most of its surface is covered with water, and it has a protective atmosphere."
+        },
+        mars: {
+          title: "Mars",
+          desc: "Known as the Red Planet due to the iron oxide (rust) in its soil. Olympus Mons, the largest volcano in the Solar System, is located here."
+        },
+        jupiter: {
+          title: "Jupiter",
+          desc: "The largest planet in the Solar System. It is a gas giant with no solid surface. The 'Great Red Spot' on it is actually a massive storm."
+        },
+        saturn: {
+          title: "Saturn",
+          desc: "Famous for its magnificent rings, made of ice and rock particles. It is the second-largest planet after Jupiter."
+        },
+        uranus: {
+          title: "Uranus",
+          desc: "Classified as an ice giant. Methane gas in its atmosphere gives it a blue-green color. It rotates on its side, like a rolling barrel."
+        },
+        neptune: {
+          title: "Neptune",
+          desc: "The farthest planet from the Sun. It is very cold and has extremely strong winds. Its deep blue color resembles deep oceans."
+        }
+      };
+
+      const planets = document.querySelectorAll('.celestial-body');
+      const titleEl = document.getElementById('planetTitle');
+      const descEl = document.getElementById('planetDesc');
+      const detailBox = document.getElementById('planetDetailBox');
+      const playBtn = document.getElementById('playAudioBtn');
+
+      planets.forEach(planet => {
+        planet.addEventListener('click', function() {
+          // 1. Remove active class from all
+          planets.forEach(p => p.classList.remove('active'));
+
+          // 2. Add active class to clicked
+          this.classList.add('active');
+
+          // 3. Update Text
+          const id = this.getAttribute('data-id');
+          const data = planetData[id];
+
+          if (data) {
+            // Simple fade effect
+            detailBox.classList.remove('animating');
+            void detailBox.offsetWidth; // trigger reflow
+            detailBox.classList.add('animating');
+
+            titleEl.textContent = data.title;
+            descEl.textContent = data.desc;
+          }
+        });
+      });
+
+      if(playBtn) {
+        playBtn.addEventListener('click', () => {
+          alert('Playing audio... (Demo)');
+        });
+      }
+
+      // ===========================
+      // 2. SIMPLE GALLERY LOGIC (Zoom Removed)
+      // ===========================
+      const thumbs = document.querySelectorAll('.thumb');
+      const mainImg = document.getElementById('albamenMainImg');
+      const modal = document.getElementById('albamenModal');
+      const modalImg = document.getElementById('albamenModalImg');
+      const modalClose = document.getElementById('albamenModalClose');
+      const productMain = document.getElementById('albamenMain');
+
+      // Thumbnail Click
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+          thumbs.forEach(t => t.classList.remove('is-active'));
+          this.classList.add('is-active');
+
+          const newSrc = this.getAttribute('data-src');
+          if(mainImg && newSrc) {
+             mainImg.src = newSrc;
+          }
+        });
+      });
+
+      // Mobile/Desktop Modal (Simple Lightbox)
+      function openModal(){
+        if(mainImg && modalImg){
+          modalImg.src = mainImg.src;
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      function closeModal(){
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if(productMain) productMain.addEventListener('click', openModal);
+      if(modalClose) modalClose.addEventListener('click', closeModal);
+      if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    </script>
+  </body>
+</html>

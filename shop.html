@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mağaza – AlbaSpace</title>
+  <!-- Temel stil dosyaları ve mağazaya özel stil -->
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">
+  <style>
+    :root {
+      --header-bg: #020617;
+      --accent: #00c2ff;
+      --page-bg: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+    }
+    body { background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat; color: var(--text-main); }
+  </style>
+  <!-- Header/footer'ı yüklemek ve sepet mantığını eklemek için scriptler -->
+  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+  <script src="/assets/js/cart.js" defer></script>
+</head>
+<body>
+  <!-- Dinamik başlık dahil etme. include.js, bunu mevcut sitenizdeki
+       /header-tr.html içeriğiyle değiştirecektir. -->
+  <div data-include="/header-tr.html"></div>
+
+  <main class="shop-container">
+    <h1 style="text-align:center;margin-bottom:8px;">Mağaza</h1>
+    <p style="text-align:center;margin-bottom:32px;color:var(--text-muted);">AlbaSpace kıyafet ve koleksiyonlarını keşfedin.</p>
+    <div class="product-list">
+      <!-- 1 hoodie1 -->
+      <a href="product-hoodie1.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/hoodie1.png" alt="Hoodie" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>Hoodie</h3>
+          <div class="product-price"><del>1400.00 TL</del> İNDİRİM %30 980.00 TL</div>
+        </div>
+      </a>
+      <!-- 2 Hoodie -->
+      <a href="product-hoodie.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/hoodie.png" alt="Hoodie" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>Hoodie</h3>
+          <div class="product-price"><del>1400.00 TL</del> İNDİRİM 30% 980.00 TL</div>
+        </div>
+      </a>
+      <!-- 3 Katlaç/Sonsuz Küp -->
+      <a href="product-hat.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/hat.png" alt="Katlaç/Sonsuz Küp" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>Katlaç/Sonsuz Küp</h3>
+          <div class="product-price"><del>155.00 TL</del> İNDİRİM %30 120.00 TL</div>
+        </div>
+      </a>
+
+
+      <!-- 4 Trucker şapka -->
+      <a href="product-stanley.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/stanley.png" alt="Stanley Termos" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>Stanley Termos</h3>
+          <div class="product-price"><del>3120.00 TL</del> İNDİRİM %30 2400.00 TL</div>
+        </div>
+      </a>
+
+      <!-- 4 Tişört -->
+      <a href="product-shirt.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/shirt.png" alt="T-Shirt" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>T-Shirt</h3>
+          <div class="product-price"><del>900.00 TL</del> İNDİRİM 30% 630.00 TL</div>
+        </div>
+      </a>
+
+      <!-- 5 Shirt 1 -->
+      <a href="product-shirt1.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/shirt1.png" alt="T-Shirt" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>T-Shirt</h3>
+          <div class="product-price"><del>900.00 TL</del> İNDİRİM 30% 630.00 TL</div>
+        </div>
+      </a>
+
+
+      <!-- 4 book -->
+      <a href="product-albamenvelara.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/albamenvelara.jpg" alt="Kitap" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>Kitap</h3>
+          <div class="product-price"><del>1500.00 TL</del> İNDİRİM 30% 1000.00 TL</div>
+        </div>
+      </a>
+
+      <!-- 4 book -->
+      <a href="product-albamenvelara1.html" class="product-card">
+        <div class="product-badge" aria-hidden="true"></div>
+        <img src="/assets/products/albemanvelara1.jpg" alt="Kitap PDF" loading="lazy">
+        <div class="product-info">
+          <div class="payment-icons" aria-hidden="true">
+            <span class="payment-icons-link" role="link" tabindex="0" onclick="event.stopPropagation(); location.href='/chart.html';" onkeydown="if(event.key==='Enter'){event.stopPropagation(); location.href='/chart.html';}"></span>
+            <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+            <img src="/assets/icons/mastercard.png" alt="mastercard">
+            <img src="/assets/icons/visa.png" alt="visa">
+          </div>
+          <h3>Kitap PDF</h3>
+          <div class="product-price"><del>400.00 TL</del> İNDİRİM 60% 160.00 TL</div>
+        </div>
+      </a>
+
+
+
+
+
+
+
+    </div>
+  </main>
+
+  <!-- Dinamik footer dahil etme -->
+  <div data-include="/footer-tr.html"></div>
+</body>
+</html>
+    

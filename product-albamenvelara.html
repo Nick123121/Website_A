@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kitap – AlbaSpace</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">
+  <style>
+    :root {
+      --header-bg: #020617;
+      --accent: #00c2ff;
+      --page-bg: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+    }
+    body { background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat; color: var(--text-main); }
+  </style>
+  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+  <script src="/assets/js/cart.js" defer></script>
+</head>
+<body>
+  <div data-include="/header-tr.html"></div>
+
+  <main class="product-page">
+    <div class="product-detail">
+      <img src="/assets/products/albamenvelara.jpg" alt="Kitap">
+      <div class="detail-info">
+        <h1>Kitap</h1>
+        <div class="product-price">1000.00 TL</div>
+        <ul class="product-details">
+          <li>Albamen Ve Lara'nın hikayesi</li>
+          <li>İlham verici</li>
+          <li>Renkli resimler</li>
+          <li>Kaliteli baskı</li>
+        </ul>
+        <!-- Quantity selector -->
+        <div class="qty-control" style="margin:16px 0;" data-qty>
+          <button type="button" class="qty-btn" data-qty-minus>&minus;</button>
+          <input type="number" value="1" min="1" class="qty-input" data-qty-input>
+          <button type="button" class="qty-btn" data-qty-plus>&plus;</button>
+        </div>
+        <!-- Add to cart button -->
+        <button class="btn-primary" id="addToCartBtn"
+          data-product-id="albamenvelara"
+          data-product-name="Kitap"
+          data-product-price="1000"
+          data-product-image="/assets/products/albamenvelara.jpg"
+          data-add-label="SEPETE EKLE"
+          data-added-label="EKLENDİ!">
+          SEPETE EKLE
+        </button>
+        <div class="payment-icons" aria-hidden="true">
+          <span class="payment-icons-link" role="link" tabindex="0" onclick="location.href='/chart.html';" onkeydown="if(event.key==='Enter'){location.href='/chart.html';}"></span>
+          <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+          <img src="/assets/icons/mastercard.png" alt="mastercard">
+          <img src="/assets/icons/visa.png" alt="visa">
+        </div>
+      </div>
+    </div>
+
+    <!-- Related products -->
+    <section class="related-products">
+      <h2>Bunları da beğenebilirsiniz</h2>
+      <div class="product-list">
+        <a class="product-card" href="product-albamenvelara1.html">
+          <img src="/assets/products/albemanvelara1.jpg" alt="Kitap PDF">
+          <div class="product-info">
+            <h3>Kitap PDF</h3>
+            <div class="product-price">160.00 TL</div>
+          </div>
+        </a>
+        <a class="product-card" href="product-shirt.html">
+          <img src="/assets/products/shirt.png" alt="Tişört">
+          <div class="product-info">
+            <h3>Tişört</h3>
+            <div class="product-price">630.00 TL</div>
+          </div>
+        </a>
+        <a class="product-card" href="product-hoodie.html">
+          <img src="/assets/products/hoodie.png" alt="Hoodie">
+          <div class="product-info">
+            <h3>Hoodie</h3>
+            <div class="product-price">980.00 TL</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/footer-tr.html"></div>
+
+  <script>
+    // Product page logic for Book (Turkish)
+    document.addEventListener('DOMContentLoaded', () => {
+      const minusBtn = document.querySelector('[data-qty-minus]');
+      const plusBtn = document.querySelector('[data-qty-plus]');
+      const input = document.querySelector('[data-qty-input]');
+      minusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value || '1', 10);
+        if (current > 1) input.value = current - 1;
+      });
+      plusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value || '1', 10);
+        input.value = current + 1;
+      });
+      const btn = document.getElementById('addToCartBtn');
+      btn.addEventListener('click', () => {
+        const qty = parseInt(input.value || '1', 10);
+        cartManager.addItem({
+          id: btn.dataset.productId,
+          name: btn.dataset.productName,
+          price: Number(btn.dataset.productPrice),
+          image: btn.dataset.productImage,
+          url: window.location.pathname,
+          qty
+        });
+        // Provide feedback to user
+        const originalText = btn.dataset.addLabel || btn.textContent;
+        btn.textContent = btn.dataset.addedLabel || 'Eklendi!';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 1400);
+      });
+    });
+  </script>
+</body>
+</html>

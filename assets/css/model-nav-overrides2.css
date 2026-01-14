@@ -1,0 +1,103 @@
+/* Overrides for neon model navigation buttons */
+
+/* Wrapper around the model title */
+.model-title-wrap {
+  /* Keep existing flex alignment but adjust margins for upper placement */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 24px auto 12px;
+}
+
+/* Base button styling with brighter neon color and larger size */
+.model-nav__btn {
+  --neon: #00ffff;
+  --size: 56px;
+  width: var(--size);
+  height: var(--size);
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(0,255,255,0.18), rgba(0,255,255,0.08));
+  color: var(--neon);
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid rgba(0,255,255,0.25);
+  box-shadow: 0 8px 24px rgba(0,255,255,0.30), 0 0 32px rgba(0,255,255,0.15) inset;
+  text-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  position: relative;
+  z-index: 5;
+
+  /* Hide overflow so wave effect doesn't break out of the button */
+  overflow: hidden;
+}
+
+/* Neon glow pseudo-element */
+.model-nav__btn::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 30%, rgba(0,255,255,0.35), transparent 50%);
+  filter: blur(10px);
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: -1;
+}
+
+/* Hover interaction: lift and intensify glow */
+.model-nav__btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 16px 40px rgba(0,255,255,0.40), 0 0 36px rgba(0,255,255,0.20) inset;
+}
+
+/* Energy wave animation on hover */
+.model-nav__btn:hover::before {
+  content: '';
+  position: absolute;
+  inset: -100%;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.5), rgba(0,255,255,0) 70%);
+  animation: energyWave 0.9s forwards ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes energyWave {
+  from {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* Neon pulse animation for subtle breathing effect */
+@keyframes neonPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.model-nav__btn.pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Adjust button spacing when attached to the title */
+.model-title-wrap .model-nav__btn.prev {
+  margin-right: 10px;
+}
+
+.model-title-wrap .model-nav__btn.next {
+  margin-left: 10px;
+}

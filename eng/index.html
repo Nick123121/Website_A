@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlbaSpace – Take Your Future to Space!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- IMPORTANT: keep global site styles -->
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+  <script src="/assets/js/carousel.js" defer></script>
+
+  <style>
+    :root {
+      --header-bg: #020617;
+      --accent: #00c2ff;
+      --page-bg: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+
+      /* logo strip controls */
+      --logo-strip-h: 120px;   /* height of the strip: 110–140 is okay */
+      --logo-gap: 14px;        /* equal gap */
+      --logo-pad-x: 12px;      /* left/right padding */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat;
+      color: var(--text-main);
+    }
+
+    /* Fallback for background */
+    body { background-color: #020617; }
+
+    /* ===== Glass box ===== */
+    .glass-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 20px;
+      padding: 20px 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* glass box that fits text width */
+    .glass-box--fit {
+      display: block;
+      width: fit-content;
+      max-width: calc(100% - 40px);
+      margin: 0 auto 22px;
+      padding: 14px 18px;
+      text-align: center;
+    }
+    .glass-box--fit .section-title,
+    .glass-box--fit .logo-section-title { margin: 0; }
+    .glass-box--fit .section-subtitle { margin: 10px 0 0; }
+
+    /* ===== Page layout ===== */
+    .home-main {
+      max-width: 1200px;
+      margin: 40px auto 70px;
+      padding: 32px 26px 40px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .hero h1 { font-size: 42px; line-height: 1.1; margin-bottom: 10px; }
+
+    .hero .lead {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary, .btn-outline {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.35);
+      animation: buttonGlow 2.8s ease-in-out infinite;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(56, 189, 248, 0.6);
+      background: #29d2ff;
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(56, 189, 248, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+    }
+
+    @keyframes buttonGlow {
+      0%, 100% { box-shadow: 0 8px 22px rgba(56, 189, 248, 0.25); }
+      50%      { box-shadow: 0 16px 40px rgba(56, 189, 248, 0.55); }
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .hero-stats strong {
+      display: block;
+      font-size: 20px;
+      color: var(--accent);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    /* ===== Categories ===== */
+    .section-title { text-align: center; font-size: 28px; margin-bottom: 8px; }
+    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 15px; }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .category-card {
+      max-width: 420px;
+      background: rgba(15, 23, 42, 0.65);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .category-body { padding: 18px 20px 22px; }
+
+    .category-card h3 { margin-bottom: 8px; font-size: 18px; color: #f9fafb; }
+    .category-card p  { font-size: 14px; color: #9ca3af; }
+
+    .category-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      margin-top: 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: #020617;
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.35);
+      position: relative;
+      overflow: hidden;
+      animation: buttonGlow 2.8s ease-in-out infinite;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .category-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(56, 189, 248, 0.6);
+      background: #29d2ff;
+    }
+
+    /* ===== Logo carousels ===== */
+    .logo-section-title {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 60px;
+      margin-bottom: 0; /* title is inside glass-box--fit now */
+    }
+
+    .logo-carousel{
+      height: var(--logo-strip-h);
+      overflow-x: auto; /* allow horizontal swipe on mobile */
+      overflow-y: hidden;
+      margin-bottom: 40px;
+      padding: 0 var(--logo-pad-x);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      touch-action: pan-x;
+    }
+    
+    .carousel-track{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: var(--logo-gap);
+      will-change: transform;
+    }
+
+    .logo-card{
+      flex: 0 0 auto;
+      height: 100%;
+      width: auto;
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
+      border: none;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      min-width: 80px; /* on narrow screens */
+    }
+
+    /* Force larger tiles on desktop so carousel has overflow and autoplay is visible */
+    @media (min-width: 901px){
+      .logo-card{ min-width: 140px; }
+    }
+
+    .logo-card img{
+      height: 100%;
+      width: auto;
+      max-height: 100%;
+      max-width: 260px;   /* protect against too wide logos */
+      object-fit: contain;
+      opacity: 0.95;
+      display: block;
+    }
+
+    @keyframes slide-horizontal {
+      0%   { transform: translateX(0); }
+      50%  { transform: translateX(-10%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .home-main { padding: 26px 16px 34px; }
+      :root { --logo-strip-h: 110px; --logo-gap: 12px; }
+      .logo-card img { max-width: 220px; }
+
+      /* Disable automatic carousel animation on small screens so touch swipe works reliably */
+      .carousel-track { animation: none !important; }
+    }
+
+    .home-page .hero,
+    .home-page .card-container {
+      background: none;
+      border: none;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  </style>
+</head>
+
+<body class="home-page">
+  <div data-include="/header-en.html"></div>
+
+  <main class="home-main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="glass-box">
+        <h1>Take Your Future to Space!</h1>
+        <p class="lead">
+          We send your brand to space! We offer your brand a unique and unforgettable experience with our space-themed advertising and educational solutions.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="services.html" class="btn-primary">Discover Services</a>
+          <a href="gallery.html" class="btn-outline">View Gallery</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <strong>150+</strong>
+            Innovative Solutions
+          </div>
+          <div>
+            <strong>15</strong>
+            Space Achievements
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="/assets/images/anasayfa-hero.jpg" alt="Space horizon and satellite view">
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section>
+      <div class="glass-box glass-box--fit">
+        <h2 class="section-title">Product Categories</h2>
+        <p class="section-subtitle">
+          We offer innovative solutions to promote your brand in space.
+        </p>
+      </div>
+
+      <div class="card-container">
+        <div class="category-card">
+          <img src="/assets/images/urun-uzay-tanitimi.jpg" alt="Space Promotion">
+          <div class="category-body">
+            <h3>Space Promotion</h3>
+            <p>We create striking and distinctive campaigns by taking your brand to space.</p>
+            <a href="services.html" class="category-btn">Discover</a>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <img src="/assets/images/urun-uzay-reklamlari.jpg" alt="Space Advertisements">
+          <div class="category-body">
+            <h3>Space Advertisements</h3>
+            <p>We take your brand to another dimension with real space footage and virtual scenes.</p>
+            <a href="services.html" class="category-btn">Explore</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERENCES -->
+    <section>
+      <div class="glass-box glass-box--fit">
+        <h2 class="logo-section-title">Our References</h2>
+      </div>
+
+      <div class="logo-carousel-wrap">
+        <div class="logo-carousel">
+          <div class="carousel-track">
+            <!-- Logos -->
+            <div class="logo-card"><img src="/assets/images/placeholder-logo1.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo2.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo3.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo4.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo5.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo6.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo7.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo8.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo9.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo10.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo11.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo12.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo13.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo14.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo15.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo16.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo17.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo18.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo19.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo20.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo21.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo22.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo23.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo24.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo25.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo26.jpg" alt="Logo placeholder"></div>
+          </div>
+        </div>
+        <button class="carousel-wheel-hint" aria-label="Scroll carousel" title="Scroll carousel" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="3" width="12" height="18" rx="6" stroke="#00c2ff" stroke-width="1.6"/>
+            <circle cx="12" cy="9" r="1.2" fill="#00c2ff" />
+            <path d="M12 12.5v2" stroke="#00c2ff" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section>
+      <div class="glass-box glass-box--fit">
+        <h2 class="logo-section-title">Solution Partners</h2>
+      </div>
+
+      <div class="logo-carousel-wrap">
+        <div class="logo-carousel">
+          <div class="carousel-track">
+            <div class="logo-card"><img src="/assets/images/placeholder-logo27.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo28.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo29.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo30.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo31.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo32.jpg" alt="Logo placeholder"></div>
+            <div class="logo-card"><img src="/assets/images/placeholder-logo33.jpg" alt="Logo placeholder"></div>
+          </div>
+        </div>
+        <button class="carousel-wheel-hint" aria-label="Scroll carousel" title="Scroll carousel" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="3" width="12" height="18" rx="6" stroke="#00c2ff" stroke-width="1.6"/>
+            <circle cx="12" cy="9" r="1.2" fill="#00c2ff" />
+            <path d="M12 12.5v2" stroke="#00c2ff" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/footer-en.html"></div>
+</body>
+</html>

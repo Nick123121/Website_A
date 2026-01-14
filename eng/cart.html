@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart – AlbaSpace</title>
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">
+  <!-- Include header/footer and menu toggle scripts -->
+  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+  <!-- Cart manager for updating cart state -->
+  <script src="/assets/js/cart.js" defer></script>
+</head>
+<body>
+  <!-- Insert the existing site header (English) -->
+  <div data-include="/header-en.html"></div>
+
+  <main class="cart-page">
+    <h1>Cart</h1>
+    <!-- Container for rendered cart items -->
+    <section id="cartItems"></section>
+
+    <!-- Cart summary and shipping estimate -->
+    <section class="cart-summary" id="cartSummary">
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <span id="cartTotal">TL0.00</span>
+      </div>
+      <div class="shipping-estimate">
+        <h2>Estimate Shipping + Handling</h2>
+        <form>
+          <label>
+            Country
+            <select>
+
+              <option value="Türkiye">Türkiye</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Ukraine</option>
+              <option value="Canada">Russia</option>
+            </select>
+          </label>
+          <label>
+            State / Province
+            <input type="text" placeholder="State or Province">
+          </label>
+          <label>
+            Zip Code
+            <input type="text" placeholder="Zip or Postal code">
+          </label>
+          <button type="button" class="btn-secondary">Estimate</button>
+        </form>
+      </div>
+      <button class="btn-primary checkout-btn" type="button">CHECKOUT</button>
+    </section>
+
+    <!-- Message when cart is empty -->
+    <p id="emptyCartMessage" class="cart-empty" hidden>Your cart is empty.</p>
+  </main>
+
+  <!-- Insert the existing site footer (English) -->
+  <div data-include="/footer-en.html"></div>
+
+  <script>
+    /**
+     * Render the cart contents for the English cart page.  Populates the
+     * #cartItems section with one row per cart item, updates the total,
+     * and attaches event handlers for quantity changes and removal.
+     */
+    function renderCartEN() {
+      const container = document.getElementById('cartItems');
+      const summary = document.getElementById('cartSummary');
+      const emptyMsg = document.getElementById('emptyCartMessage');
+      const totalEl = document.getElementById('cartTotal');
+      const cart = cartManager.load();
+      if (!cart.length) {
+        container.innerHTML = '';
+        summary.style.display = 'none';
+        emptyMsg.hidden = false;
+        return;
+      }
+      emptyMsg.hidden = true;
+      summary.style.display = '';
+      let total = 0;
+      container.innerHTML = cart.map((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        return `
+          <article class="cart-item" data-index="${index}">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-main">
+              <h2>${item.name}</h2>
+              <p>${item.color ? item.color : ''}${item.size ? ' / ' + item.size : ''}</p>
+              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+            </div>
+            <div class="cart-item-actions">
+              <div class="qty-control" data-qty>
+                <button type="button" class="qty-btn" data-qty-minus>&minus;</button>
+                <input type="number" min="1" value="${item.qty}" class="qty-input" data-qty-input>
+                <button type="button" class="qty-btn" data-qty-plus>&plus;</button>
+              </div>
+              <button type="button" class="cart-remove" data-remove>Remove</button>
+              <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
+            </div>
+          </article>
+        `;
+      }).join('');
+      totalEl.textContent = '$' + total.toFixed(2);
+      // Bind event handlers after DOM insertion
+      container.querySelectorAll('.cart-item').forEach(row => {
+        const index = Number(row.dataset.index);
+        const input = row.querySelector('[data-qty-input]');
+        row.querySelector('[data-qty-minus]').addEventListener('click', () => {
+          const value = Math.max(1, Number(input.value || '1') - 1);
+          input.value = value;
+          cartManager.updateQty(index, value);
+          renderCartEN();
+        });
+        row.querySelector('[data-qty-plus]').addEventListener('click', () => {
+          const value = Number(input.value || '1') + 1;
+          input.value = value;
+          cartManager.updateQty(index, value);
+          renderCartEN();
+        });
+        row.querySelector('[data-remove]').addEventListener('click', () => {
+          cartManager.remove(index);
+          renderCartEN();
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', renderCartEN);
+  </script>
+</body>
+</html>
+
+
+
+
+
+

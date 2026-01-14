@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>ALBASPACE – Uzay Atlası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+
+  <style>
+    :root {
+      --header-bg:#020617;
+      --accent:#00c2ff;
+      --page-bg:#020617;
+      --text-main:#f9fafb;
+      --text-muted:#9ca3af;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat;
+      color:var(--text-main);
+    }
+
+    .atlas-shell {
+      max-width:1100px;
+      margin:40px auto 70px;
+      padding:0 16px;
+    }
+
+    .atlas-inner {
+      background:radial-gradient(circle at top,rgba(56,189,248,0.18),transparent 55%);
+      padding:1px;
+      border-radius:26px;
+      box-shadow:0 28px 90px rgba(0,0,0,0.85);
+    }
+
+    .atlas-inner-core {
+      background:rgba(15,23,42,0.94);
+      border-radius:25px;
+      padding:22px 20px 30px;
+      border:1px solid rgba(148,163,184,0.5);
+      backdrop-filter:blur(20px);
+    }
+
+    .atlas-hero-label {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.16em;
+      color:#a5b4fc;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-bottom:4px;
+    }
+
+    .atlas-hero-label::before { content:"●"; font-size:10px; color:#22c55e; }
+    .atlas-hero-title { font-size:22px; margin-bottom:4px; }
+
+    .atlas-hero-sub {
+      font-size:13px;
+      color:#cbd5f5;
+      margin-bottom:16px;
+    }
+
+    .atlas-intro {
+      font-size:13px;
+      color:#d1d5db;
+      margin-bottom:18px;
+      line-height:1.5;
+    }
+
+    .filters {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      margin-bottom:16px;
+      font-size:12px;
+    }
+
+    .filters span.label { color:#9ca3af; }
+
+    .chip {
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.5);
+      background:rgba(15,23,42,0.9);
+      color:#e5e7eb;
+      cursor:pointer;
+      transition:background .15s,border-color .15s,transform .1s;
+      user-select:none;
+    }
+
+    .chip:hover {
+      background:rgba(30,64,175,0.8);
+      border-color:rgba(96,165,250,0.9);
+      transform:translateY(-1px);
+    }
+
+    .chip.active {
+      background:linear-gradient(135deg,#0ea5e9,#22c55e);
+      border-color:transparent;
+      color:#020617;
+      font-weight:600;
+    }
+
+    section.grid {
+      margin-top:10px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+
+    @media (max-width:900px){
+      section.grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:600px){
+      section.grid { grid-template-columns:repeat(1,minmax(0,1fr)); }
+    }
+
+    .card {
+      position:relative;
+      border-radius:18px;
+      padding:14px 12px 12px;
+      background:
+        radial-gradient(circle at top left,rgba(59,130,246,0.12),transparent 60%),
+        radial-gradient(circle at bottom right,rgba(236,72,153,0.18),transparent 60%),
+        rgba(15,23,42,0.96);
+      border:1px solid rgba(148,163,184,0.45);
+      text-decoration:none;
+      color:inherit;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      transition:transform .15s,box-shadow .15s,border-color .15s,background .15s;
+    }
+
+    .card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 18px 50px rgba(15,23,42,0.9);
+      border-color:rgba(129,140,248,0.9);
+      background:
+        radial-gradient(circle at top left,rgba(56,189,248,0.22),transparent 60%),
+        radial-gradient(circle at bottom right,rgba(236,72,153,0.24),transparent 60%),
+        rgba(15,23,42,0.99);
+    }
+
+    .card .tag {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.16em;
+      color:#a5b4fc;
+    }
+
+    .card h2 { font-size:15px; font-weight:600; color:#e5e7eb; }
+    .card p { font-size:12px; color:#cbd5f5; line-height:1.5; }
+
+    /* Быстрая анимация для первого блока */
+    .atlas-hero {
+      --reveal-delay: 0s !important;
+      transition-duration: 0.3s !important;
+    }
+
+  
+  </style>
+</head>
+
+<body>
+  <div data-include="/header-tr.html"></div>
+
+  <div class="atlas-shell">
+    <div class="atlas-inner">
+      <div class="atlas-inner-core">
+
+        <section class="atlas-hero">
+          <div class="atlas-hero-label">ALBASPACE</div>
+          <h1 class="atlas-hero-title">Etkileşimli Uzay Atlası</h1>
+          <p class="atlas-hero-sub">Türk uyduları, gezegenler ve Mars görevlerinin 3D galerisidir.</p>
+        </section>
+
+        <p class="atlas-intro">
+          Alba Space koleksiyonundaki Türk uydularını, gezegenleri ve Mars keşif araçlarını keşfedin.
+          Her kart, ilgili objenin özel 3D sayfasını açar.
+        </p>
+
+        <div class="filters" aria-label="Kategoriler">
+          <span class="label">Kategoriler:</span>
+          <div class="chip active" data-filter="all" role="button" tabindex="0">Tümü</div>
+          <div class="chip" data-filter="turk" role="button" tabindex="0">Türk Uyduları</div>
+          <div class="chip" data-filter="gezegen" role="button" tabindex="0">Gezegenler</div>
+          <div class="chip" data-filter="mars" role="button" tabindex="0">Mars Araçları</div>
+          <div class="chip" data-filter="teleskop" role="button" tabindex="0">Teleskoplar &amp; Problar</div>
+        </div>
+
+        <section class="grid">
+          <a class="card" data-category="turk" href="gokturk-1/"><div class="tag">Uydu</div><h2>GÖKTÜRK-1</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="gokturk-2/"><div class="tag">Uydu</div><h2>GÖKTÜRK-2</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="rasat/"><div class="tag">Uydu</div><h2>RASAT</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="imece/"><div class="tag">Uydu</div><h2>İMECE</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-1A/"><div class="tag">Uydu</div><h2>TÜRKSAT 1A</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-1B/"><div class="tag">Uydu</div><h2>TÜRKSAT 1B</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-1C/"><div class="tag">Uydu</div><h2>TÜRKSAT 1C</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-2A/"><div class="tag">Uydu</div><h2>TÜRKSAT 2A</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-3A/"><div class="tag">Uydu</div><h2>TÜRKSAT 3A</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-3B/"><div class="tag">Uydu</div><h2>TÜRKSAT 3B</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-4A/"><div class="tag">Uydu</div><h2>TÜRKSAT 4A</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-5A/"><div class="tag">Uydu</div><h2>TÜRKSAT 5A</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-5B/"><div class="tag">Uydu</div><h2>TÜRKSAT 5B</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="turksat-6A/"><div class="tag">Uydu</div><h2>TÜRKSAT 6A</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="lagari/"><div class="tag">Uydu</div><h2>Lagari</h2><p>Ayrıntılı bilgi için tıklayın.</p></a>
+          <a class="card" data-category="turk" href="iss/"><div class="tag">İstasyon</div><h2>Uluslararası Uzay İstasyonu</h2><p>3D görünüm için tıklayın.</p></a>
+
+          <a class="card" data-category="gezegen" href="mercury/"><div class="tag">Gezegen</div><h2>Merkür</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="venus/"><div class="tag">Gezegen</div><h2>Venüs</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="earth/"><div class="tag">Gezegen</div><h2>Dünya</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="mars/"><div class="tag">Gezegen</div><h2>Mars</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="jupiter/"><div class="tag">Gezegen</div><h2>Jüpiter</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="saturn/"><div class="tag">Gezegen</div><h2>Satürn</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="uranus/"><div class="tag">Gezegen</div><h2>Uranüs</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="gezegen" href="neptune/"><div class="tag">Gezegen</div><h2>Neptün</h2><p>3D görünüm için tıklayın.</p></a>
+
+          <a class="card" data-category="teleskop" href="sputnik/"><div class="tag">Uydu</div><h2>Sputnik</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="teleskop" href="voyager1/"><div class="tag">Sonda</div><h2>Voyager 1</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="teleskop" href="voyager2/"><div class="tag">Sonda</div><h2>Voyager 2</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="teleskop" href="hubble/"><div class="tag">Teleskop</div><h2>Hubble Uzay Teleskobu</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="teleskop" href="jameswebb/"><div class="tag">Teleskop</div><h2>James Webb Uzay Teleskobu</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="teleskop" href="kepler/"><div class="tag">Teleskop</div><h2>Kepler Uzay Teleskobu</h2><p>3D görünüm için tıklayın.</p></a>
+
+          <a class="card" data-category="mars" href="exomars/"><div class="tag">Görev</div><h2>ExoMars</h2><p>Görev detayları için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="marsodyssey/"><div class="tag">Görev</div><h2>Mars Odyssey</h2><p>Görev detayları için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="marsreconnaissance/"><div class="tag">Görev</div><h2>Mars Reconnaissance Orbiter</h2><p>Görev detayları için tıklayın.</p></a>
+
+          <a class="card" data-category="mars" href="perseverance/"><div class="tag">Rover</div><h2>Perseverance</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="curiosity/"><div class="tag">Rover</div><h2>Curiosity</h2><p>3D görünüm için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="ingenuity/"><div class="tag">Helikopter</div><h2>Ingenuity</h2><p>Görev detayları için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="opportunity/"><div class="tag">Rover</div><h2>Opportunity</h2><p>Görev detayları için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="sojourner/"><div class="tag">Rover</div><h2>Sojourner</h2><p>Görev detayları için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="spirit/"><div class="tag">Rover</div><h2>Spirit</h2><p>Görev detayları için tıklayın.</p></a>
+          <a class="card" data-category="mars" href="zhurong/"><div class="tag">Rover</div><h2>Zhurong</h2><p>3D görünüm için tıklayın.</p></a>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <div data-include="/footer-tr.html"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const chips = Array.from(document.querySelectorAll('.filters .chip[data-filter]'));
+      const cards = Array.from(document.querySelectorAll('.grid .card[data-category]'));
+      if (!chips.length || !cards.length) return;
+
+      const apply = (filter) => {
+        const f = String(filter || 'all').toLowerCase();
+        chips.forEach(c => c.classList.toggle('active', c.dataset.filter === f));
+        cards.forEach(card => {
+          const cat = String(card.dataset.category || '').toLowerCase();
+          card.style.display = (f === 'all' || cat === f) ? '' : 'none';
+        });
+
+        // Re-run global reveal scanner so newly-shown cards get observed
+        if (typeof initScrollReveal === 'function') {
+          try { initScrollReveal(); } catch (e) { /* ignore */ }
+        }
+      };
+
+      const onActivate = (chip) => apply(chip.dataset.filter);
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => onActivate(chip));
+        chip.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onActivate(chip);
+          }
+        });
+      });
+
+      const active = chips.find(c => c.classList.contains('active')) || chips[0];
+      apply(active?.dataset.filter || 'all');
+    });
+  </script>
+
+
+</body>
+</html>

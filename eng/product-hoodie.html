@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unisex AlbaSpace Pullover Hoodie – AlbaSpace</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">
+  <style>
+    :root {
+      --header-bg: #020617;
+      --accent: #00c2ff;
+      --page-bg: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+    }
+    body { background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat; color: var(--text-main); }
+  </style>
+  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+  <script src="/assets/js/cart.js" defer></script>
+</head>
+<body>
+  <div data-include="/header-en.html"></div>
+
+  <main class="product-page">
+    <div class="product-detail">
+      <img src="/assets/images/hoodie.png" alt="AlbaSpace Pullover Hoodie">
+      <div class="detail-info">
+        <h1>AlbaSpace Pullover Hoodie</h1>
+        <div class="product-price">1400.00 TL - discount 30% - 980.00 TL</div>
+        <ul class="product-details">
+          <li>Heavyweight 10oz fleece</li>
+          <li>Crafted from premium ring spun cotton</li>
+          <li>1x1 ribbing at cuffs and waistband</li>
+          <li>Fleece lined hood</li>
+        </ul>
+        <!-- Color selection -->
+        <label style="display:block;margin-top:16px;margin-bottom:4px;">Color: <span id="colorLabel">Charcoal</span></label>
+        <div class="color-swatches" id="colorSwatches">
+          <button type="button" class="color-swatch is-active" data-color="Charcoal" style="--swatch:#323743"></button>
+          <button type="button" class="color-swatch" data-color="Military Green" style="--swatch:#7d7a55"></button>
+          <button type="button" class="color-swatch" data-color="Black" style="--swatch:#000000"></button>
+        </div>
+        <!-- Size selection -->
+        <label for="sizeSelect" style="display:block;margin-bottom:4px;">Size:</label>
+        <select id="sizeSelect" class="size-select">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L" selected>L</option>
+          <option value="XL">XL</option>
+          <option value="2X">2X</option>
+          <option value="3X">3X</option>
+          <option value="4X">4X</option>
+        </select>
+        <!-- Quantity selector -->
+        <div class="qty-control" style="margin:16px 0;" data-qty>
+          <button type="button" class="qty-btn" data-qty-minus>&minus;</button>
+          <input type="number" value="1" min="1" class="qty-input" data-qty-input>
+          <button type="button" class="qty-btn" data-qty-plus>&plus;</button>
+        </div>
+        <!-- Add to cart -->
+        <button class="btn-primary" id="addToCartBtn"
+          data-product-id="hoodie"
+          data-product-name="AlbaSpace Pullover Hoodie"
+          data-product-price="980"
+          data-product-image="/assets/images/hoodie.png"
+          data-add-label="ADD TO CART"
+          data-added-label="ADDED!">
+          ADD TO CART
+        </button>
+        <div class="payment-icons" aria-hidden="true">
+          <span class="payment-icons-link" role="link" tabindex="0" onclick="location.href='/chart.html';" onkeydown="if(event.key==='Enter'){location.href='/chart.html';}"></span>
+          <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+          <img src="/assets/icons/mastercard.png" alt="mastercard">
+          <img src="/assets/icons/visa.png" alt="visa">
+        </div>
+        <!-- Size chart -->
+        <details class="size-chart">
+          <summary>Size chart</summary>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>S</th><th>M</th><th>L</th><th>XL</th><th>2X</th><th>3X</th><th>4X</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Length</td>
+                  <td>28.5"</td><td>29.5"</td><td>30.5"</td><td>31.5"</td>
+                  <td>32.5"</td><td>33.5"</td><td>34"</td>
+                </tr>
+                <tr>
+                  <td>Width</td>
+                  <td>21"</td><td>23"</td><td>24.5"</td><td>26.5"</td>
+                  <td>27.5"</td><td>28.5"</td><td>30"</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Related products -->
+    <section class="related-products">
+      <h2>You may also like</h2>
+      <div class="product-list">
+        <a class="product-card" href="/eng/product-dragon.html">
+          <img src="/assets/images/dragon.png" alt="AlbaSpace LOGO 3D Model">
+          <div class="product-info">
+            <h3>AlbaSpace LOGO 3D Model</h3>
+            <div class="product-price">20.00 TL</div>
+          </div>
+        </a>
+        <a class="product-card" href="/eng/product-hat.html">
+          <img src="/assets/images/hat.png" alt="Cüb">
+          <div class="product-info">
+            <h3>Cüb</h3>
+            <div class="product-price">120.00 TL</div>
+          </div>
+        </a>
+        <a class="product-card" href="/eng/product-shirt.html">
+          <img src="/assets/images/shirt.png" alt="AlbaSpace T‑Shirt">
+          <div class="product-info">
+            <h3>AlbaSpace T‑Shirt</h3>
+            <div class="product-price">630.00 TL</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/footer-en.html"></div>
+
+  <script>
+    // Product page logic for Hoodie (English)
+    document.addEventListener('DOMContentLoaded', () => {
+      const swatches = Array.from(document.querySelectorAll('#colorSwatches .color-swatch'));
+      const colorLabel = document.getElementById('colorLabel');
+      swatches.forEach(btn => {
+        btn.addEventListener('click', () => {
+          swatches.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          colorLabel.textContent = btn.dataset.color;
+        });
+      });
+      const minusBtn = document.querySelector('[data-qty-minus]');
+      const plusBtn = document.querySelector('[data-qty-plus]');
+      const input = document.querySelector('[data-qty-input]');
+      minusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value || '1', 10);
+        if (current > 1) input.value = current - 1;
+      });
+      plusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value || '1', 10);
+        input.value = current + 1;
+      });
+      const btn = document.getElementById('addToCartBtn');
+      btn.addEventListener('click', () => {
+        const qty = parseInt(input.value || '1', 10);
+        const size = document.getElementById('sizeSelect').value;
+        const color = document.querySelector('#colorSwatches .color-swatch.is-active')?.dataset.color || 'Default';
+        cartManager.addItem({
+          id: btn.dataset.productId,
+          name: btn.dataset.productName,
+          price: Number(btn.dataset.productPrice),
+          image: btn.dataset.productImage,
+          url: window.location.pathname,
+          size,
+          color,
+          qty
+        });
+        const originalText = btn.dataset.addLabel || btn.textContent;
+        btn.textContent = btn.dataset.addedLabel || 'Added!';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 1400);
+      });
+    });
+  </script>
+</body>
+</html>

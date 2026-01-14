@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unisex Starbase City T‑Shirt – AlbaSpace</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">  <style>
+    :root {
+      --header-bg: #020617;
+      --accent: #00c2ff;
+      --page-bg: #020617;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+    }
+    body { background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat; color: var(--text-main); }
+  </style>  <script src="/assets/js/include.js" defer></script>
+  <script src="/assets/js/menu-toggle.js" defer></script>
+  <script src="/assets/js/cart.js" defer></script>
+</head>
+<body>
+  <div data-include="/header-en.html"></div>
+
+  <main class="product-page">
+    <div class="product-detail">
+      <img src="/assets/images/shirt.png" alt="AlbaSpace Tişört">
+      <div class="detail-info">
+        <h1>AlbaSpace Tişört</h1>
+        <div class="product-price">900.00 TL - discount 30% - 630.00 TL</div>
+        <ul class="product-details">
+          <li>Ultra soft cotton blend for everyday comfort</li>
+          <li>Crew neck and short sleeves</li>
+          <li>Pre‑shrunk for a consistent fit</li>
+          <li>Screen printed AlbaSpace graphic</li>
+        </ul>
+        <!-- Quantity selector -->
+        <div class="qty-control" style="margin:16px 0;" data-qty>
+          <button type="button" class="qty-btn" data-qty-minus>&minus;</button>
+          <input type="number" value="1" min="1" class="qty-input" data-qty-input>
+          <button type="button" class="qty-btn" data-qty-plus>&plus;</button>
+        </div>
+        <!-- Add to cart button -->
+        <button class="btn-primary" id="addToCartBtn"
+          data-product-id="tshirt"
+          data-product-name="AlbaSpace T-Shirt"
+          data-product-price="630"
+          data-product-image="/assets/images/shirt.png"
+          data-add-label="ADD TO CART"
+          data-added-label="ADDED!">
+          ADD TO CART
+        </button>
+        <div class="payment-icons" aria-hidden="true">
+          <span class="payment-icons-link" role="link" tabindex="0" onclick="location.href='/chart.html';" onkeydown="if(event.key==='Enter'){location.href='/chart.html';}"></span>
+          <img src="/assets/icons/iyzico_tr.png" alt="iyzico">
+          <img src="/assets/icons/mastercard.png" alt="mastercard">
+          <img src="/assets/icons/visa.png" alt="visa">
+        </div>
+      </div>
+    </div>
+
+    <!-- Related products -->
+    <section class="related-products">
+      <h2>You may also like</h2>
+      <div class="product-list">
+        <a class="product-card" href="/eng/product-dragon.html">
+          <img src="/assets/images/albaspacelogo3dmodel.png" alt="AlbaSpace LOGO 3D Model">
+          <div class="product-info">
+            <h3>AlbaSpace LOGO 3D Model</h3>
+            <div class="product-price">200.00 TL</div>
+          </div>
+        </a>
+        <a class="product-card" href="/eng/product-hoodie.html">
+          <img src="/assets/images/hoodie.png" alt="AlbaSpace Pullover Hoodie">
+          <div class="product-info">
+            <h3>AlbaSpace Pullover Hoodie</h3>
+            <div class="product-price">980.00 TL</div>
+          </div>
+        </a>
+        <a class="product-card" href="/eng/product-hat.html">
+          <img src="/assets/images/hat.png" alt="3D Cüb">
+          <div class="product-info">
+            <h3>3D Cüb</h3>
+            <div class="product-price">120.00 TL</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/footer-en.html"></div>
+
+  <script>
+    // Product page logic for T-Shirt (English)
+    document.addEventListener('DOMContentLoaded', () => {
+      const minusBtn = document.querySelector('[data-qty-minus]');
+      const plusBtn = document.querySelector('[data-qty-plus]');
+      const input = document.querySelector('[data-qty-input]');
+      minusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value || '1', 10);
+        if (current > 1) input.value = current - 1;
+      });
+      plusBtn.addEventListener('click', () => {
+        const current = parseInt(input.value || '1', 10);
+        input.value = current + 1;
+      });
+      const btn = document.getElementById('addToCartBtn');
+      btn.addEventListener('click', () => {
+        const qty = parseInt(input.value || '1', 10);
+        cartManager.addItem({
+          id: btn.dataset.productId,
+          name: btn.dataset.productName,
+          price: Number(btn.dataset.productPrice),
+          image: btn.dataset.productImage,
+          url: window.location.pathname,
+          qty
+        });
+        const originalText = btn.dataset.addLabel || btn.textContent;
+        btn.textContent = btn.dataset.addedLabel || 'Added!';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 1400);
+      });
+    });
+  </script>
+</body>
+</html>

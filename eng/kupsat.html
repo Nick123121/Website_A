@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlbaSpace – Küpsat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Общие стили хедера и футера -->
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script src="/assets/js/include.js" defer></script>
+
+  <style>
+    :root{
+      --header-bg: #020617;
+      --accent: #00c2ff;
+    }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:url('/assets/images/space-bg.jpg') no-repeat center center fixed;
+      background-size:cover;
+      color:#ffffff;
+    }
+
+    .page-wrapper{
+      max-width:1200px;
+      margin:70px auto 80px;
+      padding:0 20px 40px;
+    }
+
+    .kupsat-title{
+      text-align:left;
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    .kupsat-image{
+      text-align:left;
+      margin-bottom:30px;
+    }
+
+    .kupsat-image img{
+      max-width:100%;
+      height:auto;
+      border-radius:12px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .kupsat-content{
+      text-align:left;
+    }
+
+    .kupsat-content h2{
+      font-size:28px;
+      margin-top:40px;
+      margin-bottom:20px;
+    }
+
+    .kupsat-content p{
+      margin-bottom:20px;
+      line-height:1.6;
+    }
+
+    .kupsat-content ul{
+      margin-left:20px;
+      margin-bottom:20px;
+    }
+
+    .kupsat-content li{
+      margin-bottom:10px;
+    }
+
+    .highlight{
+      font-size:1.2em;
+      font-weight:bold;
+      color:#00c2ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header included via JS -->
+  <div data-include="/header-en.html"></div>
+
+  <div class="page-wrapper">
+    <h1 class="kupsat-title">Carrying the Future to Orbit</h1>
+
+    <div class="kupsat-image">
+      <img src="/assets/images/cubesat.jpg" alt="CubeSat" />
+    </div>
+
+    <div class="kupsat-content">
+      <p>We are a space technology company focused on creating big impacts with small satellites. In the field of CubeSat and small satellite systems; we develop end-to-end engineering solutions from design to integration, ground testing to mission operations.</p>
+
+      <p>As part of the new generation space ecosystem that makes space accessible, sustainable and commercial; we produce high-reliability satellite platforms for academia, industry and public sector.</p>
+
+      <p>Each CubeSat is not just a satellite for us; it is a strategic bridge established between data, communication and discovery. In the future, companies and institutions will store their data in space. As <span class="highlight">ALBA Space</span>, we carry your data to space with this vision.</p>
+
+      <p>With our expert engineering team in the field:</p>
+      <ul>
+        <li>1U - 3U - 6U - 12U CubeSat platforms and chassis production</li>
+        <li>Mission-specific payload integration</li>
+        <li>Power, communication, ADCS and OBC subsystems</li>
+        <li>Thermal, vibration and environmental test processes</li>
+        <li>Ground station and mission software</li>
+      </ul>
+      <p>we develop critical components in accordance with international standards.</p>
+
+      <h2>Why Us?</h2>
+      <ul>
+        <li>Real mission experience and field-tested designs</li>
+        <li>Modular and scalable CubeSat architectures</li>
+        <li>Engineering-based, data-driven approach</li>
+        <li>Flexible solutions suitable for academic and commercial missions</li>
+        <li>High mission reliability and system durability</li>
+      </ul>
+
+      <p><strong>There is no margin for error in space.</strong> We design, test and produce with this awareness.</p>
+
+      <p>Our goal is;</p>
+      <ul>
+        <li>To carry universities' first satellites to orbit,</li>
+        <li>To enable startups to produce data from space,</li>
+        <li>To accelerate institutions' space-based solutions.</li>
+      </ul>
+
+      <p><em>We believe that small satellites will change big worlds by advancing science and engineering.</em></p>
+    </div>
+  </div>
+
+  <!-- Footer included via JS -->
+  <div data-include="/footer-en.html"></div>
+
+</body>
+</html>

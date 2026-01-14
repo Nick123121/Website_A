@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlbaSpace – Hilal ve Yıldız</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script src="/assets/js/include.js" defer></script>
+
+  <style>
+    /* Кастомные настройки для соответствия теме AlbaSpace */
+    body {
+      background-color: #020617; /* Твой темный фон */
+      color: white;
+    }
+    .space-bg-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('/assets/images/space-bg.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.4;
+    }
+    .space-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #020617 0%, rgba(11, 17, 32, 0.8) 50%, #020617 100%);
+    }
+    
+    /* Плавная прокрутка */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-[#00c2ff] selection:text-black">
+
+  <div class="space-bg-fixed">
+    <div class="space-overlay"></div>
+  </div>
+
+  <div data-include="/header-tr.html"></div>
+
+  <section class="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden pt-10">
+    
+    <div id="hero-content" class="transition-all duration-1000 transform translate-y-10 opacity-0 text-center z-10 px-4">
+      
+      <div class="relative inline-block mb-12">
+        <div class="w-48 h-48 md:w-64 md:h-64 relative flex items-center justify-center drop-shadow-[0_0_35px_rgba(227,10,23,0.6)]">
+          <i data-lucide="moon" class="w-full h-full text-[#E30A17] fill-[#E30A17] absolute -left-4 stroke-0"></i>
+          <div class="absolute top-1/2 left-1/2 transform -translate-y-1/2 translate-x-8 md:translate-x-12">
+            <i data-lucide="star" class="w-16 h-16 md:w-24 md:h-24 text-[#E30A17] fill-[#E30A17] rotate-[35deg] stroke-0"></i>
+          </div>
+        </div>
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight text-white">
+        Hilal ve Yıldız
+      </h1>
+      <p class="text-xl md:text-2xl font-light text-slate-300 max-w-2xl mx-auto">
+        Bir sembolün efsanesi, tarihi ve anlamı
+      </p>
+    </div>
+
+    <div class="absolute bottom-10 animate-bounce cursor-pointer text-[#00c2ff]" onclick="scrollToId('legend')">
+      <i data-lucide="chevron-down" width="32" height="32"></i>
+    </div>
+  </section>
+
+  <nav class="sticky top-[0px] bg-[#020617]/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-40 border-b border-slate-800 overflow-x-auto">
+    <div class="max-w-[1200px] mx-auto flex justify-center gap-4 md:gap-8 p-4 min-w-[350px]" id="nav-container">
+      <button onclick="scrollToId('legend')" class="nav-btn flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm font-medium border border-transparent text-slate-400 hover:text-white hover:bg-white/10" data-target="legend">
+        <i data-lucide="sword" width="18"></i> <span>Efsane</span>
+      </button>
+      <button onclick="scrollToId('history')" class="nav-btn flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm font-medium border border-transparent text-slate-400 hover:text-white hover:bg-white/10" data-target="history">
+        <i data-lucide="history" width="18"></i> <span>Tarih</span>
+      </button>
+      <button onclick="scrollToId('religion')" class="nav-btn flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm font-medium border border-transparent text-slate-400 hover:text-white hover:bg-white/10" data-target="religion">
+        <i data-lucide="book-open" width="18"></i> <span>Din</span>
+      </button>
+      <button onclick="scrollToId('meaning')" class="nav-btn flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm font-medium border border-transparent text-slate-400 hover:text-white hover:bg-white/10" data-target="meaning">
+        <i data-lucide="flag" width="18"></i> <span>Anlam</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="max-w-[1200px] mx-auto p-6 md:p-12 space-y-32 mb-20 mt-10">
+
+    <section id="legend" class="scroll-mt-32">
+      <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-4">
+        <i data-lucide="sword" class="text-[#00c2ff]" width="32" height="32"></i>
+        <h2 class="text-3xl font-bold text-white">Kan ve Gökyüzü Efsanesi</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="bg-[#0b1120] p-8 rounded-2xl border-l-4 border-[#E30A17] shadow-lg relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-4 opacity-10">
+            <i data-lucide="sword" width="100" height="100"></i>
+          </div>
+          <h3 class="text-xl font-bold text-[#E30A17] mb-4">Kosova Savaşı</h3>
+          <p class="leading-relaxed text-slate-300">
+            Zorlu ve kanlı bir savaşın ardından, gece gökyüzünde Ay doğar. 
+            Sultan savaş meydanını gezerken yerde biriken <strong class="text-red-400">şehit kanlarından</strong> oluşmuş bir gölette korkunç ama ihtişamlı bir yansıma görür.
+          </p>
+        </div>
+
+        <div class="relative h-64 bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 flex items-center justify-center group">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#8a0000]/60 via-transparent to-transparent z-10"></div>
+          <div class="absolute bottom-8 w-full flex justify-center items-center z-20 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+             <div class="flex items-center transform scale-75 rotate-12 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                <i data-lucide="moon" class="w-32 h-32 text-red-200 fill-red-200 rotate-[-20deg] stroke-0" width="128" height="128"></i>
+                <i data-lucide="star" class="w-12 h-12 text-red-100 fill-red-100 ml-[-20px] mb-[10px] stroke-0" width="48" height="48"></i>
+             </div>
+          </div>
+          <p class="absolute top-4 right-4 text-white/50 text-sm font-mono z-20">Yansıma</p>
+        </div>
+        
+        <div class="md:col-span-2 text-center mt-4 text-[#00c2ff] italic opacity-80">
+          "Kırmızı renk kanı, Hilal ve Yıldız ise kandaki gökyüzü yansımasını temsil eder."
+        </div>
+      </div>
+    </section>
+
+    <section id="history" class="scroll-mt-32">
+      <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-4">
+        <i data-lucide="history" class="text-[#00c2ff]" width="32" height="32"></i>
+        <h2 class="text-3xl font-bold text-white">Tarihsel Gerçek</h2>
+      </div>
+
+      <p class="text-lg text-slate-300 mb-8">
+        Bu sembol Osmanlılar tarafından icat edilmedi, <strong class="text-[#00c2ff]">miras alındı</strong>. İki büyük kökeni vardır:
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-[#0b1120] p-6 rounded-xl border border-slate-700 hover:border-[#00c2ff] hover:shadow-[0_0_20px_rgba(0,194,255,0.2)] transition-all duration-300">
+          <div class="text-4xl mb-4">🏛️</div>
+          <h3 class="text-xl font-bold text-white">Bizans Mirası</h3>
+          <span class="text-sm font-semibold text-[#00c2ff] uppercase tracking-wider block mb-3">Eski İstanbul</span>
+          <p class="text-slate-400 text-sm leading-relaxed">Türkler gelmeden çok önce, hilal Konstantinopolis'in sembolüydü. Efsaneye göre MÖ 340'ta Ay ışığı, şehre gizlice saldıran düşmanları ortaya çıkararak şehri kurtardı.</p>
+        </div>
+        <div class="bg-[#0b1120] p-6 rounded-xl border border-slate-700 hover:border-[#00c2ff] hover:shadow-[0_0_20px_rgba(0,194,255,0.2)] transition-all duration-300">
+          <div class="text-4xl mb-4">🏹</div>
+          <h3 class="text-xl font-bold text-white">Orta Asya Kökleri</h3>
+          <span class="text-sm font-semibold text-[#00c2ff] uppercase tracking-wider block mb-3">Eski Türkler</span>
+          <p class="text-slate-400 text-sm leading-relaxed">Türk boyları İslam'ı kabul etmeden önce de Gök Tanrı'ya (Tengri) inanır, Güneş ve Ay'a saygı duyarlardı. Bu sembol onlara zaten tanıdık ve kutsal geliyordu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="religion" class="scroll-mt-32">
+      <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-4">
+        <i data-lucide="book-open" class="text-[#00c2ff]" width="32" height="32"></i>
+        <h2 class="text-3xl font-bold text-white">İslam'ın Sembolü Oluşu</h2>
+      </div>
+
+      <div class="bg-[#0b1120]/80 rounded-2xl shadow-lg border border-slate-700 overflow-hidden backdrop-blur-sm">
+        <div class="p-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-green-900/30 p-3 rounded-full text-green-400 mt-1 border border-green-800">
+              <i data-lucide="info" width="24" height="24"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg mb-2 text-white">Başlangıçta Yoktu</h4>
+              <p class="text-slate-400 mb-6">
+                Hz. Muhammed döneminde İslam'ın özel bir sembolü yoktu. Bayraklar genellikle tek renkti (siyah, beyaz veya yeşil).
+              </p>
+            </div>
+          </div>
+          
+          <hr class="border-slate-800 my-4"/>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-red-900/30 p-3 rounded-full text-red-400 mt-1 border border-red-800">
+              <i data-lucide="flag" width="24" height="24"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg mb-2 text-white">Osmanlı Etkisi</h4>
+              <p class="text-slate-400">
+                Osmanlı İmparatorluğu yüzyıllarca İslam dünyasının lideri oldu. Avrupalılar hilalli Osmanlı bayrağını gördükçe, bunu tüm İslam inancıyla özdeşleştirdiler.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="meaning" class="scroll-mt-32">
+      <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-4">
+        <i data-lucide="star" class="text-[#00c2ff]" width="32" height="32"></i>
+        <h2 class="text-3xl font-bold text-white">Bugünkü Anlamı</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col items-center text-center p-8 bg-[#0b1120]/50 rounded-2xl border border-slate-700 hover:border-[#E30A17] transition-colors relative group">
+          <div class="mb-6 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-lg">
+            <i data-lucide="moon" width="48" height="48" class="text-[#E30A17]"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-6 text-white">Hilal (Ay)</h3>
+          <ul class="space-y-3 text-left w-full max-w-xs">
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="w-2 h-2 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></span> İslam Takvimi (Hicri takvim)
+            </li>
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="w-2 h-2 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></span> Bağımsızlık sembolü
+            </li>
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="w-2 h-2 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></span> Yenilenme ve değişim
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-8 bg-[#0b1120]/50 rounded-2xl border border-slate-700 hover:border-[#E30A17] transition-colors relative group">
+          <div class="mb-6 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-lg">
+            <i data-lucide="star" width="48" height="48" class="text-[#E30A17] fill-[#E30A17]"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-6 text-white">Yıldız</h3>
+          <ul class="space-y-3 text-left w-full max-w-xs">
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="w-2 h-2 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></span> İslam'ın Beş Şartı (5 köşe)
+            </li>
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="w-2 h-2 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></span> Şehitlerin ruhu
+            </li>
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="w-2 h-2 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></span> Umut ve ışık
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mt-12 p-6 bg-[#00c2ff]/10 border border-[#00c2ff]/20 rounded-xl text-center text-slate-400 text-sm">
+        Not: Farklı ülkelerin bayraklarında hilalin yönü ve kalınlığı, o coğrafyadaki Ay'ın görünümüne göre değişebilir.
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/footer-tr.html"></div>
+
+  <script>
+    // 1. Инициализация иконок Lucide
+    lucide.createIcons();
+
+    // 2. Анимация появления Hero Section при загрузке
+    document.addEventListener('DOMContentLoaded', () => {
+      const hero = document.getElementById('hero-content');
+      setTimeout(() => {
+        hero.classList.remove('translate-y-10', 'opacity-0');
+        hero.classList.add('translate-y-0', 'opacity-100');
+      }, 100);
+    });
+
+    // 3. Функция плавной прокрутки
+    function scrollToId(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        // Учитываем высоту фиксированного меню
+        const yOffset = -80; 
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
+        
+        // Обновляем активную кнопку
+        updateActiveNav(id);
+      }
+    }
+
+    // 4. Логика подсветки активной кнопки меню
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = ['legend', 'history', 'religion', 'meaning'];
+
+    function updateActiveNav(activeId) {
+      navBtns.forEach(btn => {
+        const target = btn.getAttribute('data-target');
+        if (target === activeId) {
+          // Активный стиль (AlbaSpace Blue)
+          btn.className = 'nav-btn flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm font-bold border border-transparent bg-[#00c2ff] text-[#020617] shadow-[0_0_15px_rgba(0,194,255,0.4)] transform scale-105';
+        } else {
+          // Неактивный стиль
+          btn.className = 'nav-btn flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm font-medium border border-transparent text-slate-400 hover:text-white hover:bg-white/10';
+        }
+      });
+    }
+
+    // Автоматическая подсветка при скролле
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+          current = sectionId;
+        }
+      });
+      if(current) updateActiveNav(current);
+    });
+
+    // Установить первую кнопку активной при загрузке
+    updateActiveNav('legend');
+  </script>
+</body>
+</html>
