@@ -195,6 +195,15 @@
     .voice-stop-btn { animation: none !important; }
     [style*="animation"] { animation: none !important; }
     [style*="transition"] { transition: none !important; }
+
+    /* Делаем все элементы с классом .reveal видимыми сразу */
+    .reveal {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      filter: none !important;
+    }
+    .reveal[data-direction="left"] { transform: translateX(0) !important; }
+    .reveal[data-direction="right"] { transform: translateX(0) !important; }
   </style>
   <div data-include="/header-tr.html"></div>
 
@@ -205,13 +214,11 @@
         <section class="atlas-hero">
           <div class="atlas-hero-label">ALBASPACE</div>
           <h1 class="atlas-hero-title">Etkileşimli Uzay Atlası</h1>
-          <p class="atlas-hero-sub">Türk uyduları, gezegenler ve Mars görevlerinin 3D galerisidir.</p>
+          <p class="atlas-hero-sub">Türk uyduları, gezegenler ve Mars görevlerinin 3D galerisidir. Alba Space koleksiyonundaki Türk uydularını, gezegenleri ve Mars keşif araçlarını keşfedin.
+          Her kart, ilgili objenin özel 3D sayfasını açar.</p>
         </section>
 
-        <p class="atlas-intro">
-          Alba Space koleksiyonundaki Türk uydularını, gezegenleri ve Mars keşif araçlarını keşfedin.
-          Her kart, ilgili objenin özel 3D sayfasını açar.
-        </p>
+
 
         <div class="filters" aria-label="Kategoriler">
           <span class="label">Kategoriler:</span>

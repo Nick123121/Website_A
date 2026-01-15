@@ -14,9 +14,9 @@
     // treat '/eng' prefix as english
     const isEng = path.startsWith('/eng/');
 
-    // build target hrefs
-    const engHref = isEng ? ensureIndex(path) : ensureIndex('/eng' + (path === '/' ? '/index.html' : path));
-    const trHref = isEng ? ensureIndex(path.replace(/^\/eng/, '') || '/') : ensureIndex(path);
+    // build target hrefs - always point to home pages to avoid 404s
+    const engHref = '/eng/index.html';
+    const trHref = '/index.html';
 
     const container = document.querySelector('.top-lang-switch');
     if(!container) return;
