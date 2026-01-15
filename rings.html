@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AR Try-On v24 (Fixed Cylinder Size)</title>
+    <title>AR Try-On v25 (Fixed Rotation & Size)</title>
     <style>
         body { margin: 0; padding: 0; overflow: hidden; background-color: #000; font-family: sans-serif; }
         
@@ -95,12 +95,11 @@
         let currentModelIndex = 0;
         let currentRing = null;
 
-        // --- НАСТРОЙКИ ПОЗИЦИИ ---
+        // --- НАСТРОЙКИ ---
         const OFFSET_Y = 0.45;  
         const OFFSET_X = 0.05;  
         const OFFSET_Z = -5.0; 
 
-        // Scene
         const scene = new THREE.Scene();
         const camera3D = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera3D.position.z = 2;
@@ -111,17 +110,15 @@
         renderer.outputEncoding = THREE.sRGBEncoding;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
-        // Lights
         const pmremGenerator = new THREE.PMREMGenerator(renderer);
         scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
         const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
         dirLight.position.set(0, 5, 5);
         scene.add(dirLight);
 
-        // --- КРАСНЫЙ ЦИЛИНДР (ОТЛАДКА) ---
-        // ИСПРАВЛЕНИЕ: Уменьшили радиус с 0.95 до 0.1 (примерно в 10 раз)
-        // Высота 2.0 (примерно длина фаланги)
-        const occlusionGeo = new THREE.CylinderGeometry(0.1, 0.1, 2.0, 32);
+        // --- КРАСНЫЙ ЦИЛИНДР ---
+        // ИСПРАВЛЕНИЕ: Увеличил толщину (0.33) и длину (3.0)
+        const occlusionGeo = new THREE.CylinderGeometry(0.33, 0.33, 3.0, 32);
         
         const occlusionMat = new THREE.MeshBasicMaterial({ 
             color: 0xff0000, 
@@ -133,9 +130,7 @@
         occluder.renderOrder = 0; 
         scene.add(occluder);
 
-        // Loader
         const loader = new GLTFLoader();
-
         function loadRing(index) {
             if (currentRing) { scene.remove(currentRing); currentRing = null; }
             loader.load(models[index], (gltf) => {
@@ -147,7 +142,6 @@
         }
         loadRing(0);
 
-        // MediaPipe
         const hands = new window.Hands({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});
         hands.setOptions({ maxNumHands: 1, modelComplexity: 1, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
 
@@ -173,17 +167,17 @@
                 const screenY = -(y - 0.5) * 10 + OFFSET_Y;
                 const screenZ = OFFSET_Z; 
 
-                // --- ОБНОВЛЯЕМ ЦИЛИНДР ---
+                // --- ОБНОВЛЕНИЕ ---
                 occluder.position.set(screenX, screenY, screenZ);
                 
-                // ИСПРАВЛЕНИЕ: Добавили + Math.PI / 4 (45 градусов)
-                occluder.rotation.z = (angle - Math.PI / 2) + (Math.PI / 4);
+                // ИСПРАВЛЕНИЕ: Поворачиваем цилиндр так, чтобы он лег ВДОЛЬ пальца.
+                // Math.atan2 дает угол к оси X. Цилиндр стоит вдоль Y. 
+                // angle - Math.PI/2 обычно выравнивает Y-объект по вектору.
+                occluder.rotation.z = angle - Math.PI / 2;
+                
                 occluder.rotation.x = 0.2; 
 
                 if (currentRing) {
-                    // --- ОБНОВЛЯЕМ КОЛЬЦО ---
-                    // ИСПРАВЛЕНИЕ: Полностью копируем позицию и поворот цилиндра
-                    // Кольцо должно надеться "ровно" на цилиндр
                     currentRing.position.copy(occluder.position);
                     currentRing.rotation.copy(occluder.rotation);
                 }
@@ -197,14 +191,8 @@
         });
         camera.start();
 
-        document.getElementById('next-btn').onclick = () => {
-            currentModelIndex = (currentModelIndex + 1) % models.length;
-            loadRing(currentModelIndex);
-        }
-        document.getElementById('prev-btn').onclick = () => {
-            currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
-            loadRing(currentModelIndex);
-        }
+        document.getElementById('next-btn').onclick = () => { currentModelIndex = (currentModelIndex + 1) % models.length; loadRing(currentModelIndex); }
+        document.getElementById('prev-btn').onclick = () => { currentModelIndex = (currentModelIndex - 1 + models.length) % models.length; loadRing(currentModelIndex); }
         document.getElementById('camera-btn').addEventListener('click', () => {
             const flash = document.getElementById('flash');
             flash.style.opacity = '1';
