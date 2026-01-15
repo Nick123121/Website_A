@@ -1,6 +1,32 @@
 <footer class="footer">
-  <div class="footer-grid footer-grid--3">
-    <!-- LEFT: Logo + Social -->
+  <style>
+    .footer-legal-links {
+      text-align: center;
+      padding: 20px 0 10px; /* Отступы сверху и снизу */
+      border-top: 1px solid rgba(255, 255, 255, 0.05); /* Легкая линия разделителя */
+      margin-top: 20px;
+    }
+    .footer-legal-links a {
+      color: #9ca3af; /* Цвет muted */
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .footer-legal-links a:hover {
+      color: #00c2ff; /* Ваш акцентный голубой цвет */
+    }
+    /* Адаптив для мобильных */
+    @media (max-width: 600px) {
+      .footer-legal-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+
+  <div class="footer-grid footer-grid--2">
     <div class="footer-left">
       <div class="footer-logo">
         <img src="/assets/images/albalogo.png" alt="AlbaSpace Logo">
@@ -23,11 +49,10 @@
       </div>
     </div>
 
-    <!-- MIDDLE: Contact buttons -->
-    <div class="footer-actions footer-actions--contact">
+    <div class="footer-actions">
       <a class="footer-action" href="tel:+905387781018">
         <span class="footer-action__title">Phone</span>
-        <span class="footer-action__value">+905387781018</span>
+        <span class="footer-action__value">+90 538 778 10 18</span>
         <span class="footer-action__hint">Call us</span>
       </a>
 
@@ -36,29 +61,32 @@
         <span class="footer-action__value">hello@albaspace.com.tr</span>
         <span class="footer-action__hint">Write to us</span>
       </a>
-    </div>
 
-    <!-- RIGHT: Office buttons -->
-    <div class="footer-actions footer-actions--offices">
       <a class="footer-action"
-         href="https://www.google.com/maps/search/?api=1&query=%C3%87ukurova%20%C3%9Cniversitesi%20Teknokent%20No%3AB207%20Sar%C4%B1%C3%A7am%20Adana"
+         href="https://www.google.com/maps/search/?api=1&query=Cukurova%20University%20Technopolis%20No%3AB207%20Saricam%20Adana"
          target="_blank" rel="noopener noreferrer">
         <span class="footer-action__title">Head Office</span>
-        <span class="footer-action__value">Çukurova University Teknokent No:B207</span>
-        <span class="footer-action__value">Sarıçam / ADANA</span>
+        <span class="footer-action__value">Cukurova University Technopolis No:B207</span>
+        <span class="footer-action__value">Saricam / ADANA</span>
         <span class="footer-action__hint">Show on map</span>
       </a>
 
       <a class="footer-action"
-         href="https://www.google.com/maps/search/?api=1&query=Go%20Ofis%20T%C3%BCrkmenba%C5%9F%C4%B1%2C%20Sun%20City%20Evleri%2C%20T%C3%BCrkmenba%C5%9F%C4%B1%20Blv.%20No%3A26%2FA%2C%2001360%20Adana"
+         href="https://www.google.com/maps/search/?api=1&query=Go%20Ofis%20Turkmenbasi%2C%20Sun%20City%20Evleri%2C%20Turkmenbasi%20Blv.%20No%3A26%2FA%2C%2001360%20Adana"
          target="_blank" rel="noopener noreferrer">
         <span class="footer-action__title">Adana Branch</span>
-        <span class="footer-action__value">Go Ofis Türkmenbaşı, Sun City Evleri</span>
-        <span class="footer-action__value">Çukurova / ADANA</span>
+        <span class="footer-action__value">Go Ofis Turkmenbasi, Sun City Evleri</span>
+        <span class="footer-action__value">Cukurova / ADANA</span>
         <span class="footer-action__hint">Show on map</span>
       </a>
     </div>
   </div>
+
+  <div class="footer-legal-links">
+    <a href="/eng/teslimat-ve-iade-sartlari.html">Delivery and Return Terms</a>
+    <a href="/eng/gizlilik-sozlesmesi.html">Privacy Policy</a>
+  </div>
+
   <div class="footer-bottom">
     <p>© AlbaSpace 2026</p>
   </div>

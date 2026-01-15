@@ -1,6 +1,32 @@
 <footer class="footer">
+  <style>
+    .footer-legal-links {
+      text-align: center;
+      padding: 20px 0 10px; /* Отступы сверху и снизу */
+      border-top: 1px solid rgba(255, 255, 255, 0.05); /* Легкая линия разделителя */
+      margin-top: 20px;
+    }
+    .footer-legal-links a {
+      color: #9ca3af; /* Цвет muted */
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .footer-legal-links a:hover {
+      color: #00c2ff; /* Ваш акцентный голубой цвет */
+    }
+    /* Адаптив для мобильных */
+    @media (max-width: 600px) {
+      .footer-legal-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+
   <div class="footer-grid footer-grid--2">
-    <!-- LEFT: Logo + Social -->
     <div class="footer-left">
       <div class="footer-logo">
         <img src="/assets/images/albalogo.png" alt="AlbaSpace Logo">
@@ -23,7 +49,6 @@
       </div>
     </div>
 
-    <!-- RIGHT: All 4 actions -->
     <div class="footer-actions">
       <a class="footer-action" href="tel:+905387781018">
         <span class="footer-action__title">Phone</span>
@@ -57,15 +82,10 @@
     </div>
   </div>
 
-  <!-- === ИЗМЕНЕННЫЙ БЛОК === -->
-  <div class="footer-bottom">
-    <div class="footer-legal-links">
-      <a href="/eng/teslimat-ve-iade-sartlari.html">Delivery and Return Terms</a>
-      <a href="/eng/gizlilik-sozlesmesi.html">Privacy Policy</a>
-    </div>
+  <div class="footer-legal-links">
+    <a href="/eng/teslimat-ve-iade-sartlari.html">Delivery and Return Terms</a>
+    <a href="/eng/gizlilik-sozlesmesi.html">Privacy Policy</a>
   </div>
-  <!-- === КОНЕЦ ИЗМЕНЕННОГО БЛОКА === -->
-
 
   <div class="footer-bottom">
     <p>© AlbaSpace 2026</p>
