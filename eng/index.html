@@ -5,7 +5,6 @@
   <title>AlbaSpace – Take Your Future to Space!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- IMPORTANT: keep global site styles -->
   <link rel="stylesheet" href="/assets/css/site.css" />
   <script src="/assets/js/include.js" defer></script>
   <script src="/assets/js/menu-toggle.js" defer></script>
@@ -305,7 +304,7 @@
     }
 
     /* ========================================= */
-    /* === COOKIE POPUP STYLES === */
+    /* === COOKIE POPUP STYLES (NEW) === */
     /* ========================================= */
     #cookie-overlay {
         position: fixed;
@@ -376,13 +375,13 @@
         transition: transform 0.1s ease, opacity 0.2s;
     }
 
-    /* Üst buton (Siyah) */
+    /* Top button (Black) */
     .btn-accept {
         background-color: #000;
         color: #fff;
     }
 
-    /* Alt buton (Beyaz) */
+    /* Bottom button (White) */
     .btn-settings {
         background-color: #fff;
         color: #000;
@@ -403,7 +402,6 @@
 
   <main class="home-main">
 
-    <!-- HERO -->
     <section class="hero">
       <div class="glass-box">
         <h1>Take Your Future to Space!</h1>
@@ -433,7 +431,6 @@
       </div>
     </section>
 
-    <!-- CATEGORIES -->
     <section>
       <div class="glass-box glass-box--fit">
         <h2 class="section-title">Product Categories</h2>
@@ -463,7 +460,6 @@
       </div>
     </section>
 
-    <!-- REFERENCES -->
     <section>
       <div class="glass-box glass-box--fit">
         <h2 class="logo-section-title">Our References</h2>
@@ -472,33 +468,12 @@
       <div class="logo-carousel-wrap">
         <div class="logo-carousel">
           <div class="carousel-track">
-            <!-- Logos -->
             <div class="logo-card"><img src="/assets/images/placeholder-logo1.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo2.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo3.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo4.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo5.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo6.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo7.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo8.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo9.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo10.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo11.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo12.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo13.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo14.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo15.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo16.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo17.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo18.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo19.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo20.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo21.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo22.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo23.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo24.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo25.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo26.jpg" alt="Logo placeholder"></div>
           </div>
         </div>
         <button class="carousel-wheel-hint" aria-label="Scroll carousel" title="Scroll carousel" tabindex="0">
@@ -511,7 +486,6 @@
       </div>
     </section>
 
-    <!-- PARTNERS -->
     <section>
       <div class="glass-box glass-box--fit">
         <h2 class="logo-section-title">Solution Partners</h2>
@@ -524,9 +498,6 @@
             <div class="logo-card"><img src="/assets/images/placeholder-logo28.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo29.jpg" alt="Logo placeholder"></div>
             <div class="logo-card"><img src="/assets/images/placeholder-logo30.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo31.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo32.jpg" alt="Logo placeholder"></div>
-            <div class="logo-card"><img src="/assets/images/placeholder-logo33.jpg" alt="Logo placeholder"></div>
           </div>
         </div>
         <button class="carousel-wheel-hint" aria-label="Scroll carousel" title="Scroll carousel" tabindex="0">
@@ -545,11 +516,23 @@
 
   <div id="cookie-overlay">
       <div class="cookie-modal">
-          <div class="cookie-header">BEFORE YOU START SHOPPING</div>
-          <script>
-      // Sayfa Yüklendiğinde Popup Kontrolü
+          <div class="cookie-header">BEFORE YOU START</div>
+          <div class="cookie-text">
+            We use first-party and third-party cookies, including other tracking technologies from third-party publishers, to ensure the full functionality of our website, customize your user experience, perform analytics, and deliver personalized advertisements on our websites, apps, and newsletters across the internet and social media platforms. For this purpose, we collect information about the user, browsing patterns, and the device.<br><br>
+            By clicking "Accept All Cookies", you accept this and agree to share this information with third parties, such as our advertising partners. If you choose "Cookie Settings", you can manage your preferences. Visit our Cookie Policy for more information.
+          </div>
+          <a href="cookie-policy.html" class="cookie-link">Cookie Policy</a>
+          <div class="cookie-buttons">
+              <button class="btn-cookie btn-accept" id="btnAccept">ACCEPT ALL COOKIES</button>
+              <button class="btn-cookie btn-settings" id="btnSettings">COOKIE SETTINGS</button>
+          </div>
+      </div>
+  </div>
+
+  <script>
+      // Page Load Popup Check
       document.addEventListener("DOMContentLoaded", function() {
-          // localStorage kontrolü: Kullanıcı daha önce "kabul ettim" dedi mi?
+          // Check localStorage: Has the user accepted before?
           if (!localStorage.getItem("albaCookieSeen")) {
               document.getElementById("cookie-overlay").style.display = "flex";
           }
@@ -558,22 +541,23 @@
       const acceptBtn = document.getElementById("btnAccept");
       const settingsBtn = document.getElementById("btnSettings");
 
-      // Üst buton: Animasyon ve Kapatma
+      // Top Button: Animation and Close
       if(acceptBtn) {
           acceptBtn.addEventListener("click", function() {
-              // Butona basıldığını hissettirmek için ufak bir bekleme (opsiyonel)
+              // Slight delay to feel the button press (optional)
               setTimeout(() => {
                   document.getElementById("cookie-overlay").style.display = "none";
-                  // Kullanıcının gördüğünü tarayıcıya kaydet
+                  // Save that the user has seen/accepted
                   localStorage.setItem("albaCookieSeen", "true");
               }, 200);
           });
       }
 
-      // Alt buton: Çerez politikası sayfasına yönlendirir
+      // Bottom Button: Redirect to Cookie Policy
       if(settingsBtn) {
           settingsBtn.addEventListener("click", function() {
-               window.location.href = "cerez-politikasi.html";
+               // Update this filename if your English policy page has a different name
+               window.location.href = "cookie-policy.html";
           });
       }
   </script>

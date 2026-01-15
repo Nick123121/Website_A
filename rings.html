@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AR Try-On v23 (Debug Cylinder)</title>
+    <title>AR Try-On v24 (Fixed Cylinder Size)</title>
     <style>
         body { margin: 0; padding: 0; overflow: hidden; background-color: #000; font-family: sans-serif; }
         
@@ -55,9 +55,7 @@
             background: white; opacity: 0; pointer-events: none; z-index: 20;
             transition: opacity 0.2s;
         }
-    
-
-</style>
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
@@ -100,15 +98,7 @@
         // --- НАСТРОЙКИ ПОЗИЦИИ ---
         const OFFSET_Y = 0.45;  
         const OFFSET_X = 0.05;  
-        const OFFSET_Z = -5.0; // Базовая глубина
-
-        // --- НАСТРОЙКИ ВРАЩЕНИЯ ---
-        // Угол выравнивания кольца по пальцу
-        const ROTATION_ALIGNMENT = Math.PI / 2; 
-        
-        // Вращение кольца ВОКРУГ пальца (чтобы повернуть камень)
-        // Попробуйте менять это значение, если кольцо "смотрит" не туда
-        let RING_SPIN = 0; 
+        const OFFSET_Z = -5.0; 
 
         // Scene
         const scene = new THREE.Scene();
@@ -129,11 +119,10 @@
         scene.add(dirLight);
 
         // --- КРАСНЫЙ ЦИЛИНДР (ОТЛАДКА) ---
-        // radiusTop, radiusBottom, height, radialSegments
-        // Радиус 1.0 примерно соответствует толщине пальца при масштабе кольца 10
-        const occlusionGeo = new THREE.CylinderGeometry(0.95, 0.95, 6, 32);
+        // ИСПРАВЛЕНИЕ: Уменьшили радиус с 0.95 до 0.1 (примерно в 10 раз)
+        // Высота 2.0 (примерно длина фаланги)
+        const occlusionGeo = new THREE.CylinderGeometry(0.1, 0.1, 2.0, 32);
         
-        // МАТЕРИАЛ: Красный, полупрозрачный (чтобы вы видели палец внутри)
         const occlusionMat = new THREE.MeshBasicMaterial({ 
             color: 0xff0000, 
             transparent: true, 
@@ -141,7 +130,7 @@
         });
         
         const occluder = new THREE.Mesh(occlusionGeo, occlusionMat);
-        occluder.renderOrder = 0; // Рисуется первым
+        occluder.renderOrder = 0; 
         scene.add(occluder);
 
         // Loader
@@ -152,7 +141,7 @@
             loader.load(models[index], (gltf) => {
                 currentRing = gltf.scene;
                 currentRing.scale.set(10, 10, 10);
-                currentRing.renderOrder = 1; // Рисуется вторым (поверх цилиндра)
+                currentRing.renderOrder = 1; 
                 scene.add(currentRing);
             });
         }
@@ -170,15 +159,13 @@
                 if (!textHidden) { loadingText.style.display = 'none'; textHidden = true; }
                 
                 const landmarks = results.multiHandLandmarks[0];
-                const pBase = landmarks[9];  // Основание среднего пальца
-                const pJoint = landmarks[10]; // Сгиб среднего пальца
+                const pBase = landmarks[9]; 
+                const pJoint = landmarks[10]; 
 
-                // Расчет угла пальца в 2D плоскости
                 const dx = pJoint.x - pBase.x;
                 const dy = pJoint.y - pBase.y;
-                const angle = Math.atan2(dy, dx); // Угол наклона пальца на экране
+                const angle = Math.atan2(dy, dx); 
 
-                // Расчет координат (середина фаланги)
                 const x = (pBase.x + pJoint.x) / 2;
                 const y = (pBase.y + pJoint.y) / 2;
                 
@@ -186,31 +173,19 @@
                 const screenY = -(y - 0.5) * 10 + OFFSET_Y;
                 const screenZ = OFFSET_Z; 
 
-                // --- ОБНОВЛЯЕМ ЦИЛИНДР (ПАЛЕЦ) ---
+                // --- ОБНОВЛЯЕМ ЦИЛИНДР ---
                 occluder.position.set(screenX, screenY, screenZ);
-                // Поворот цилиндра, чтобы он лег вдоль пальца
-                // CylinderGeometry "стоит" вертикально. Нам нужно повернуть его Z на (angle - 90 deg)
-                occluder.rotation.z = angle - Math.PI / 2;
-                occluder.rotation.x = 0.2; // Небольшой наклон от камеры
+                
+                // ИСПРАВЛЕНИЕ: Добавили + Math.PI / 4 (45 градусов)
+                occluder.rotation.z = (angle - Math.PI / 2) + (Math.PI / 4);
+                occluder.rotation.x = 0.2; 
 
                 if (currentRing) {
                     // --- ОБНОВЛЯЕМ КОЛЬЦО ---
-                    currentRing.position.set(screenX, screenY, screenZ);
-                    
-                    // 1. Сначала сбрасываем вращение 123123
-                    currentRing.rotation.set(0, 0, 0);
-
-                    // 2. Вращаем кольцо так, чтобы его ось совпала с осью пальца (Z)
-                    // (Предполагаем, что у модели кольца "дырка" идет вдоль оси Z или Y)
-                    // Для большинства моделей:
-                    currentRing.rotation.z = (angle - Math.PI / 2) + ROTATION_ALIGNMENT;
-
-                    // 3. Дополнительный наклон (как у цилиндра)
-                    currentRing.rotation.x = 0.2;
-
-                    // 4. Вращение ВОКРУГ пальца (чтобы повернуть камень)
-                    // Мы вращаем вокруг локальной оси Y (которая теперь смотрит вдоль пальца из-за предыдущих поворотов)
-                    currentRing.rotateY(RING_SPIN);
+                    // ИСПРАВЛЕНИЕ: Полностью копируем позицию и поворот цилиндра
+                    // Кольцо должно надеться "ровно" на цилиндр
+                    currentRing.position.copy(occluder.position);
+                    currentRing.rotation.copy(occluder.rotation);
                 }
             }
             renderer.render(scene, camera3D);
@@ -254,30 +229,5 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
-
-  <script>
-    const revealItems = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -8% 0px'
-    });
-
-    revealItems.forEach((item, index) => {
-      const delay = item.dataset.direction === 'left' ? index * 0.025 : index * 0.03;
-      item.style.setProperty('--reveal-delay', `${delay}s`);
-      observer.observe(item);
-    });
-  </script>
-
-  <script>
-</script>
 </body>
 </html>
