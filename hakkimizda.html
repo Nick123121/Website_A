@@ -223,7 +223,6 @@
              // Simple fallback for data-include if external JS fails
              console.log("External include.js not found, running fallback.");
         }
-    });
   </script>
 
           <div class="cookie-text">
@@ -236,6 +235,9 @@
               <button class="btn-cookie btn-settings" id="btnSettings">ÇEREZ AYARLARI</button>
           </div>
       </div>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
