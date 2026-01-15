@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AR Try-On v25 (Fixed Rotation & Size)</title>
+    <title>AR Try-On v26 (Occlusion + Scale + Shift)</title>
     <style>
         body { margin: 0; padding: 0; overflow: hidden; background-color: #000; font-family: sans-serif; }
         
@@ -17,8 +17,10 @@
         }
         #ui-container {
             position: absolute; bottom: 30px; left: 0; width: 100%;
-            display: flex; justify-content: center; align-items: center; z-index: 10; gap: 30px;
+            display: flex; justify-content: center; align-items: center; z-index: 10; gap: 20px;
         }
+        
+        /* Кнопки переключения моделей */
         .arrow-btn {
             background: rgba(255, 255, 255, 0.9); border: none; border-radius: 50%;
             width: 50px; height: 50px; font-size: 24px;
@@ -26,6 +28,8 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             cursor: pointer;
         }
+        
+        /* Кнопка фото */
         .camera-btn {
             width: 70px; height: 70px;
             border-radius: 50%;
@@ -37,13 +41,20 @@
             display: flex; align-items: center; justify-content: center;
         }
         .camera-btn::after {
-            content: '';
-            width: 55px; height: 55px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.1s;
+            content: ''; width: 55px; height: 55px; background-color: white; border-radius: 50%; transition: transform 0.1s;
         }
         .camera-btn:active::after { transform: scale(0.9); background-color: #ddd; }
+        
+        /* Кнопки размера */
+        .scale-btn {
+            background: rgba(0, 0, 0, 0.6); color: white; border: 2px solid white; border-radius: 50%;
+            width: 40px; height: 40px; font-size: 20px; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .scale-btn:active { background: rgba(255, 255, 255, 0.3); }
+
         #loading-text {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             color: white; font-size: 16px; z-index: 5; 
@@ -76,9 +87,15 @@
     <canvas id="output_canvas"></canvas>
 
     <div id="ui-container">
+        <!-- Кнопка уменьшения -->
+        <button class="scale-btn" id="scale-down">-</button>
+        
         <button class="arrow-btn" id="prev-btn">◀</button>
         <div class="camera-btn" id="camera-btn"></div>
         <button class="arrow-btn" id="next-btn">▶</button>
+        
+        <!-- Кнопка увеличения -->
+        <button class="scale-btn" id="scale-up">+</button>
     </div>
 
     <script type="module">
@@ -95,10 +112,14 @@
         let currentModelIndex = 0;
         let currentRing = null;
 
-        // --- НАСТРОЙКИ ---
+        // --- ПЕРЕМЕННЫЕ ---
+        // Сдвиг (Offset X увеличил для сдвига вправо)
         const OFFSET_Y = 0.45;  
-        const OFFSET_X = 0.05;  
+        const OFFSET_X = 0.12;  // Было 0.05
         const OFFSET_Z = -5.0; 
+
+        // Масштаб
+        let ringScale = 10.0; // Базовый размер кольца
 
         const scene = new THREE.Scene();
         const camera3D = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -116,18 +137,16 @@
         dirLight.position.set(0, 5, 5);
         scene.add(dirLight);
 
-        // --- КРАСНЫЙ ЦИЛИНДР ---
-        // ИСПРАВЛЕНИЕ: Увеличил толщину (0.33) и длину (3.0)
+        // --- ОККЛЮДЕР (НЕВИДИМЫЙ ПАЛЕЦ) ---
+        // Используем те же размеры, что подобрали ранее (0.33 толщина)
         const occlusionGeo = new THREE.CylinderGeometry(0.33, 0.33, 3.0, 32);
         
-        const occlusionMat = new THREE.MeshBasicMaterial({ 
-            color: 0xff0000, 
-            transparent: true, 
-            opacity: 0.5 
-        });
+        // ВАЖНО: colorWrite: false делает объект невидимым, но он пишет в буфер глубины.
+        // Это заставляет всё, что находится ЗА ним (задняя стенка кольца), не рисоваться.
+        const occlusionMat = new THREE.MeshBasicMaterial({ colorWrite: false }); 
         
         const occluder = new THREE.Mesh(occlusionGeo, occlusionMat);
-        occluder.renderOrder = 0; 
+        occluder.renderOrder = 0; // Рисуем первым (маску)
         scene.add(occluder);
 
         const loader = new GLTFLoader();
@@ -135,8 +154,8 @@
             if (currentRing) { scene.remove(currentRing); currentRing = null; }
             loader.load(models[index], (gltf) => {
                 currentRing = gltf.scene;
-                currentRing.scale.set(10, 10, 10);
-                currentRing.renderOrder = 1; 
+                currentRing.scale.set(ringScale, ringScale, ringScale);
+                currentRing.renderOrder = 1; // Рисуем вторым (кольцо)
                 scene.add(currentRing);
             });
         }
@@ -167,19 +186,22 @@
                 const screenY = -(y - 0.5) * 10 + OFFSET_Y;
                 const screenZ = OFFSET_Z; 
 
-                // --- ОБНОВЛЕНИЕ ---
+                // Обновляем окклюдер
                 occluder.position.set(screenX, screenY, screenZ);
-                
-                // ИСПРАВЛЕНИЕ: Поворачиваем цилиндр так, чтобы он лег ВДОЛЬ пальца.
-                // Math.atan2 дает угол к оси X. Цилиндр стоит вдоль Y. 
-                // angle - Math.PI/2 обычно выравнивает Y-объект по вектору.
                 occluder.rotation.z = angle - Math.PI / 2;
-                
                 occluder.rotation.x = 0.2; 
+                
+                // Масштабируем окклюдер пропорционально кольцу
+                // Базовый масштаб окклюдера был 1. Если кольцо увеличивается, палец внутри тоже должен "толстеть",
+                // чтобы продолжать скрывать заднюю стенку большего кольца.
+                const scaleFactor = ringScale / 10.0; 
+                occluder.scale.set(scaleFactor, 1, scaleFactor); // Y не трогаем (длину)
 
                 if (currentRing) {
                     currentRing.position.copy(occluder.position);
                     currentRing.rotation.copy(occluder.rotation);
+                    // Применяем текущий масштаб
+                    currentRing.scale.set(ringScale, ringScale, ringScale);
                 }
             }
             renderer.render(scene, camera3D);
@@ -191,8 +213,18 @@
         });
         camera.start();
 
+        // --- УПРАВЛЕНИЕ ---
         document.getElementById('next-btn').onclick = () => { currentModelIndex = (currentModelIndex + 1) % models.length; loadRing(currentModelIndex); }
         document.getElementById('prev-btn').onclick = () => { currentModelIndex = (currentModelIndex - 1 + models.length) % models.length; loadRing(currentModelIndex); }
+        
+        // Кнопки масштаба
+        document.getElementById('scale-up').onclick = () => {
+            ringScale += 0.5;
+        }
+        document.getElementById('scale-down').onclick = () => {
+            ringScale = Math.max(1.0, ringScale - 0.5); // Не даем уменьшить в ноль
+        }
+
         document.getElementById('camera-btn').addEventListener('click', () => {
             const flash = document.getElementById('flash');
             flash.style.opacity = '1';
