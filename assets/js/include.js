@@ -551,6 +551,15 @@ function injectVoiceWidget() {
     voiceScript.defer = true;
     document.body.appendChild(voiceScript);
   }
+
+  // === ПОДКЛЮЧЕНИЕ voice-diagnostics.js (для отладки) ===
+  if (!document.getElementById('albamen-voice-diagnostics')) {
+    const diagnosticsScript = document.createElement('script');
+    diagnosticsScript.src = '/assets/js/voice-diagnostics.js';
+    diagnosticsScript.id = 'albamen-voice-diagnostics';
+    diagnosticsScript.defer = true;
+    document.body.appendChild(diagnosticsScript);
+  }
 }
 }); // END runAfterDomReady
 
