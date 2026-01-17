@@ -133,6 +133,20 @@ runAfterDomReady(() => {
   } else {
     console.info('[include.js] AI widgets are disabled by __disableAiWidgets flag');
   }
+  // Safety: ensure AI panels are collapsed on initial load
+  try {
+    const cleanupOpenAi = () => {
+      document.querySelectorAll('.ai-panel-global.ai-open, .ai-panel-voice.ai-open').forEach(el => el.classList.remove('ai-open'));
+      const floating = document.getElementById('ai-floating-global');
+      if (floating && (!floating.dataset || floating.dataset.keepVisible !== 'true')) {
+        floating.style.display = 'none';
+      }
+      const toggle = document.getElementById('ai-widget-toggle-btn');
+      if (toggle) toggle.classList.remove('ai-open');
+    };
+    cleanupOpenAi();
+    setTimeout(cleanupOpenAi, 300);
+  } catch (e) { /* noop */ }
 
   function injectAiWidget() {
     const path = window.location.pathname || '/';
@@ -215,6 +229,8 @@ runAfterDomReady(() => {
     // Ensure panels are hidden by default and attach delegated handlers
     try {
       panel.classList.remove('ai-open');
+      panel.classList.remove('chat-active');
+      panel.classList.remove('voice-active');
       if (!window.__albamen_ai_delegated) {
         window.__albamen_ai_delegated = true;
         document.addEventListener('click', (ev) => {

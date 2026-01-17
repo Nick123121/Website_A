@@ -122,6 +122,21 @@ runAfterDomReady(() => {
   } else {
     console.info('[include.js] AI widgets are disabled by __disableAiWidgets flag');
   }
+    // Safety: ensure AI panels are collapsed on initial load
+    try {
+      const cleanupOpenAi = () => {
+        document.querySelectorAll('.ai-panel-global.ai-open, .ai-panel-voice.ai-open').forEach(el => el.classList.remove('ai-open'));
+        const floating = document.getElementById('ai-floating-global');
+        if (floating && (!floating.dataset || floating.dataset.keepVisible !== 'true')) {
+          floating.style.display = 'none';
+        }
+        const toggle = document.getElementById('ai-widget-toggle-btn');
+        if (toggle) toggle.classList.remove('ai-open');
+      };
+      // run immediately and also shortly after to cover race conditions
+      cleanupOpenAi();
+      setTimeout(cleanupOpenAi, 300);
+    } catch (e) { /* noop */ }
   // 9. Плавное появление блоков на всех страницах
   initScrollReveal();
 
@@ -241,6 +256,8 @@ runAfterDomReady(() => {
     // This prevents accidental auto-open and makes close buttons reliable
     try {
       panel.classList.remove('ai-open');
+      panel.classList.remove('chat-active');
+      panel.classList.remove('voice-active');
       // Delegated click handler: open/close reliably even with duplicate IDs
       if (!window.__albamen_ai_delegated) {
         window.__albamen_ai_delegated = true;
@@ -533,6 +550,9 @@ function injectVoiceWidget() {
     </div>
   `;
   document.body.appendChild(voicePanel);
+
+  // Ensure voice panel is hidden by default
+  voicePanel.classList.remove('ai-open');
 
   const statusEl = document.getElementById('voice-status-text');
 
