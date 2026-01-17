@@ -6,8 +6,8 @@
 // buttons and a call shortcut.
 
 runAfterDomReady(() => {
-  // Временно отключаем AI-виджеты на сайте (скрыть пока на время)
-  window.__disableAiWidgets = true;
+  // AI-виджеты включены — используются для текстового и голосового общения
+  window.__disableAiWidgets = false;
   // Ensure a valid favicon is present
   (function ensureFavicon() {
     try {

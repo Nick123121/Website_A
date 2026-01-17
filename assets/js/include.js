@@ -1,8 +1,8 @@
 // Unified include.js for AlbaSpace website (Turkish)
 // Includes: Dynamic Header/Footer, AI Widget (Text+Voice), Analytics (GA4 + Yandex)
 runAfterDomReady(() => {
-  // Временно отключаем AI-виджеты на сайте (скрыть пока на время)
-  window.__disableAiWidgets = true;
+  // AI-виджеты включены — используются для текстового и голосового общения
+  window.__disableAiWidgets = false;
   // 1. ЗАПУСК АНАЛИТИКИ (В первую очередь)
   injectAnalytics();
   // 2. Favicon

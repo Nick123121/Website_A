@@ -2317,17 +2317,6 @@ model-viewer{
 }
 
 
-/* == Temporary: hide AI widgets (text + voice) == */
-/* These rules are temporary — remove when widgets are fixed and ready. */
-.ai-floating,
-.ai-panel-global,
-#ai-floating-global,
-.ai-voice-widget,
-.ai-panel,
-.ai-modal,
-.ai-widget-root {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
+/* == AI widgets are now enabled == */
+/* Removed display: none rules - widgets are ready to use */
 
