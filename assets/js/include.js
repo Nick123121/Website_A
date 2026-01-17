@@ -174,7 +174,7 @@ runAfterDomReady(() => {
 
     if (document.getElementById('ai-floating-global')) return;
 
-    // Создаем контейнер для виджетов (скрыт по умолчанию)
+    // Создаем контейнер для виджетов (минимизированный — видны только кнопки)
     const floating = document.createElement('div');
     floating.className = 'ai-floating';
     floating.id = 'ai-floating-global';
@@ -184,7 +184,7 @@ runAfterDomReady(() => {
         <img src="${avatarSrc}" alt="Albamen AI">
       </div>
     `;
-    floating.style.display = 'none'; // Скрываем виджеты по умолчанию
+    floating.style.display = 'flex'; // Показываем только иконки/кнопки по умолчанию
     document.body.appendChild(floating);
 
     // Создаем главную кнопку вызова виджетов (всегда видна)
