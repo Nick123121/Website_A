@@ -706,10 +706,17 @@ function injectFooterStyles() {
 
 // ===== GLOBAL AI WIDGET (Albamen / Albaman) =====
   // Временно отключаем AI-виджет. Установите `window.__disableAiWidgets = false` для включения.
-  if (!window.__disableAiWidgets) {
-    injectAiWidget();
-  } else {
-    console.info('[include.js] AI widgets are disabled by __disableAiWidgets flag');
+  // Разрешаем инъекцию виджета только на странице "/eng/hakkimizda"
+  try {
+    const _path = window.location.pathname || '/';
+    const _enableAiOnThisPage = /\/eng\/hakkimizda(\.html)?\/?$/i.test(_path);
+    if (!window.__disableAiWidgets && _enableAiOnThisPage) {
+      injectAiWidget();
+    } else {
+      console.info('[include.js] AI widgets are disabled by flag or not allowed on this page');
+    }
+  } catch (e) {
+    console.error('[include.js] Failed to decide AI widget injection:', e);
   }
 
   function injectAiWidget() {

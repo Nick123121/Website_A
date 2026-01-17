@@ -112,15 +112,22 @@ runAfterDomReady(() => {
   }
   // 7. GLOBAL AI WIDGET (Albamen / Albaman) — текстовый чат
   // Отключаем авто-открытие по умолчанию — будем открывать только по клику
+  // ===== GLOBAL AI WIDGET (Albamen / Albaman) =====
+  // Отключаем авто-открытие виджета по умолчанию — открываем только по клику
   window.__allowAiAutoOpen = false;
-  // Временно отключаем оба AI-виджета. Установите `window.__disableAiWidgets = false` для включения.
-  if (!window.__disableAiWidgets) {
-    injectAiWidget();
-    // ensureAiWidgetPinned(); // disabled: вызывала автоматическое открытие на некоторых страницах
-    // 8. Голосовой виджет — кнопка + модалка + подключение script.js
-    injectVoiceWidget();
-  } else {
-    console.info('[include.js] AI widgets are disabled by __disableAiWidgets flag');
+  // Включаем виджеты только на странице "hakkimizda"
+  try {
+    const _path = window.location.pathname || '/';
+    const _enableAiOnThisPage = /\/hakkimizda(\.html)?\/?$/i.test(_path);
+    if (!window.__disableAiWidgets && _enableAiOnThisPage) {
+      injectAiWidget();
+      // 8. Голосовой виджет — кнопка + модалка + подключение script.js
+      injectVoiceWidget();
+    } else {
+      console.info('[include.js] AI widgets are disabled by flag or not allowed on this page');
+    }
+  } catch (e) {
+    console.error('[include.js] Failed to decide AI widget injection:', e);
   }
     // Safety: ensure AI panels are collapsed on initial load
     try {
