@@ -190,11 +190,13 @@
                 occluder.position.set(screenX, screenY, screenZ);
                 occluder.rotation.z = angle - Math.PI / 3;
                 occluder.rotation.x = 0.1; 
+                occluder.rotation.y = 0.2; 
+
                 
                 // Масштабируем окклюдер пропорционально кольцу
                 // Базовый масштаб окклюдера был 1. Если кольцо увеличивается, палец внутри тоже должен "толстеть",
                 // чтобы продолжать скрывать заднюю стенку большего кольца.
-                const scaleFactor = ringScale / 10.0; 
+                const scaleFactor = ringScale / 8.0; 
                 occluder.scale.set(scaleFactor, 1, scaleFactor); // Y не трогаем (длину)
 
                 if (currentRing) {
