@@ -159,6 +159,7 @@ runAfterDomReady(() => {
 
     if (document.getElementById('ai-floating-global')) return;
 
+    // Создаем контейнер для виджетов (скрыт по умолчанию)
     const floating = document.createElement('div');
     floating.className = 'ai-floating';
     floating.id = 'ai-floating-global';
@@ -168,7 +169,30 @@ runAfterDomReady(() => {
         <img src="${avatarSrc}" alt="Albamen AI">
       </div>
     `;
+    floating.style.display = 'none'; // Скрываем виджеты по умолчанию
     document.body.appendChild(floating);
+
+    // Создаем главную кнопку вызова виджетов (всегда видна)
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'ai-widget-toggle-btn';
+    toggleBtn.id = 'ai-widget-toggle-btn';
+    toggleBtn.setAttribute('aria-label', isEn ? 'Open AI assistant' : 'AI asistanı aç');
+    toggleBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+    document.body.appendChild(toggleBtn);
+
+    // Обработчик для открытия/закрытия виджетов
+    toggleBtn.addEventListener('click', () => {
+      if (floating.style.display === 'none') {
+        floating.style.display = 'flex'; // Показываем виджеты
+        toggleBtn.classList.add('ai-open');
+      } else {
+        floating.style.display = 'none'; // Скрываем виджеты
+        toggleBtn.classList.remove('ai-open');
+        // Закрываем панель чата если она открыта
+        const panel = document.querySelector('.ai-panel-global');
+        if (panel) panel.classList.remove('ai-open');
+      }
+    });
 
     const panel = document.createElement('div');
     panel.className = 'ai-panel-global';

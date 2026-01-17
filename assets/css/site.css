@@ -334,6 +334,52 @@ body{
 }
 
 /* =========================
+   AI WIDGET TOGGLE BUTTON
+   ========================= */
+
+.ai-widget-toggle-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00c2ff, #0ea5e9);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 12px 28px rgba(0, 194, 255, 0.3);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 1090;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  font-size: 0;
+  line-height: 0;
+}
+
+.ai-widget-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 14px 35px rgba(0, 194, 255, 0.5);
+}
+
+.ai-widget-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.ai-widget-toggle-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.ai-widget-toggle-btn.ai-open svg {
+  transform: rotate(180deg);
+}
+
+/* =========================
    AI WIDGET (RE-DESIGNED)
    ========================= */
 
@@ -644,6 +690,18 @@ body{
 }
 
 @media (max-width: 640px) {
+  .ai-widget-toggle-btn {
+    width: 56px;
+    height: 56px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .ai-widget-toggle-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
   .ai-panel-global {
     width: 94%;
     right: 3%;
