@@ -191,7 +191,7 @@ runAfterDomReady(() => {
         <img src="${avatarSrc}" alt="Albamen AI">
       </div>
     `;
-    floating.style.display = 'flex'; // Показываем только иконки/кнопки по умолчанию
+    floating.style.display = 'none'; // Скрываем виджеты по умолчанию — открываем только по клику
     document.body.appendChild(floating);
 
     // Создаем главную кнопку вызова виджетов (всегда видна)
@@ -407,7 +407,16 @@ runAfterDomReady(() => {
 
     sendBtn.addEventListener('click', sendMessage);
     inputField.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') sendMessage();
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+    inputField.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
     });
 
     micBtn.addEventListener('click', () => {
