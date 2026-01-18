@@ -173,27 +173,7 @@
   <!-- Dinamik footer dahil etme -->
   <div data-include="/footer-tr.html"></div>
 
-  <script>
-    const revealItems = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -8% 0px'
-    });
-
-    revealItems.forEach((item, index) => {
-      const delay = item.dataset.direction === 'left' ? index * 0.025 : index * 0.03;
-      item.style.setProperty('--reveal-delay', `${delay}s`);
-      observer.observe(item);
-    });
-  </script>
+  
 
   <script>
 </script>
