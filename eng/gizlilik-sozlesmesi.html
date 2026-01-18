@@ -14,7 +14,6 @@
   <meta property="og:url" content="https://albaspace.com.tr/gizlilik-sozlesmesi.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Global site styles -->
   <link rel="stylesheet" href="/assets/css/site.css" />
   <script src="/assets/js/include.js" defer></script>
   <script src="/assets/js/menu-toggle.js" defer></script>
@@ -103,22 +102,17 @@
       h1 { font-size: 28px; }
       h2 { font-size: 20px; }
     }
-  
-
-</style>
+    
+    /* СТРАХОВКА: Гарантируем, что контент виден */
+    .glass-box, .page, main {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        filter: none !important;
+    }
+  </style>
 </head>
 <body>
-
-  <style>
-    /* Отключаем все анимации и переходы на этой странице */
-    * { animation: none !important; transition: none !important; }
-    *::before, *::after { animation: none !important; transition: none !important; }
-    body { scroll-behavior: auto !important; }
-    .voice-bar { animation: none !important; }
-    .voice-stop-btn { animation: none !important; }
-    [style*="animation"] { animation: none !important; }
-    [style*="transition"] { transition: none !important; }
-  </style>
 
   <div data-include="/header-en.html"></div>
 
@@ -197,7 +191,7 @@
           <li><strong>Performance/Analytical Cookies:</strong> Helps us improve our service quality by collecting statistical information about how you use the site.</li>
           <li><strong>Advertising/Marketing Cookies:</strong> Used to create profiles based on your interests and show you relevant ads.</li>
         </ul>
-<p>For detailed information about all the cookies we use, their purposes, storage periods and the parties they belong to, please review our <a href="cerez-politikasi.html">Cookie Policy</a>.</p>      </div>
+<p>For detailed information about all the cookies we use, their purposes, storage periods and the parties they belong to, please review our <a href="cerez-politikasi.html">Cookie Policy</a>.</p>       </div>
 
       <h2>6. Data Security</h2>
       <p>ALBA Space takes all necessary technical and administrative measures to ensure the security of your personal data. Your data is protected against unauthorized access, loss and misuse. Your credit card information is transmitted directly to the bank through our secure payment infrastructure protected by SSL certificate and is not stored on our servers in any way.</p>
