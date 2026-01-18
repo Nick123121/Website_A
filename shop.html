@@ -9,19 +9,26 @@
   <link rel="stylesheet" href="/assets/css/shop.css">
   <style>
     :root {
-      --header-bg: #020617;
-      --accent: #00c2ff;
-      --page-bg: #020617;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
+        /* ... ваши переменные ... */
     }
-    body { background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat; color: var(--text-main); }
-  /* Добавьте это внутрь тега <style> */
-.product-card, .reveal {
-  opacity: 1 !important;
-  transform: none !important;
-  visibility: visible !important;
-}
+    body { /* ... стили body ... */ }
+
+    /* Добавьте это внутрь тега <style> */
+    .product-card, .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    /* ---- НОВОЕ ПРАВИЛО ---- */
+    /* Это уберет эффект размытия (блюра) с картинок */
+    .product-card img, .reveal img {
+        filter: none !important;
+        opacity: 1 !important; /* На всякий случай дублируем */
+    }
+    /* ----------------------- */
+</style>
+
 
 
 </style>
