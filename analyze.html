@@ -69,28 +69,23 @@
         .text-accent {
             color: #00c2ff;
         }
-    
 
-</style>
+        /* СТРАХОВКА: Гарантируем видимость контента на мобильных */
+        .reveal, .alba-card, section, canvas, .chart-container {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+            filter: none !important;
+            display: block; /* Убираем возможные display: none */
+        }
+        /* Возвращаем display:flex для карточек, где это нужно (чтобы не сломать верстку) */
+        .alba-card.flex {
+            display: flex !important;
+        }
+
+    </style>
 </head>
 <body class="antialiased selection:bg-[#00c2ff] selection:text-black">
-
-    <style>
-        /* Disable animations/transitions on this analysis page */
-        * { animation: none !important; transition: none !important; }
-        *::before, *::after { animation: none !important; transition: none !important; }
-        body { scroll-behavior: auto !important; }
-        .voice-bar { animation: none !important; }
-        .voice-stop-btn { animation: none !important; }
-        [style*="animation"] { animation: none !important; }
-        [style*="transition"] { transition: none !important; }
-        /* Ensure visibility is not hidden by animations */
-        main, section, .alba-card, .chart-container, canvas { 
-            opacity: 1 !important; 
-            visibility: visible !important; 
-            display: block !important;
-        }
-    </style>
 
     <div class="space-bg-fixed">
         <div class="space-overlay"></div>
@@ -519,28 +514,6 @@
             }
         });
     </script>
-
-  <script>
-    const revealItems = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -8% 0px'
-    });
-
-    revealItems.forEach((item, index) => {
-      const delay = item.dataset.direction === 'left' ? index * 0.025 : index * 0.03;
-      item.style.setProperty('--reveal-delay', `${delay}s`);
-      observer.observe(item);
-    });
-  </script>
 
   <script>
       // Sayfa Yüklendiğinde Popup Kontrolü

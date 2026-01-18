@@ -14,7 +14,6 @@
   <meta property="og:url" content="https://albaspace.com.tr/gizlilik-sozlesmesi.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Global site styles -->
   <link rel="stylesheet" href="/assets/css/site.css" />
   <script src="/assets/js/include.js" defer></script>
   <script src="/assets/js/menu-toggle.js" defer></script>
@@ -103,22 +102,17 @@
       h1 { font-size: 28px; }
       h2 { font-size: 20px; }
     }
-  
-
-</style>
+    
+    /* СТРАХОВКА: Гарантируем, что элементы видимы, непрозрачны и без размытия */
+    .reveal, .product-card {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        filter: none !important;
+    }
+  </style>
 </head>
 <body>
-
-  <style>
-    /* Отключаем все анимации и переходы на этой странице */
-    * { animation: none !important; transition: none !important; }
-    *::before, *::after { animation: none !important; transition: none !important; }
-    body { scroll-behavior: auto !important; }
-    .voice-bar { animation: none !important; }
-    .voice-stop-btn { animation: none !important; }
-    [style*="animation"] { animation: none !important; }
-    [style*="transition"] { transition: none !important; }
-  </style>
 
   <div data-include="/header-tr.html"></div>
 
@@ -197,7 +191,7 @@
           <li><strong>Performans/Analitik Çerezler:</strong> Siteyi nasıl kullandığınız hakkında istatistiksel bilgiler toplayarak hizmet kalitemizi artırmamıza yardımcı olur.</li>
           <li><strong>Reklam/Pazarlama Çerezleri:</strong> İlgi alanlarınıza yönelik profil oluşturmak ve size uygun reklamlar göstermek için kullanılır.</li>
         </ul>
-<p>Kullandığımız tüm çerezler, amaçları, saklama süreleri ve ait oldukları taraflar hakkında ayrıntılı bilgi için lütfen <a href="cerez-politikasi.html">Çerez Politikamızı</a> inceleyiniz.</p>      </div>
+<p>Kullandığımız tüm çerezler, amaçları, saklama süreleri ve ait oldukları taraflar hakkında ayrıntılı bilgi için lütfen <a href="cerez-politikasi.html">Çerez Politikamızı</a> inceleyiniz.</p>       </div>
 
       <h2>6. Veri Güvenliği</h2>
       <p>ALBA Space, kişisel verilerinizin güvenliğini sağlamak için gerekli tüm teknik ve idari tedbirleri almaktadır. Verileriniz, yetkisiz erişim, kayıp ve kötüye kullanıma karşı korunmaktadır. Kredi kartı bilgileriniz, SSL sertifikası ile korunan güvenli ödeme altyapımız üzerinden doğrudan bankaya iletilir ve hiçbir şekilde sunucularımızda saklanmaz.</p>
@@ -207,29 +201,5 @@
 
   <div data-include="/footer-tr.html"></div>
 
-  <script>
-    const revealItems = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -8% 0px'
-    });
-
-    revealItems.forEach((item, index) => {
-      const delay = item.dataset.direction === 'left' ? index * 0.025 : index * 0.03;
-      item.style.setProperty('--reveal-delay', `${delay}s`);
-      observer.observe(item);
-    });
-  </script>
-
-  <script>
-</script>
 </body>
 </html>
