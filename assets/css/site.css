@@ -389,10 +389,16 @@ body{
   right: 20px;
   bottom: 20px;
   z-index: 1100;
-  display: flex;
+  display: none !important; /* Скрываем по умолчанию */
   flex-direction: column;
   align-items: center;
   gap: 10px; /* Расстояние между элементами */
+}
+
+/* Показываем виджеты только когда они открыты */
+.ai-floating[style*="display: flex"],
+.ai-floating.footer-docked[style*="display: flex"] {
+  display: flex !important;
 }
 
 /* 1. Картинка-аватар (Albamen) */
