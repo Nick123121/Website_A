@@ -2331,6 +2331,7 @@ model-viewer{
 
   /* AI Widget mobile adjustments */
   .ai-floating {
+    display: none !important; /* Скрываем по умолчанию */
     right: 10px;
     bottom: 10px;
     gap: 8px;

@@ -204,7 +204,8 @@ runAfterDomReady(() => {
 
     // Обработчик для открытия/закрытия виджетов
     toggleBtn.addEventListener('click', () => {
-      if (floating.style.display === 'none' || floating.style.display === '') {
+      const computedDisplay = window.getComputedStyle(floating).display;
+      if (computedDisplay === 'none') {
         floating.setAttribute('style', 'display: flex !important'); // Показываем виджеты
         toggleBtn.classList.add('ai-open');
       } else {
