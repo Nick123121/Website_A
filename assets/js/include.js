@@ -511,8 +511,8 @@ function injectVoiceWidget() {
     style.textContent = `
       .ai-voice-btn { width: 52px; height: 52px; border-radius: 999px; background: #020617; border: 2px solid rgba(148, 163, 184, 0.6); color: #e5e7eb; display: grid; place-items: center; cursor: pointer; box-shadow: 0 14px 35px rgba(15, 23, 42, 0.75); transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; }
       .ai-voice-btn:hover { transform: translateY(-1px) scale(1.05); background: radial-gradient(circle at 30% 0%, #0ea5e9, #020617 60%); border-color: rgba(56, 189, 248, 0.9); box-shadow: 0 20px 40px rgba(8, 47, 73, 0.9); }
-      .ai-panel-voice { position: fixed; right: 20px; bottom: 20px; width: 340px; max-width: 95vw; height: 360px; background: #020617; color: #e5e7eb; border-radius: 24px; box-shadow: 0 22px 55px rgba(15, 23, 42, 0.85); display: flex; flex-direction: column; overflow: hidden; transform: translateY(18px) scale(0.96); opacity: 0; pointer-events: none; transition: transform .26s cubic-bezier(.16,1,.3,1), opacity .26s ease; z-index: 1205; }
-      .ai-panel-voice.ai-open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+      .ai-panel-voice { position: fixed; right: 20px; bottom: 20px; width: 340px; max-width: 95vw; height: 360px; background: #020617; color: #e5e7eb; border-radius: 24px; box-shadow: 0 22px 55px rgba(15, 23, 42, 0.85); display: none !important; flex-direction: column; overflow: hidden; transform: translateY(18px) scale(0.96); opacity: 0; pointer-events: none; transition: transform .26s cubic-bezier(.16,1,.3,1), opacity .26s ease; z-index: 1205; }
+      .ai-panel-voice.ai-open { display: flex !important; transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
       .ai-panel-voice .ai-panel-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; height: 100%; }
       .ai-panel-voice .ai-status-text { font-size: 12px; color: #9ca3af; text-align: center; min-height: 18px; }
       .ai-panel-voice .ai-chat-avatar-large { margin: 0 auto 4px; }
