@@ -375,7 +375,19 @@ body{
   transition: transform 0.3s ease;
 }
 
+.ai-widget-toggle-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
 .ai-widget-toggle-btn.ai-open svg {
+  transform: rotate(180deg);
+}
+
+.ai-widget-toggle-btn.ai-open img {
   transform: rotate(180deg);
 }
 
