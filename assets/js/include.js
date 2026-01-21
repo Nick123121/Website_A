@@ -197,7 +197,7 @@ runAfterDomReady(() => {
     toggleBtn.className = 'ai-widget-toggle-btn';
     toggleBtn.id = 'ai-widget-toggle-btn';
     toggleBtn.setAttribute('aria-label', isEn ? 'Open AI assistant' : 'AI asistanı aç');
-    toggleBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+    toggleBtn.innerHTML = `<img src="/assets/images/albamenai.png" alt="AI" style="width: 100%; height: 100%; object-fit: contain;" />`;
     document.body.appendChild(toggleBtn);
 
     // Обработчик для открытия/закрытия виджетов
