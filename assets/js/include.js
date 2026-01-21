@@ -118,13 +118,11 @@ runAfterDomReady(() => {
   // Включаем виджеты только на странице "hakkimizda"
   try {
     const _path = window.location.pathname || '/';
-    const _enableAiOnThisPage = /\/hakkimizda(\.html)?\/?$/i.test(_path);
-    if (!window.__disableAiWidgets && _enableAiOnThisPage) {
-      injectAiWidget();
-      // 8. Голосовой виджет — кнопка + модалка + подключение script.js
-      injectVoiceWidget();
+    // Enable unified AI widget on all pages
+    if (!window.__disableAiWidgets) {
+      injectUnifiedAiWidget();
     } else {
-      console.info('[include.js] AI widgets are disabled by flag or not allowed on this page');
+      console.info('[include.js] AI widget is disabled by flag');
     }
   } catch (e) {
     console.error('[include.js] Failed to decide AI widget injection:', e);
@@ -1043,3 +1041,742 @@ function getAlbamenIdentity() {
 
 
 
+/**
+ * Unified AI Chat Widget
+ * Combines text chat and voice chat in one window
+ * Matches Albamen page design with dark theme and cyan/green accents
+ */
+
+function injectUnifiedAiWidget() {
+  const path = window.location.pathname || '/';
+  const isEn = path.startsWith('/eng/');
+
+  const strings = isEn ? {
+    placeholder: 'Send a message...',
+    listening: 'Listening...',
+    connect: 'Connecting...',
+    initialStatus: 'How can I help you today?',
+    welcomeBack: 'Welcome back, ',
+    voiceNotSupported: 'Voice not supported',
+    connectionError: 'Connection error.',
+    talkPrompt: 'Tap and Talk 🔊',
+    voiceTabTitle: 'Voice Chat',
+    textTabTitle: 'Text Chat'
+  } : {
+    placeholder: 'Bir mesaj yazın...',
+    listening: 'Dinliyorum...',
+    connect: 'Bağlanıyor...',
+    initialStatus: 'Bugün sana nasıl yardım edebilirim?',
+    welcomeBack: 'Tekrar hoş geldin, ',
+    voiceNotSupported: 'Ses desteği yok',
+    connectionError: 'Bağlantı hatası.',
+    talkPrompt: 'Tıkla ve Konuş 🔊',
+    voiceTabTitle: 'Sesli Sohbet',
+    textTabTitle: 'Metin Sohbeti'
+  };
+
+  // Get stored name for greeting
+  const storedName = localStorage.getItem('albamen_user_name');
+  if (storedName) {
+    strings.initialStatus = strings.welcomeBack + storedName + '! 🚀';
+  }
+
+  // Get session ID for memory
+  const sessionId = getAlbamenSessionId();
+  const avatarSrc = '/assets/images/albamenai.png';
+
+  // Check if widget already exists
+  if (document.getElementById('ai-unified-widget')) return;
+
+  // ===== INJECT CSS FOR UNIFIED WIDGET =====
+  if (!document.getElementById('ai-unified-style')) {
+    const style = document.createElement('style');
+    style.id = 'ai-unified-style';
+    style.textContent = `
+      /* Small floating button */
+      .ai-widget-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+        border: 2px solid rgba(56, 189, 248, 0.5);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 1200;
+        font-size: 24px;
+      }
+
+      .ai-widget-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 12px 32px rgba(6, 182, 212, 0.6);
+        border-color: rgba(56, 189, 248, 0.8);
+      }
+
+      .ai-widget-button:active {
+        transform: scale(0.95);
+      }
+
+      /* Main chat window */
+      .ai-unified-widget {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 420px;
+        max-width: 90vw;
+        height: 600px;
+        max-height: 85vh;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(6, 182, 212, 0.1);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1201;
+        animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .ai-unified-widget.open {
+        display: flex;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Header with tabs */
+      .ai-widget-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+        background: rgba(15, 23, 42, 0.8);
+      }
+
+      .ai-widget-tabs {
+        display: flex;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .ai-tab-btn {
+        flex: 1;
+        padding: 8px 12px;
+        background: transparent;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        color: #cbd5f5;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .ai-tab-btn:hover {
+        border-color: rgba(56, 189, 248, 0.5);
+        background: rgba(56, 189, 248, 0.05);
+      }
+
+      .ai-tab-btn.active {
+        background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+        border-color: rgba(56, 189, 248, 0.8);
+        color: white;
+      }
+
+      .ai-close-btn {
+        background: transparent;
+        border: none;
+        color: #cbd5f5;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+
+      .ai-close-btn:hover {
+        color: #0ea5e9;
+        transform: rotate(90deg);
+      }
+
+      /* Chat body */
+      .ai-widget-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .ai-tab-content {
+        display: none;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .ai-tab-content.active {
+        display: flex;
+      }
+
+      /* Messages list */
+      .ai-messages-container {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .ai-messages-container::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .ai-messages-container::-webkit-scrollbar-track {
+        background: rgba(56, 189, 248, 0.05);
+        border-radius: 10px;
+      }
+
+      .ai-messages-container::-webkit-scrollbar-thumb {
+        background: rgba(56, 189, 248, 0.3);
+        border-radius: 10px;
+      }
+
+      .ai-messages-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(56, 189, 248, 0.5);
+      }
+
+      .ai-message {
+        display: flex;
+        gap: 8px;
+        animation: fadeIn 0.2s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .ai-message.user {
+        justify-content: flex-end;
+      }
+
+      .ai-message.bot {
+        justify-content: flex-start;
+      }
+
+      .ai-message-content {
+        max-width: 70%;
+        padding: 12px 16px;
+        border-radius: 16px;
+        word-wrap: break-word;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .ai-message.user .ai-message-content {
+        background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+        color: white;
+        border-bottom-right-radius: 4px;
+      }
+
+      .ai-message.bot .ai-message-content {
+        background: rgba(56, 189, 248, 0.1);
+        color: #e5e7eb;
+        border-bottom-left-radius: 4px;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+      }
+
+      /* Avatar and status area */
+      .ai-avatar-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 16px;
+        gap: 12px;
+      }
+
+      .ai-avatar-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid rgba(56, 189, 248, 0.3);
+        object-fit: cover;
+      }
+
+      .ai-avatar-img.glow {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(6, 182, 212, 0.3);
+        animation: avatarGlow 1.5s ease-in-out infinite;
+      }
+
+      @keyframes avatarGlow {
+        0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(6, 182, 212, 0.3); }
+        50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), 0 0 60px rgba(6, 182, 212, 0.5); }
+      }
+
+      .ai-status-text {
+        text-align: center;
+        color: #cbd5f5;
+        font-size: 14px;
+        min-height: 20px;
+      }
+
+      /* Voice controls */
+      .ai-voice-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .ai-voice-wave {
+        display: flex;
+        gap: 4px;
+        align-items: flex-end;
+      }
+
+      .ai-voice-bar {
+        width: 4px;
+        height: 6px;
+        border-radius: 2px;
+        background: #22c55e;
+        animation: voiceWave 1.2s ease-in-out infinite;
+      }
+
+      .ai-voice-bar:nth-child(2) { animation-delay: 0.12s; }
+      .ai-voice-bar:nth-child(3) { animation-delay: 0.24s; }
+
+      @keyframes voiceWave {
+        0%, 100% { height: 6px; }
+        50% { height: 20px; }
+      }
+
+      .ai-voice-stop-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: #ef4444;
+        color: #fee2e2;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.2s ease;
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+        animation: pulsStop 1.4s infinite;
+      }
+
+      .ai-voice-stop-btn:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes pulsStop {
+        0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+        70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+      }
+
+      /* Input area */
+      .ai-input-area {
+        display: flex;
+        gap: 8px;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(56, 189, 248, 0.1);
+        background: rgba(15, 23, 42, 0.6);
+      }
+
+      .ai-input-field {
+        flex: 1;
+        background: rgba(56, 189, 248, 0.05);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        color: #e5e7eb;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      .ai-input-field:focus {
+        outline: none;
+        border-color: rgba(56, 189, 248, 0.5);
+        background: rgba(56, 189, 248, 0.08);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+      }
+
+      .ai-input-field::placeholder {
+        color: #64748b;
+      }
+
+      .ai-action-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        background: rgba(56, 189, 248, 0.05);
+        color: #0ea5e9;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+
+      .ai-action-btn:hover {
+        background: rgba(56, 189, 248, 0.15);
+        border-color: rgba(56, 189, 248, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .ai-action-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 480px) {
+        .ai-unified-widget {
+          width: 100%;
+          height: 100%;
+          max-height: 100vh;
+          bottom: 0;
+          right: 0;
+          border-radius: 0;
+        }
+
+        .ai-widget-button {
+          width: 48px;
+          height: 48px;
+          bottom: 16px;
+          right: 16px;
+        }
+
+        .ai-message-content {
+          max-width: 85%;
+          font-size: 13px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // ===== CREATE WIDGET BUTTON =====
+  const button = document.createElement('button');
+  button.className = 'ai-widget-button';
+  button.id = 'ai-widget-button';
+  button.setAttribute('aria-label', isEn ? 'Open AI Chat' : 'AI Sohbeti Aç');
+  button.innerHTML = '💬';
+  button.addEventListener('click', () => {
+    const widget = document.getElementById('ai-unified-widget');
+    if (widget) {
+      widget.classList.toggle('open');
+    }
+  });
+  document.body.appendChild(button);
+
+  // ===== CREATE MAIN WIDGET =====
+  const widget = document.createElement('div');
+  widget.className = 'ai-unified-widget';
+  widget.id = 'ai-unified-widget';
+
+  widget.innerHTML = `
+    <div class="ai-widget-header">
+      <div class="ai-widget-tabs">
+        <button class="ai-tab-btn active" data-tab="text">${strings.textTabTitle}</button>
+        <button class="ai-tab-btn" data-tab="voice">${strings.voiceTabTitle}</button>
+      </div>
+      <button class="ai-close-btn" id="ai-widget-close">×</button>
+    </div>
+
+    <div class="ai-widget-body">
+      <!-- Text Chat Tab -->
+      <div class="ai-tab-content active" data-tab="text">
+        <div class="ai-messages-container" id="ai-messages-list"></div>
+        <div class="ai-input-area">
+          <input type="text" class="ai-input-field" id="ai-input-field" placeholder="${strings.placeholder}">
+          <button class="ai-action-btn" id="ai-send-btn" title="Send">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Voice Chat Tab -->
+      <div class="ai-tab-content" data-tab="voice">
+        <div class="ai-avatar-area">
+          <img src="${avatarSrc}" alt="Albamen" class="ai-avatar-img" id="ai-avatar-voice">
+          <div class="ai-status-text" id="ai-voice-status">${strings.initialStatus}</div>
+          <div class="ai-voice-controls">
+            <div class="ai-voice-wave" id="ai-voice-wave" style="display: none;">
+              <div class="ai-voice-bar"></div>
+              <div class="ai-voice-bar"></div>
+              <div class="ai-voice-bar"></div>
+            </div>
+            <button class="ai-voice-stop-btn" id="ai-voice-stop-btn" style="display: none;">■</button>
+            <button class="ai-action-btn" id="ai-voice-start-btn" style="width: 48px; height: 48px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(widget);
+
+  // ===== TAB SWITCHING =====
+  const tabButtons = widget.querySelectorAll('.ai-tab-btn');
+  const tabContents = widget.querySelectorAll('.ai-tab-content');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabName = btn.getAttribute('data-tab');
+      
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      btn.classList.add('active');
+      widget.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    });
+  });
+
+  // ===== CLOSE BUTTON =====
+  document.getElementById('ai-widget-close').addEventListener('click', () => {
+    widget.classList.remove('open');
+  });
+
+  // ===== TEXT CHAT LOGIC =====
+  const inputField = document.getElementById('ai-input-field');
+  const sendBtn = document.getElementById('ai-send-btn');
+  const messagesList = document.getElementById('ai-messages-list');
+
+  function addMessage(text, type) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `ai-message ${type}`;
+    msgDiv.innerHTML = `<div class="ai-message-content">${text}</div>`;
+    messagesList.appendChild(msgDiv);
+    messagesList.scrollTop = messagesList.scrollHeight;
+  }
+
+  function sendMessage() {
+    const text = inputField.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    inputField.value = '';
+
+    const loadingId = 'loading-' + Date.now();
+    addMessage('...', 'bot');
+
+    const currentName = localStorage.getItem('albamen_user_name') || null;
+    const currentAge = localStorage.getItem('albamen_user_age') || null;
+
+    fetch('https://divine-flower-a0ae.nncdecdgc.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: text,
+        sessionId,
+        savedName: currentName,
+        savedAge: currentAge
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        const lastMsg = messagesList.lastChild;
+        if (lastMsg && lastMsg.textContent === '...') {
+          lastMsg.remove();
+        }
+
+        if (!data || typeof data.reply !== 'string') {
+          addMessage(strings.connectionError, 'bot');
+          return;
+        }
+
+        if (data.saveName) {
+          localStorage.setItem('albamen_user_name', data.saveName.trim());
+        }
+        if (data.saveAge) {
+          localStorage.setItem('albamen_user_age', data.saveAge.trim());
+        }
+
+        addMessage(data.reply.trim() || strings.connectionError, 'bot');
+      })
+      .catch(err => {
+        console.error('AI Error:', err);
+        const lastMsg = messagesList.lastChild;
+        if (lastMsg && lastMsg.textContent === '...') {
+          lastMsg.remove();
+        }
+        addMessage(strings.connectionError, 'bot');
+      });
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  inputField.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // ===== VOICE CHAT LOGIC =====
+  const voiceStatusEl = document.getElementById('ai-voice-status');
+  const voiceStartBtn = document.getElementById('ai-voice-start-btn');
+  const voiceStopBtn = document.getElementById('ai-voice-stop-btn');
+  const voiceWave = document.getElementById('ai-voice-wave');
+  const avatarVoice = document.getElementById('ai-avatar-voice');
+
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition = null;
+  let isListening = false;
+
+  if (SpeechRec) {
+    recognition = new SpeechRec();
+    recognition.lang = isEn ? 'en-US' : 'tr-TR';
+    recognition.interimResults = true;
+  }
+
+  voiceStartBtn.addEventListener('click', () => {
+    if (!recognition) {
+      voiceStatusEl.textContent = strings.voiceNotSupported;
+      return;
+    }
+
+    if (isListening) {
+      recognition.stop();
+      return;
+    }
+
+    isListening = true;
+    voiceStatusEl.textContent = strings.listening;
+    voiceWave.style.display = 'flex';
+    voiceStopBtn.style.display = 'flex';
+    voiceStartBtn.style.display = 'none';
+    avatarVoice.classList.add('glow');
+
+    recognition.start();
+  });
+
+  voiceStopBtn.addEventListener('click', () => {
+    if (recognition && isListening) {
+      recognition.stop();
+    }
+  });
+
+  if (recognition) {
+    recognition.addEventListener('result', (event) => {
+      const transcript = Array.from(event.results)
+        .map(res => res[0].transcript)
+        .join(' ')
+        .trim();
+      
+      if (transcript) {
+        voiceStatusEl.textContent = transcript;
+      }
+    });
+
+    recognition.addEventListener('end', () => {
+      isListening = false;
+      voiceWave.style.display = 'none';
+      voiceStopBtn.style.display = 'none';
+      voiceStartBtn.style.display = 'flex';
+      avatarVoice.classList.remove('glow');
+
+      const transcript = voiceStatusEl.textContent;
+      if (transcript && transcript !== strings.listening && transcript !== strings.initialStatus) {
+        // Send voice transcript to text worker
+        const currentName = localStorage.getItem('albamen_user_name') || null;
+        const currentAge = localStorage.getItem('albamen_user_age') || null;
+
+        fetch('https://divine-flower-a0ae.nncdecdgc.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: transcript,
+            sessionId,
+            savedName: currentName,
+            savedAge: currentAge,
+            isVoiceTranscript: true
+          })
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.reply) {
+              voiceStatusEl.textContent = data.reply.trim();
+              
+              if (data.saveName) {
+                localStorage.setItem('albamen_user_name', data.saveName.trim());
+              }
+              if (data.saveAge) {
+                localStorage.setItem('albamen_user_age', data.saveAge.trim());
+              }
+
+              // Speak the response
+              if (window.speechSynthesis) {
+                const utterance = new SpeechSynthesisUtterance(data.reply);
+                utterance.lang = isEn ? 'en-US' : 'tr-TR';
+                utterance.onstart = () => {
+                  avatarVoice.classList.add('glow');
+                };
+                utterance.onend = () => {
+                  avatarVoice.classList.remove('glow');
+                  voiceStatusEl.textContent = strings.initialStatus;
+                };
+                window.speechSynthesis.speak(utterance);
+              }
+            }
+          })
+          .catch(err => {
+            console.error('Voice error:', err);
+            voiceStatusEl.textContent = strings.connectionError;
+          });
+      } else {
+        voiceStatusEl.textContent = strings.initialStatus;
+      }
+    });
+
+    recognition.addEventListener('error', () => {
+      isListening = false;
+      voiceWave.style.display = 'none';
+      voiceStopBtn.style.display = 'none';
+      voiceStartBtn.style.display = 'flex';
+      avatarVoice.classList.remove('glow');
+      voiceStatusEl.textContent = strings.voiceNotSupported;
+    });
+  }
+}
