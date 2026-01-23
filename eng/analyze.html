@@ -15,82 +15,11 @@
 
     <script src="/assets/js/include.js" defer></script>
 
-    <style>
-        /* Основные настройки темы AlbaSpace */
-        body {
-            background-color: #020617;
-            color: white;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        /* Фиксированный фон */
-        .space-bg-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: url('/assets/images/space-bg11.jpg') no-repeat center center;
-            background-size: cover;
-            opacity: 0;
-        }
-        .space-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, #020617 0%, rgba(11, 17, 32, 0.8) 50%, #020617 100%);
-        }
-
-        /* Стили карточек */
-        .alba-card {
-            background-color: rgba(11, 17, 32, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .alba-card:hover {
-            border-color: #00c2ff;
-            box-shadow: 0 0 20px rgba(0, 194, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* Контейнер графика */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            height: 350px;
-        }
-
-        /* Акцентный текст */
-        .text-accent {
-            color: #00c2ff;
-        }
-    
-
-</style>
+    <style> /* Основные настройки темы AlbaSpace */ body { background-color: #020617; color: white; font-family: system-ui, -apple-system, sans-serif; } /* Фиксированный фон */ .space-bg-fixed { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-size: cover; opacity: 0; } .space-overlay { position: absolute; inset: 0; } /* Стили карточек */ .alba-card { background-color: rgba(11, 17, 32, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(51, 65, 85, 0.5); border-radius: 1rem; padding: 1.5rem; transition: all 0.3s ease; } .alba-card:hover { border-color: #00c2ff; box-shadow: 0 0 20px rgba(0, 194, 255, 0.15); transform: translateY(-2px); } /* Контейнер графика */ .chart-container { position: relative; width: 100%; max-width: 600px; margin: 0 auto; height: 350px; } /* Акцентный текст */ .text-accent { color: #00c2ff; } </style>
 </head>
 <body class="antialiased selection:bg-[#00c2ff] selection:text-black">
 
-    <style>
-        /* Disable animations/transitions on this analysis page */
-        * { animation: none !important; transition: none !important; }
-        *::before, *::after { animation: none !important; transition: none !important; }
-        body { scroll-behavior: auto !important; }
-        .voice-bar { animation: none !important; }
-        .voice-stop-btn { animation: none !important; }
-        [style*="animation"] { animation: none !important; }
-        [style*="transition"] { transition: none !important; }
-        /* Ensure visibility is not hidden by animations */
-        main, section, .alba-card, .chart-container, canvas { 
-            opacity: 1 !important; 
-            visibility: visible !important; 
-            display: block !important;
-        }
-    </style>
+    <style> /* Disable animations/transitions on this analysis page */ * { animation: none !important; transition: none !important; } *::before, *::after { animation: none !important; transition: none !important; } body { scroll-behavior: auto !important; } .voice-bar { animation: none !important; } .voice-stop-btn { animation: none !important; } [style*="animation"] { animation: none !important; } [style*="transition"] { transition: none !important; } /* Ensure visibility is not hidden by animations */ main, section, .alba-card, .chart-container, canvas { opacity: 1 !important; visibility: visible !important; display: block !important; } </style>
 
     <div class="space-bg-fixed">
         <div class="space-overlay"></div>

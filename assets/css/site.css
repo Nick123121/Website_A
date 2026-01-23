@@ -2398,3 +2398,59 @@ model-viewer{
 /* == AI widgets are now enabled == */
 /* Removed display: none rules - widgets are ready to use */
 
+
+
+/* ========================================
+   Background positioning fix
+   Ensures background starts below header
+   and ends above footer
+   ======================================== */
+
+/* Remove background from body and set it to main content area */
+body {
+  background: #020617 !important;
+}
+
+/* Apply background to main content containers */
+main,
+.home-main,
+[class*="main-content"],
+[class*="page-content"] {
+  background: url("/assets/images/space-bg11.jpg") center/cover fixed no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+}
+
+/* For pages with specific content wrappers */
+.page-wrapper,
+.content-wrapper {
+  background: url("/assets/images/space-bg11.jpg") center/cover fixed no-repeat;
+  background-attachment: fixed;
+}
+
+/* Ensure footer stays above background */
+footer {
+  position: relative;
+  z-index: 10;
+  background: #020617;
+}
+
+/* Ensure header stays above background */
+.site-header {
+  position: relative;
+  z-index: 100;
+}
+
+/* On mobile, use gradient instead of fixed background */
+@media (max-width: 767px) {
+  main,
+  .home-main,
+  [class*="main-content"],
+  [class*="page-content"],
+  .page-wrapper,
+  .content-wrapper {
+    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
+    background-attachment: scroll !important;
+  }
+}
