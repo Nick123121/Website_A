@@ -1,4 +1,5 @@
 // model-nav-loader.js
+// DISABLED: Navigation buttons have been removed per user request
 // This lightweight loader ensures that the neon navigation buttons are injected
 // on pages with 3D models. Because header/footer fragments are loaded via
 // innerHTML (which doesn't execute embedded scripts), we need to programmatically
@@ -6,6 +7,7 @@
 // for the presence of a <model-viewer> element and then appends
 // /assets/js/model-nav.js to the document head exactly once.
 
+/*
 (() => {
   let loaded = false;
   function loadModelNav() {
@@ -32,3 +34,4 @@
     loadModelNav();
   }
 })();
+*/
