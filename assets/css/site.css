@@ -2406,27 +2406,41 @@ model-viewer{
    and ends above footer
    ======================================== */
 
-/* Remove background from body and set it to main content area */
-body {
-  background: #020617 !important;
+/* Desktop: Apply background image to main content area */
+@media (min-width: 768px) {
+  body {
+    background: #020617 !important;
+  }
+  
+  main,
+  .home-main,
+  [class*="main-content"],
+  [class*="page-content"],
+  .page-wrapper,
+  .content-wrapper {
+    background: url("/assets/images/space-bg11.jpg") center/cover fixed no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    position: relative;
+    z-index: 1;
+  }
 }
 
-/* Apply background to main content containers */
-main,
-.home-main,
-[class*="main-content"],
-[class*="page-content"] {
-  background: url("/assets/images/space-bg11.jpg") center/cover fixed no-repeat;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 1;
-}
-
-/* For pages with specific content wrappers */
-.page-wrapper,
-.content-wrapper {
-  background: url("/assets/images/space-bg11.jpg") center/cover fixed no-repeat;
-  background-attachment: fixed;
+/* Mobile: Use gradient instead of image */
+@media (max-width: 767px) {
+  body {
+    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
+  }
+  
+  main,
+  .home-main,
+  [class*="main-content"],
+  [class*="page-content"],
+  .page-wrapper,
+  .content-wrapper {
+    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
+    background-attachment: scroll !important;
+  }
 }
 
 /* Ensure footer stays above background */
@@ -2440,17 +2454,4 @@ footer {
 .site-header {
   position: relative;
   z-index: 100;
-}
-
-/* On mobile, use gradient instead of fixed background */
-@media (max-width: 767px) {
-  main,
-  .home-main,
-  [class*="main-content"],
-  [class*="page-content"],
-  .page-wrapper,
-  .content-wrapper {
-    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
-    background-attachment: scroll !important;
-  }
 }
