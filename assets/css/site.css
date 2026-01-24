@@ -22,7 +22,7 @@ body{
    *
    * Many pages of the site set a custom background on the <body> element via
    * inline styles like:
-   *   background: #020617 url("/assets/images/space-bg.jpg") center/cover fixed no-repeat;
+   *   background: #020617 url("/assets/images/space-bg.jpg") center/auto fixed no-repeat;
    * On iOS (Safari on iPhone/iPad) the `fixed` background-attachment is not
    * supported and causes the image to zoom and distort.  To fix this we
    * override the `background-attachment` property on small screens to use
@@ -30,7 +30,7 @@ body{
    * restore the `fixed` attachment so the desktop experience remains
    * unchanged.  See documentation:
    *   - Medium article explaining that `background-attachment: scroll` is
-   *     required on mobile Safarihttps://medium.com/@roberthaylor/background-images-not-showing-in-mobile-safari-try-this-b4fa3ed208f2#:~:text=Further%20research%20revealed%20that%20in,size%20as%20cover.
+   *     required on mobile Safarihttps://medium.com/@roberthaylor/background-images-not-showing-in-mobile-safari-try-this-b4fa3ed208f2#:~:text=Further%20research%20revealed%20that%20in,size%20as%20auto.
    *   - Kriesi support thread noting iOS devices do not support fixed backgroundshttps://kriesi.at/support/topic/ios-do-not-support-fixed-backgrounds/#:~:text=Participant.
    */
 }
@@ -378,7 +378,7 @@ body{
 .ai-widget-toggle-btn img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: auto;
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
@@ -430,7 +430,7 @@ body{
 .ai-hero-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: auto;
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimizeQuality;
@@ -579,7 +579,7 @@ body{
 .ai-chat-avatar-large img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: auto;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimizeQuality;
   transform: translateZ(0);
@@ -2418,9 +2418,9 @@ model-viewer{
   [class*="page-content"],
   .page-wrapper,
   .content-wrapper {
-    background: url("/assets/images/space-bg11.jpg") center/cover fixed no-repeat !important;
+    background: url("/assets/images/space-bg11.jpg") center/auto fixed no-repeat !important;
     background-attachment: fixed !important;
-    background-size: cover !important;
+    background-size: auto !important;
     position: relative;
     z-index: 1;
   }
