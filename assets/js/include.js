@@ -1098,10 +1098,10 @@ function injectUnifiedAiWidget() {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 56px;
-        height: 56px;
+        width: 64px;
+        height: 64px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+        background: #020617;
         border: 2px solid rgba(56, 189, 248, 0.5);
         color: white;
         cursor: pointer;
@@ -1111,7 +1111,8 @@ function injectUnifiedAiWidget() {
         box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1200;
-        font-size: 24px;
+        overflow: hidden;
+        padding: 4px;
       }
 
       .ai-widget-button:hover {
@@ -1493,7 +1494,7 @@ function injectUnifiedAiWidget() {
   button.className = 'ai-widget-button';
   button.id = 'ai-widget-button';
   button.setAttribute('aria-label', isEn ? 'Open AI Chat' : 'AI Sohbeti Aç');
-  button.innerHTML = '💬';
+  button.innerHTML = `<img src="/assets/images/albamenai.png" alt="AI" style="width: 100%; height: 100%; object-fit: contain;" />`;
   button.addEventListener('click', () => {
     const widget = document.getElementById('ai-unified-widget');
     if (widget) {
