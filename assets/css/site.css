@@ -2,11 +2,11 @@
 /* БАЗОВЫЕ НАСТРОЙКИ
    (НЕ трогаем background и color, чтобы страницы сами их задавали) */
 :root {
-  --header-bg: #111827;
+  --header-bg: #0f1727;
   --accent: #00c2ff;
   --page-bg: #020617;
   --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
+  --text-muted: #8290a7;
 }
 body{
   margin:0;
@@ -64,7 +64,7 @@ body{
   body {
     background-attachment: fixed !important;
     background-position: center bottom !important;
-    background-color: #000000 !important;
+    background-color: #090822 !important;
   }
 }
 
@@ -99,9 +99,9 @@ body{
 
 .site-header{
   /* Match footer background and text color for visual consistency */
-  background:#020617;
+  background:#070f31;
   color:#d1d5db;
-  border-bottom:1px solid #0f172a;
+  border-bottom:1px solid #111a2f;
 }
 
 .header-inner{
@@ -344,7 +344,7 @@ body{
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00c2ff, #0ea5e9);
+  background: linear-gradient(135deg, #00c2ff, #1f759d);
   color: #ffffff;
   border: none;
   box-shadow: 0 12px 28px rgba(0, 194, 255, 0.3);
@@ -424,7 +424,7 @@ body{
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: #000;
+  background: #216b88;
 }
 
 .ai-hero-avatar img {
@@ -809,7 +809,7 @@ body{
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: #000000;
+  background: #041231;
   border: 2px solid rgba(255,255,255,0.1);
   color: #fff;
   display: grid;
@@ -1711,7 +1711,7 @@ model-viewer{
   display: grid;
   place-items: center;
   background: rgba(0,0,0,.85);
-  backdrop-filter: blur(8px);
+  backdrop-filter: transparent;
   transition: opacity .35s ease, visibility .35s ease;
 }
 
@@ -2409,7 +2409,7 @@ model-viewer{
 /* Desktop: Apply background image to main content area */
 @media (min-width: 768px) {
   body {
-    background: #020617 !important;
+    background: #040a28 !important;
   }
   
   main,
@@ -2418,7 +2418,7 @@ model-viewer{
   [class*="page-content"],
   .page-wrapper,
   .content-wrapper {
-    background: url("/assets/images/space-bg11.jpg") center/auto fixed no-repeat !important;
+    background: url("/assets/images/space-bg11.jpg") center/top fixed no-repeat !important;
     background-attachment: fixed !important;
     background-size: auto !important;
     position: relative;
