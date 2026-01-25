@@ -63,8 +63,10 @@ body{
 @media (min-width: 768px) {
   body {
     background-attachment: fixed !important;
-    background-position: center bottom !important;
-    background-color: #000000 !important;
+    background-position: center center !important;
+    background-size: auto !important; /* Use real resolution, no stretch */
+    background-repeat: no-repeat !important; /* Don't tile the image */
+    background-color: #020617 !important; /* Fallback dark color */
   }
 }
 
