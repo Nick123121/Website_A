@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/assets/css/site.css" />
 
-    <style> * { box-sizing: border-box; } body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #ffffff; line-height: 1.6; overflow-x: hidden; } h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 600; } p { margin: 0; } a { color: #8ab4f8; text-decoration: none; } .container { width: 90%; max-width: 1200px; margin: 0 auto; } /* ========================= GLOW CONTAINERS (NO TEXT GLOW) ========================= */ .glow-box{ border: 1px solid rgba(148, 163, 184, 0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 18px 18px; box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.glow-strong{ box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.14), 0 18px 60px rgba(0, 0, 0, 0.72), 0 0 40px rgba(168, 85, 247, 0.22), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.compact{ padding: 14px 14px; border-radius: 16px; } /* Slight container glow for existing cards (still NO text glow) */ .feature-card, .timeline-item-content, .planet-content, .value-card{ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.12); } /* ========================= HERO ========================= */
+    <style> * { box-sizing: border-box; } body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #ffffff; line-height: 1.6; overflow-x: hidden; background-color: black; } h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 600; } p { margin: 0; } a { color: #8ab4f8; text-decoration: none; } .container { width: 90%; max-width: 1200px; margin: 0 auto; } /* ========================= GLOW CONTAINERS (NO TEXT GLOW) ========================= */ .glow-box{ border: 1px solid rgba(148, 163, 184, 0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 18px 18px; box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.glow-strong{ box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.14), 0 18px 60px rgba(0, 0, 0, 0.72), 0 0 40px rgba(168, 85, 247, 0.22), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.compact{ padding: 14px 14px; border-radius: 16px; } /* Slight container glow for existing cards (still NO text glow) */ .feature-card, .timeline-item-content, .planet-content, .value-card{ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.12); } /* ========================= HERO ========================= */
 .hero {
   min-height: 80vh;
   padding: 160px 0 80px;
@@ -177,7 +177,7 @@
   </head>
 
   <body>
-    <div data-include-html="/header-tr.html"></div>
+    <div data-include="/header-tr.html"></div>
 
     <section class="hero">
       <div class="hero-inner">
@@ -421,28 +421,26 @@
       </div>
     </section>
 
-    <!-- NEW Albamen AI Widget (floating) -->
-    <div class="ai-widget-floating" aria-hidden="false">
-      <button id="ai-voice-btn" class="ai-voice-btn ai-widget-fab" aria-label="Albamen ile konuş">
-        <img src="/assets/images/albamenvelara.jpg" alt="Albamen avatar" />
-      </button>
+    <div data-include="/footer-tr.html"></div>
+
+    <div id="cookie-overlay">
+        <div class="cookie-modal">
+            <div class="cookie-header">ALIŞVERİŞE BAŞLAMADAN ÖNCE</div>
+            <div class="cookie-text">
+                Web sitemizin tam işlevselliğini sağlamak, kullanıcı deneyiminizi özelleştirmek, analizler yapmak ve internet üzerinden ve sosyal medya platformları aracılığıyla web sitelerimizde, uygulamalarımızda ve bültenlerimizde kişiselleştirilmiş reklamlar sunmak için üçüncü taraf yayıncıların diğer izleme teknolojileri de dâhil olmak üzere birinci ve üçüncü taraf çerezleri kullanıyoruz. Bu amaçla, kullanıcı, tarama modelleri ve cihaz hakkında bilgi toplarız.<br><br>
+                "Tüm çerezleri kabul et" seçeneğine tıklayarak, bu bilgileri reklam ortaklarımız gibi üçüncü taraflarla paylaşmamızı kabul eder ve onaylarsınız. "Yalnızca gerekli çerezler" seçildiğinde, isteğe bağlı çerezler engellenir, özel içerik ve özellikler sunmamıza sınırlama getirilir. Seçeneklerinizi özelleştirmek için "Çerez Ayarları"na tıklayın. Daha fazla bilgi edinmek için Çerez politikamızı ziyaret edin.
+            </div>
+            <a href="cerez-politikasi.html" class="cookie-link">Çerez politikası</a>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-accept" id="btnAccept">TÜM ÇEREZLERİ KABUL ET</button>
+                <button class="btn-cookie btn-settings" id="btnSettings">ÇEREZ AYARLARI</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Voice modal (used by existing voice script) -->
-    <div class="ai-panel-voice" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="ai-voice-window">
-        <button class="ai-close-icon" aria-label="Kapat">×</button>
-        <div class="ai-chat-avatar-large">
-          <img src="/assets/images/albamenvelara.jpg" alt="Albamen avatar büyük" />
-        </div>
-        <div id="voice-status-text" aria-live="polite">Albamen hazır — butona tıklayın ve konuşun.</div>
-        <div id="voice-wave" class="hidden" aria-hidden="true"></div>
-        <div id="voice-inline-controls" class="hidden">
-          <button id="voice-stop-btn" class="btn" type="button">Durdur</button>
-        </div>
-      </div>
-    </div>
-
+    <script>
+      window.__disableAiWidgets = true;
+    </script>
     <script src="/assets/js/include.js"></script>
 
     <script>
