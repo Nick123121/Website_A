@@ -180,7 +180,7 @@
 
 .product-card h3 {
   font-size: 18px;
-  color: var(--text-main);
+  color: #fff; /* Force white for product titles */
   margin-bottom: 6px;
 }
 

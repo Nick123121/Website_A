@@ -62,11 +62,15 @@ body{
 /* Restore fixed background on larger screens (desktop/tablet) */
 @media (min-width: 768px) {
   body {
-    background-attachment: fixed !important;
-    background-position: center center !important;
-    background-size: auto !important; /* Use real resolution, no stretch */
-    background-repeat: no-repeat !important; /* Don't tile the image */
-    background-color: #020617 !important; /* Fallback dark color */
+    background-image: url('/assets/images/space-bg11.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-position: top center !important;
+    background-size: cover !important; /* Crop at edges, don't stretch */
+    background-attachment: scroll !important; /* Static, not fixed, as per user request for gradient below */
+    background-color: #020617 !important; /* Fallback */
+    /* Gradient below the image if page is longer */
+    background: url('/assets/images/space-bg11.jpg') top center / cover no-repeat,
+                linear-gradient(to bottom, #020617, #00c2ff) !important;
   }
 }
 
