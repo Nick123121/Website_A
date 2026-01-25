@@ -1511,6 +1511,7 @@ footer.footer{
 /* Явно скрываем кнопку MENU на десктопах, чтобы не было конфликтов */
 @media (min-width:769px){
   .menu-toggle{ display:none !important; }
+  #mobile-nav-portal { display: none !important; }
 }
 
 /* Desktop-only wheel hint for carousel: small neon mouse icon with animation */
