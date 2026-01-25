@@ -493,9 +493,9 @@ body{
   height: 500px;
   max-height: 80vh;
   
-  /* Белая тема как на скриншотах */
-  background: #ffffff;
-  color: #111827;
+  /* Dark theme for AI panel */
+  background: #1e293b;
+  color: #ffffff;
   
   border-radius: 24px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
@@ -550,8 +550,8 @@ body{
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #f3f4f6;
-  color: #374151;
+  background: #374151;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -560,7 +560,7 @@ body{
   font-size: 20px;
   transition: background 0.2s;
 }
-.ai-close-icon:hover { background: #e5e7eb; }
+.ai-close-icon:hover { background: #4b5563; }
 
 /* Body панели - Центрирование контента */
 .ai-panel-body {
@@ -709,8 +709,8 @@ body{
 }
 .ai-msg.bot {
   align-self: flex-start;
-  background: #f3f4f6;
-  color: #1f2937;
+  background: #334155;
+  color: #ffffff;
   border-bottom-left-radius: 2px;
 }
 
@@ -1585,7 +1585,7 @@ footer.footer{
 
 /* Small helpers used in various pages */
 .coming-wrapper{max-width:900px;margin:60px auto;text-align:center}
-.coming-title{font-size:48px;font-weight:700;text-transform:uppercase;color:#111827;letter-spacing:2px}
+.coming-title{font-size:48px;font-weight:700;text-transform:uppercase;color:#ffffff;letter-spacing:2px}
 
 /* Ensure footer/header baseline kept consistent */
 .footer-logo img{width:60px;height:60px;background:#0f172a;padding:4px;border-radius:999px}
