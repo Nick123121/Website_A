@@ -1595,8 +1595,8 @@ footer.footer{
 /* ВАЖНО: НЕ используем section > div — это ломает структуру */
 
 :root{
-  --glass-bg: rgba(10, 15, 30, 0.22);
-  --glass-bg-strong: rgba(8, 12, 28, 0.55);
+  --glass-bg: rgba(10, 15, 30, 0.12);
+  --glass-bg-strong: rgba(8, 12, 28, 0.35);
   --glass-border: rgba(140, 180, 255, 0.22);
   --glass-glow: rgba(120, 160, 255, 0.45);
   --glass-radius: 22px;
