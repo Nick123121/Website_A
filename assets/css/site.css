@@ -4,9 +4,9 @@
 :root {
   --header-bg: #111827;
   --accent: #00c2ff;
-  --page-bg: #081138;
+  --page-bg: #020617;
   --text-main: #e5e7eb;
-  --text-muted: #6480b2;
+  --text-muted: #9ca3af;
 }
 body{
   margin:0;
@@ -62,7 +62,7 @@ body{
 /* Restore fixed background on larger screens (desktop/tablet) */
 @media (min-width: 768px) {
   body {
-    background: #020617 !important;
+    background: #020617 url('/assets/images/space-bg11.jpg') center/cover no-repeat !important;
   }
 }
 
