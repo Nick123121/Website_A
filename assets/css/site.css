@@ -493,12 +493,15 @@ body{
   height: 500px;
   max-height: 80vh;
   
-  /* Dark theme for AI panel */
-  background: #1e293b;
+  /* Transparent panel like hakkimizda page */
+  background: transparent;
   color: #ffffff;
   
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85);
   display: none !important;
   flex-direction: column;
   overflow: hidden;
@@ -833,10 +836,13 @@ body{
   width: 360px;
   max-width: 90vw;
   height: 380px;
-  background:#ffffff;
-  color:#111827;
+  background: transparent;
+  color:#e5e7eb;
   border-radius:24px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85);
   display:flex;
   flex-direction:column;
   overflow:hidden;
@@ -903,14 +909,17 @@ body{
 }
 .voice-auth-modal.open { opacity:1; pointer-events:auto; }
 .voice-auth-card {
-  background:#1e293b;
+  background: transparent;
   color:#fff;
   padding:20px;
   border-radius:20px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   width:90%;
   max-width:320px;
   text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85);
 }
 .voice-auth-card input {
   width:100%;
@@ -1861,12 +1870,12 @@ model-viewer{
   text-decoration:none;
   color:#e5e7eb;
 
-  background: rgba(15,23,42,0.70);
-  border:1px solid rgba(56,189,248,0.28);
-  box-shadow: 0 0 22px rgba(0,194,255,0.16), inset 0 0 18px rgba(255,255,255,0.04);
+  background: transparent;
+  border:1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85);
 
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 
   transition: transform .22s ease, box-shadow .28s ease, border-color .28s ease;
   overflow:hidden;
@@ -1985,14 +1994,14 @@ model-viewer{
 }
 
 .product-card {
-  background: rgba(10, 15, 30, 0.35);
-  border: 1px solid rgba(140, 180, 255, 0.22);
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.4);
   border-radius: 20px;
   width: 280px;
   overflow: hidden;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  box-shadow: 0 0 28px rgba(120, 160, 255, 0.45), inset 0 0 22px rgba(255, 255, 255, 0.04);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
