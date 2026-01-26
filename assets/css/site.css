@@ -4,9 +4,9 @@
 :root {
   --header-bg: #111827;
   --accent: #00c2ff;
-  --page-bg: #020617;
+  --page-bg: #081138;
   --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
+  --text-muted: #6480b2;
 }
 body{
   margin:0;
@@ -262,7 +262,7 @@ body{
   border-radius: 8px;
   min-width: 150px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(46, 84, 133, 0.5);
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -413,8 +413,8 @@ body{
 
 /* 1. Картинка-аватар (Albamen) */
 .ai-hero-avatar {
-  width: 104px;
-  height: 104px;
+  width: 194px;
+  height: 194px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
@@ -1734,7 +1734,7 @@ model-viewer{
   width: 86px; height: 86px;
   border-radius: 999px;
   border: 2px solid rgba(255,255,255,.15);
-  border-top-color: rgba(130,73,223,.9);
+  border-top-color: rgba(28, 9, 59, 0.9);
   animation: spin 1s linear infinite;
   box-shadow: 0 0 30px rgba(130,73,223,.35);
   margin: 0 auto 14px;
