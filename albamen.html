@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/assets/css/site.css" />
 
-    <style> * { box-sizing: border-box; } body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #ffffff; line-height: 1.6; overflow-x: hidden; background-color: black; } h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 600; } p { margin: 0; } a { color: #8ab4f8; text-decoration: none; } .container { width: 90%; max-width: 1200px; margin: 0 auto; } /* ========================= GLOW CONTAINERS (NO TEXT GLOW) ========================= */ .glow-box{ border: 1px solid rgba(148, 163, 184, 0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 18px 18px; box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.glow-strong{ box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.14), 0 18px 60px rgba(0, 0, 0, 0.72), 0 0 40px rgba(168, 85, 247, 0.22), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.compact{ padding: 14px 14px; border-radius: 16px; } /* Slight container glow for existing cards (still NO text glow) */ .feature-card, .timeline-item-content, .planet-content, .value-card{ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.12); } /* ========================= HERO ========================= */
+    <style> * { box-sizing: border-box; } body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #ffffff; line-height: 1.6; overflow-x: hidden; } h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 600; } p { margin: 0; } a { color: #8ab4f8; text-decoration: none; } .container { width: 90%; max-width: 1200px; margin: 0 auto; } /* ========================= GLOW CONTAINERS (NO TEXT GLOW) ========================= */ .glow-box{ border: 1px solid rgba(148, 163, 184, 0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 18px 18px; box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.glow-strong{ box-shadow: 0 0 0 1px rgba(244, 114, 182, 0.14), 0 18px 60px rgba(0, 0, 0, 0.72), 0 0 40px rgba(168, 85, 247, 0.22), 0 0 28px rgba(56, 189, 248, 0.18); } .glow-box.compact{ padding: 14px 14px; border-radius: 16px; } /* Slight container glow for existing cards (still NO text glow) */ .feature-card, .timeline-item-content, .planet-content, .value-card{ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.12); } /* ========================= HERO ========================= */
 .hero {
   min-height: 80vh;
   padding: 160px 0 80px;
@@ -87,21 +87,77 @@
   width: 20px;
   height: 20px;
   fill: currentColor;
-} /* ========================= AI SECTION ========================= */ .ai-section { padding: 80px 0; } .section-title { text-align: center; margin: 0 auto 2rem; max-width: 820px; } .section-title h2 { font-size: 2.4rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; } .section-title p { color: #a3b5d3; margin-top: 0.9rem; } .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; } .feature-card { background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; text-align: center; } .feature-card svg { width: 40px; height: 40px; margin-bottom: 1rem; fill: #00d4ff; } .feature-card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; } .feature-card p { color: #a3b5d3; font-size: 0.95rem; } /* ========================= BOOK SECTION ========================= */ .book-section { padding: 80px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; } .book-section .image { flex: 1 1 40%; display: flex; justify-content: center; align-items: center; } .book-section .content { flex: 1 1 50%; } .book-section .content h2 { font-size: 2.3rem; margin-bottom: 1rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; } .book-section .content p { color: #c1c9d9; margin-bottom: 1rem; line-height: 1.6; } .book-section .content .specs { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; } .book-section .content .spec { display: flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; border-radius: 15px; font-size: 0.9rem; } .book-section .content .buttons { display: flex; gap: 1rem; flex-wrap: wrap; } .book-section .content .btn.primary { background: var(--accent); color: #020617; } .book-section .content .btn.secondary { background-color: transparent; border: 1px solid #7209b7; color: #00d4ff; } /* ========================= PRODUCT GALLERY + ZOOM (Albamen) ========================= */ .product-gallery{ width: min(460px, 92vw); display: grid; grid-template-columns: 1fr; gap: 12px; } .product-main{ position: relative; width: 100%; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 14px 40px rgba(0,0,0,0.55); touch-action: manipulation; } .product-main img{ width: 100%; height: auto; display: block; user-select: none; -webkit-user-drag: none; } .product-thumbs{ display: flex; gap: 10px; overflow-x: auto; padding: 6px 2px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; } .product-thumbs::-webkit-scrollbar{ height: 8px; } .product-thumbs::-webkit-scrollbar-thumb{ border-radius: 999px; } .thumb{ flex: 0 0 auto; width: 64px; height: 64px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.14); padding: 0; cursor: pointer; overflow: hidden; scroll-snap-align: start; transition: transform .12s ease, border-color .12s ease, filter .12s ease; } .thumb:hover{ transform: translateY(-1px); filter: brightness(1.05); } .thumb.is-active{ border-color: rgba(56,189,248,0.7); box-shadow: 0 0 0 2px rgba(56,189,248,0.18); } .thumb img{ width: 100%; height: 100%; object-fit: cover; display: block; } /* Desktop magnifier */ .zoom-result{ display: none; width: 100%; height: 320px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 14px 40px rgba(0,0,0,0.55); background-repeat: no-repeat; background-size: 200% 200%; } .zoom-lens{ display: none; position: absolute; width: 120px; height: 120px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); box-shadow: 0 14px 30px rgba(0,0,0,0.35); pointer-events: none; opacity: 0; transition: opacity .12s ease; } @media (hover: hover) and (pointer: fine) { .zoom-result{ display: block; } .zoom-lens{ display: block; } } /* Mobile fullscreen modal (tap to zoom) */ .img-modal{ position: fixed; inset: 0; display: none; z-index: 10000; align-items: center; justify-content: center; padding: 18px; } .img-modal.open{ display: flex; } .img-modal img{ max-width: 100%; max-height: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 20px 70px rgba(0,0,0,0.75); } .img-modal-close{ position: absolute; top: 14px; right: 14px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; } /* ========================= TIMELINE ========================= */ .timeline-section { padding: 80px 0; } .timeline-section h2 { text-align: center; font-size: 2.4rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; } .timeline { position: relative; margin: 4rem auto; max-width: 900px; } .timeline::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; } .timeline-item { position: relative; width: 50%; padding: 1rem 2rem; } .timeline-item:nth-child(odd) { left: 0; } .timeline-item:nth-child(even) { left: 50%; } .timeline-item::after { content: ""; position: absolute; top: 20px; width: 12px; height: 12px; border-radius: 50%; border: 3px solid #ffffff; z-index: 1; } .timeline-item:nth-child(odd)::after { right: -6px; } .timeline-item:nth-child(even)::after { left: -6px; } .timeline-item-content { border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.2rem; border-radius: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); } .timeline-item-content h3 { font-size: 1.45rem; margin-bottom: 0.5rem; color: #00d4ff; } .timeline-item-content p { color: #a3b5d3; font-size: 0.95rem; } /* ========================= PLANETS ========================= */
-.planet-section { padding: 80px 0; text-align: center; }
-.planet-section h2 { font-size: 2.4rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
-/* Styles for interactive row */
-.space-system-row { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 40px 0; flex-wrap: wrap; min-height: 200px; }
-.celestial-body { position: relative; border-radius: 50%; cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; box-shadow: 0 0 15px var(--glow-color); background-color: var(--body-color); }
-.sun { width: 100px; height: 100px; box-shadow: 0 0 40px rgba(255, 69, 0, 0.8); }
-.planet { width: var(--body-size); height: var(--body-size); }
-/* Hover Effects */
-.celestial-body:hover { transform: scale(1.3) translateY(-20px); box-shadow: 0 15px 30px var(--glow-color), 0 0 40px var(--glow-color); z-index: 10; }
-/* Active State (Selected) */
-.celestial-body.active { outline: 3px solid rgba(255,255,255,0.8); outline-offset: 6px; box-shadow: 0 0 25px var(--glow-color), 0 0 50px var(--glow-color); transform: scale(1.2); z-index: 20; }
-.celestial-body.active:hover { transform: scale(1.3) translateY(-10px); }
-.celestial-body .label { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 600; color: #a3b5d3; white-space: nowrap; opacity: 0.7; transition: opacity 0.3s; pointer-events: none; }
-.celestial-body.active .label { opacity: 1; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); } .audio-btn { margin-top: 15px; transition: 0.3s; } .audio-btn:hover { filter: brightness(1.2); transform: translateY(-2px); } .planet-content-wrapper { margin-top: 30px; max-width: 720px; margin-left: auto; margin-right: auto; } .planet-content-wrapper.animating { animation: fadeIn 0.5s ease; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } } /* ========================= QUOTE & VALUES ========================= */ .quote-section { padding: 60px 0; text-align: center; } .quote-section blockquote { font-size: 1.7rem; font-weight: 500; line-height: 1.35; color: #ffffff; margin: 0 0 0.8rem; } .quote-section cite { display: block; font-size: 1rem; color: #a3b5d3; } .values { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; } .value-card { border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 20px; text-align: center; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); } .value-card h3 { margin-bottom: 0.5rem; font-size: 1.3rem; color: #00d4ff; } .value-card p { color: #a3b5d3; font-size: 0.95rem; } /* ========================= Footer address restructure helpers ========================= */ .footer-address { display: flex; flex-direction: column; align-items: flex-start; } .footer-address .address-block { margin-bottom: 1rem; } .footer-address .address-block p:first-child { font-weight: 600; color: #00d4ff; margin-bottom: 4px; } /* ========================= Ensure icon sizes (safety) ========================= */ .site-header .header-social img, .site-header .header-social svg, .top-lang-switch .lang-flag img, .top-lang-switch .lang-flag svg { width: 22px; height: 22px; display: block; } .footer-social img { width: 22px; height: 22px; display: block; } /* ========================= Responsive ========================= */ @media (max-width: 768px) { .timeline::before { left: 20px; } .timeline-item { width: 100%; left: 0 !important; padding-left: 60px; margin-bottom: 30px; } .timeline-item::after { left: 22px !important; right: auto; } } .ai-placeholder{ height:100%; border-radius:14px; border:1px dashed rgba(148,163,184,0.35); display:flex; align-items:center; justify-content:center; text-align:center; padding:18px; line-height:1.5; color:#cbd5f5; } /* ========================= NEW ALBAMEN AI WIDGET (custom design) ========================= */ .ai-widget-floating { position: fixed; right: 18px; bottom: 22px; z-index: 12000; display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 18px; border: 1px solid rgba(56,189,248,0.12); box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 18px rgba(56,189,248,0.06); backdrop-filter: blur(6px); } .ai-widget-fab { width: 64px; height: 64px; border-radius: 999px; border: 3px solid rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; overflow: hidden; } .ai-widget-fab img { width: 58px; height: 58px; object-fit: cover; display:block; border-radius:999px; } /* Modal style for voice panel */ .ai-panel-voice { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 13000; } .ai-panel-voice.ai-open { display: flex; } .ai-voice-window { width: min(420px, 92vw); max-width: 520px; border-radius: 18px; padding: 22px; box-shadow: 0 30px 80px rgba(2,6,23,0.8), 0 0 40px rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.08); color: #e6f0ff; text-align: center; } .ai-close-icon { position: absolute; right: 18px; top: 18px; border: none; color: #dbeafe; font-size: 22px; cursor: pointer; } .ai-chat-avatar-large { display:flex; align-items:center; justify-content:center; margin: 8px 0 12px; } .ai-chat-avatar-large img { width: 120px; height: 120px; border-radius: 999px; border: 4px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(0,0,0,0.6); } .ai-chat-avatar-large img.ai-glow { box-shadow: 0 6px 40px rgba(0,212,255,0.26), 0 0 28px rgba(114,9,183,0.18); transform: scale(1.02); } #voice-status-text { margin-top: 8px; color: #d0e8ff; min-height: 36px; } #voice-wave { margin-top: 10px; height: 8px; width: 100%; border-radius: 999px; display:block; } .hidden { display: none !important; } 
+} /* ========================= AI SECTION ========================= */ .ai-section { padding: 80px 0; } .section-title { text-align: center; margin: 0 auto 2rem; max-width: 820px; } .section-title h2 { font-size: 2.4rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; } .section-title p { color: #a3b5d3; margin-top: 0.9rem; } .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; } .feature-card { background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; text-align: center; } .feature-card svg { width: 40px; height: 40px; margin-bottom: 1rem; fill: #00d4ff; } .feature-card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; } .feature-card p { color: #a3b5d3; font-size: 0.95rem; } /* ========================= BOOK SECTION ========================= */ .book-section { padding: 80px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; } .book-section .image { flex: 1 1 40%; display: flex; justify-content: center; align-items: center; } .book-section .content { flex: 1 1 50%; } .book-section .content h2 { font-size: 2.3rem; margin-bottom: 1rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; } .book-section .content p { color: #c1c9d9; margin-bottom: 1rem; line-height: 1.6; } .book-section .content .specs { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; } .book-section .content .spec { display: flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; border-radius: 15px; font-size: 0.9rem; } .book-section .content .buttons { display: flex; gap: 1rem; flex-wrap: wrap; } .book-section .content .btn.primary { background: var(--accent); color: #020617; } .book-section .content .btn.secondary { background-color: transparent; border: 1px solid #7209b7; color: #00d4ff; } /* ========================= PRODUCT GALLERY + ZOOM (Albamen) ========================= */ .product-gallery{ width: min(460px, 92vw); display: grid; grid-template-columns: 1fr; gap: 12px; } .product-main{ position: relative; width: 100%; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 14px 40px rgba(0,0,0,0.55); touch-action: manipulation; } .product-main img{ width: 100%; height: auto; display: block; user-select: none; -webkit-user-drag: none; } .product-thumbs{ display: flex; gap: 10px; overflow-x: auto; padding: 6px 2px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; } .product-thumbs::-webkit-scrollbar{ height: 8px; } .product-thumbs::-webkit-scrollbar-thumb{ border-radius: 999px; } .thumb{ flex: 0 0 auto; width: 64px; height: 64px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.14); padding: 0; cursor: pointer; overflow: hidden; scroll-snap-align: start; transition: transform .12s ease, border-color .12s ease, filter .12s ease; } .thumb:hover{ transform: translateY(-1px); filter: brightness(1.05); } .thumb.is-active{ border-color: rgba(56,189,248,0.7); box-shadow: 0 0 0 2px rgba(56,189,248,0.18); } .thumb img{ width: 100%; height: 100%; object-fit: cover; display: block; } /* Desktop magnifier */ .zoom-result{ display: none; width: 100%; height: 320px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 14px 40px rgba(0,0,0,0.55); background-repeat: no-repeat; background-size: 200% 200%; } .zoom-lens{ display: none; position: absolute; width: 120px; height: 120px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); box-shadow: 0 14px 30px rgba(0,0,0,0.35); pointer-events: none; opacity: 0; transition: opacity .12s ease; } @media (hover: hover) and (pointer: fine) { .zoom-result{ display: block; } .zoom-lens{ display: block; } } /* Mobile fullscreen modal (tap to zoom) */ .img-modal{ position: fixed; inset: 0; display: none; z-index: 10000; align-items: center; justify-content: center; padding: 18px; } .img-modal.open{ display: flex; } .img-modal img{ max-width: 100%; max-height: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 20px 70px rgba(0,0,0,0.75); } .img-modal-close{ position: absolute; top: 14px; right: 14px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; } /* ========================= TIMELINE ========================= */ .timeline-section { padding: 80px 0; } .timeline-section h2 { text-align: center; font-size: 2.4rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; } .timeline { position: relative; margin: 4rem auto; max-width: 900px; } .timeline::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; } .timeline-item { position: relative; width: 50%; padding: 1rem 2rem; } .timeline-item:nth-child(odd) { left: 0; } .timeline-item:nth-child(even) { left: 50%; } .timeline-item::after { content: ""; position: absolute; top: 20px; width: 12px; height: 12px; border-radius: 50%; border: 3px solid #ffffff; z-index: 1; } .timeline-item:nth-child(odd)::after { right: -6px; } .timeline-item:nth-child(even)::after { left: -6px; } .timeline-item-content { border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.2rem; border-radius: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); } .timeline-item-content h3 { font-size: 1.45rem; margin-bottom: 0.5rem; color: #00d4ff; } .timeline-item-content p { color: #a3b5d3; font-size: 0.95rem; } /* ========================= PLANETS ========================= */ .planet-section { padding: 80px 0; text-align: center; } .planet-section h2 { font-size: 2.4rem; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; } /* Styles for interactive row */ .space-system-row { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 40px 0; flex-wrap: wrap; min-height: 200px; } .celestial-body { position: relative; border-radius: 50%; cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; box-shadow: 0 0 15px var(--glow-color); } .sun { width: 100px; height: 100px; box-shadow: 0 0 40px rgba(255, 69, 0, 0.8); } .planet { width: var(--body-size); height: var(--body-size); } /* Hover Effects */ .celestial-body:hover { transform: scale(1.3) translateY(-20px); box-shadow: 0 15px 30px var(--glow-color), 0 0 40px var(--glow-color); z-index: 10; } /* Active State (Selected) */ .celestial-body.active { outline: 3px solid rgba(255,255,255,0.8); outline-offset: 6px; box-shadow: 0 0 25px var(--glow-color), 0 0 50px var(--glow-color); transform: scale(1.2); z-index: 20; } .celestial-body.active:hover { transform: scale(1.3) translateY(-10px); } .celestial-body .label { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 600; color: #a3b5d3; white-space: nowrap; opacity: 0.7; transition: opacity 0.3s; } .celestial-body.active .label { opacity: 1; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); } .audio-btn { margin-top: 15px; transition: 0.3s; } .audio-btn:hover { filter: brightness(1.2); transform: translateY(-2px); } .planet-content-wrapper { margin-top: 30px; max-width: 720px; margin-left: auto; margin-right: auto; } .planet-content-wrapper.animating { animation: fadeIn 0.5s ease; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } } /* ========================= QUOTE & VALUES ========================= */ .quote-section { padding: 60px 0; text-align: center; } .quote-section blockquote { font-size: 1.7rem; font-weight: 500; line-height: 1.35; color: #ffffff; margin: 0 0 0.8rem; } .quote-section cite { display: block; font-size: 1rem; color: #a3b5d3; } .values { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; } .value-card { border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 20px; text-align: center; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); } .value-card h3 { margin-bottom: 0.5rem; font-size: 1.3rem; color: #00d4ff; } .value-card p { color: #a3b5d3; font-size: 0.95rem; } /* ========================= Footer address restructure helpers ========================= */ .footer-address { display: flex; flex-direction: column; align-items: flex-start; } .footer-address .address-block { margin-bottom: 1rem; } .footer-address .address-block p:first-child { font-weight: 600; color: #00d4ff; margin-bottom: 4px; } /* ========================= Ensure icon sizes (safety) ========================= */ .site-header .header-social img, .site-header .header-social svg, .top-lang-switch .lang-flag img, .top-lang-switch .lang-flag svg { width: 22px; height: 22px; display: block; } .footer-social img { width: 22px; height: 22px; display: block; } /* ========================= Responsive ========================= */ @media (max-width: 768px) { .timeline::before { left: 20px; } .timeline-item { width: 100%; left: 0 !important; padding-left: 60px; margin-bottom: 30px; } .timeline-item::after { left: 22px !important; right: auto; } } .ai-placeholder{ height:100%; border-radius:14px; border:1px dashed rgba(148,163,184,0.35); display:flex; align-items:center; justify-content:center; text-align:center; padding:18px; line-height:1.5; color:#cbd5f5; } /* ========================= NEW ALBAMEN AI WIDGET (custom design) ========================= */ .ai-widget-floating { position: fixed; right: 18px; bottom: 22px; z-index: 12000; display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 18px; border: 1px solid rgba(56,189,248,0.12); box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 18px rgba(56,189,248,0.06); backdrop-filter: blur(6px); } .ai-widget-fab { width: 64px; height: 64px; border-radius: 999px; border: 3px solid rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; overflow: hidden; } .ai-widget-fab img { width: 58px; height: 58px; object-fit: cover; display:block; border-radius:999px; } /* Modal style for voice panel */ .ai-panel-voice { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 13000; } .ai-panel-voice.ai-open { display: flex; } .ai-voice-window { width: min(420px, 92vw); max-width: 520px; border-radius: 18px; padding: 22px; box-shadow: 0 30px 80px rgba(2,6,23,0.8), 0 0 40px rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.08); color: #e6f0ff; text-align: center; } .ai-close-icon { position: absolute; right: 18px; top: 18px; border: none; color: #dbeafe; font-size: 22px; cursor: pointer; } .ai-chat-avatar-large { display:flex; align-items:center; justify-content:center; margin: 8px 0 12px; } .ai-chat-avatar-large img { width: 120px; height: 120px; border-radius: 999px; border: 4px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(0,0,0,0.6); } .ai-chat-avatar-large img.ai-glow { box-shadow: 0 6px 40px rgba(0,212,255,0.26), 0 0 28px rgba(114,9,183,0.18); transform: scale(1.02); } #voice-status-text { margin-top: 8px; color: #d0e8ff; min-height: 36px; } #voice-wave { margin-top: 10px; height: 8px; width: 100%; border-radius: 999px; display:block; } .hidden { display: none !important; } 
+
+/* Glow animation for avatar */
+@keyframes avatarGlow {
+  0% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 212, 255, 0.1); }
+  50% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3); }
+  100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 212, 255, 0.1); }
+}
+
+/* Mini chat window */
+.ai-chat-mini {
+  position: fixed;
+  bottom: 110px;
+  right: 18px;
+  width: 280px;
+  background: linear-gradient(180deg, rgba(10,14,25,0.98), rgba(6,8,20,0.95));
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 20px 60px rgba(2,6,23,0.8), 0 0 30px rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.1);
+  z-index: 12500;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.ai-chat-mini.open { 
+  display: flex; 
+  animation: slideUp 0.3s ease; 
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-chat-mini .avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  border: 4px solid rgba(0,212,255,0.2);
+  object-fit: cover;
+  animation: avatarGlow 2s ease-in-out infinite;
+}
+
+.ai-chat-mini .text { 
+  color: #d0e8ff; 
+  text-align: center; 
+  font-size: 0.95rem; 
+  line-height: 1.4; 
+}
+
+.ai-chat-mini .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #dbeafe;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
 
 /* ========================= NEW CUSTOM STYLES (Screenshot Match) ========================= */
 .text-gradient-pink { background: linear-gradient(to right, #ec4899, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -177,7 +233,7 @@
   </head>
 
   <body>
-    <div data-include="/header-tr.html"></div>
+    <div data-include-html="/header-tr.html"></div>
 
     <section class="hero">
       <div class="hero-inner">
@@ -193,6 +249,8 @@
             <!-- Rocket Icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M13.13 22.19l-1.63-3.83c-.12-.28-.02-.6.23-.78l.02-.02c.26-.18.6-.17.84.04l2.67 2.36c.26.23.65.2.88-.07l3.69-4.22c.23-.26.2-.65-.07-.88l-2.36-2.67c-.21-.24-.22-.58-.04-.84l.02-.02c.18-.25.5-.35.78-.23l3.83 1.63c.53.23 1.13-.15 1.13-.73V5c0-1.66-1.34-3-3-3H4c-1.66 0-3 1.34-3 3v6.94c0 .58 1.54 1.2 1.13.73l1.63-3.83c.12-.28.44-.38.72-.26l.02.01c.28.12.38.44.26.72l-1.63 3.83c-.23.53.15 1.13.73 1.13h6.94c.58 0 1.2-1.54.73-1.13l-3.83-1.63c-.28-.12-.38-.44-.26-.72l.01-.02c.12-.28.44-.38.72-.26l3.83 1.63c.53.23 1.13-.15 1.13-.73V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6.94c0 .58.42.73.73.73h6.94c.58 0 1.2.42.73.73l-1.63 3.83c-.12.28-.02.6.23.78l.02.02c.26.18.6.17.84-.04l2.67-2.36c.26-.23.65-.2.88.07l3.69 4.22c.23.26.2.65-.07.88l-2.36 2.67c-.21.24-.22.58-.04.84l.02.02c.18.25.5.35.78.23l3.83-1.63c.53-.23.15-1.13-.73-1.13z M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z m-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z m6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              <!-- Using a simple rocket path instead -->
+              <path d="M12 2.5s-4 5-4 9c0 3.5 2 5.5 4 5.5s4-2 4-5.5c0-4-4-9-4-9z M12 15c-1 0-2-1-2-2.5s1-4 2-4 2 2.5 2 4-1 2.5-2 2.5z M7 14c-1.5 0-3 1.5-3 3s2 3 4 3 1-3 1-3-1-2-2-3z M17 14c-1 0-2 2-2 3s2 3 4 3 3-1.5 3-3-2.5-3-4-3z M12 18c-1.5 0-2 1.5-2 2s1.5 2 2 2 2-1.5 2-2-.5-2-2-2z"/>
             </svg>
             Uzaya Başla
           </a>
@@ -208,72 +266,6 @@
       </div>
     </section>
     
-    <!-- ========================= BOOK SECTION ========================= -->
-    <section class="book-section container" id="book-section" style="margin-top: 50px; margin-bottom: 100px;">
-      <div class="book-container">
-        <!-- Image Gallery -->
-        <div class="image">
-          <div class="product-gallery" id="albamenGallery">
-            <div class="product-main" id="albamenMain">
-              <img id="albamenMainImg" src="/assets/images/albamenvelara.jpg" alt="Albamen ve Lara Uzayda" loading="lazy" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);" />
-            </div>
-            <!-- Simple Thumbs -->
-            <div class="product-thumbs" id="albamenThumbs" style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">
-              <button class="thumb is-active" type="button" data-src="/assets/images/albamenvelara.jpg" style="border: none; background: none; padding: 0; cursor: pointer;">
-                <img src="/assets/images/albamenvelara.jpg" alt="Kapak" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 2px solid rgba(255,255,255,0.2);" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Content -->
-        <div class="content">
-          <div class="section-header-left">
-            <div class="tag-pill purple" style="display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 20px; background: rgba(168, 85, 247, 0.15); color: #a855f7; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(168, 85, 247, 0.3);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-              YENİ ÇIKTI
-            </div>
-            <h2 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px;">Türkiye'nin İlk <span class="text-gradient-pink">Çocuk Uzay Ansiklopedisi</span></h2>
-            <p style="font-size: 1.1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 30px;">
-              Bu kitap, fütürist, stemist ve otodidakt nesil için son teknoloji ile yazılan Türkiye'nin İlk Süper Kahramanı Albamen'in anlatımıyla Çocuk Uzay Ansiklopedisi özelliğinde bir bilgi kaynağıdır. İçinde artırılmış gerçeklik, yapay zeka ve karekod uygulamarıyla hazırlanan kahraman astronotlarımız Alper Gezeravcı ve Tuva Cihangir Atasever'in uzayda yaptığı deneyler, uzay araçları, Mars görevleri, önemli bilim insanlarımız gibi birçok bilgi yer almaktadır. Geleceğin bilim insanı veya astronotu olarak okumaya başlmadan önce uzay araçlarını yanında görmek için akıllı telefonunu ya da tabletini hazırla. Hadi uzaydaş, kemerini bağla, uzay yolculuğa başlıyooooor!
-            </p>
-          </div>
-
-          <div class="book-features">
-            <div class="book-feature">
-              <div class="book-feature-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
-              </div>
-              <span>AR Destekli İçerik</span>
-            </div>
-            <div class="book-feature">
-              <div class="book-feature-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-              </div>
-              <span>Bilimsel Doğruluk</span>
-            </div>
-            <div class="book-feature">
-              <div class="book-feature-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-              </div>
-              <span>Eğlenceli Anlatım</span>
-            </div>
-            <div class="book-feature">
-              <div class="book-feature-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <span>Türk Uzay Tarihi</span>
-            </div>
-          </div>
-
-          <div class="book-buttons">
-            <a href="albamen-kitap.html" class="btn-book-primary">İncele & Satın Al</a>
-            <a href="#" class="btn-book-outline">Örnek Sayfalar</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ========================= TIMELINE SECTION ========================= -->
     <section class="timeline-section container">
       <div class="section-header-center">
@@ -373,6 +365,12 @@
         <div class="glow-box glow-strong">
           <h3 id="planetTitle">Güneş</h3>
           <p id="planetDesc">Güneş sisteminin merkezinde yer alan, devasa bir plazma küresidir. Tüm yaşamın enerji kaynağıdır.</p>
+          <button class="btn audio-btn" id="playAudioBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+            Sesli Dinle
+          </button>
         </div>
       </div>
     </section>
@@ -421,27 +419,77 @@
       </div>
     </section>
 
-    <div data-include="/footer-tr.html"></div>
 
-    <div id="cookie-overlay">
-        <div class="cookie-modal">
-            <div class="cookie-header">ALIŞVERİŞE BAŞLAMADAN ÖNCE</div>
-            <div class="cookie-text">
-                Web sitemizin tam işlevselliğini sağlamak, kullanıcı deneyiminizi özelleştirmek, analizler yapmak ve internet üzerinden ve sosyal medya platformları aracılığıyla web sitelerimizde, uygulamalarımızda ve bültenlerimizde kişiselleştirilmiş reklamlar sunmak için üçüncü taraf yayıncıların diğer izleme teknolojileri de dâhil olmak üzere birinci ve üçüncü taraf çerezleri kullanıyoruz. Bu amaçla, kullanıcı, tarama modelleri ve cihaz hakkında bilgi toplarız.<br><br>
-                "Tüm çerezleri kabul et" seçeneğine tıklayarak, bu bilgileri reklam ortaklarımız gibi üçüncü taraflarla paylaşmamızı kabul eder ve onaylarsınız. "Yalnızca gerekli çerezler" seçildiğinde, isteğe bağlı çerezler engellenir, özel içerik ve özellikler sunmamıza sınırlama getirilir. Seçeneklerinizi özelleştirmek için "Çerez Ayarları"na tıklayın. Daha fazla bilgi edinmek için Çerez politikamızı ziyaret edin.
-            </div>
-            <a href="cerez-politikasi.html" class="cookie-link">Çerez politikası</a>
-            <div class="cookie-buttons">
-                <button class="btn-cookie btn-accept" id="btnAccept">TÜM ÇEREZLERİ KABUL ET</button>
-                <button class="btn-cookie btn-settings" id="btnSettings">ÇEREZ AYARLARI</button>
-            </div>
-        </div>
+
+    <div data-include-html="/footer-tr.html"></div>
+
+    <!-- NEW Albamen AI Widget (floating) -->
+    <div class="ai-widget-floating" aria-hidden="false">
+      <button id="ai-voice-btn" class="ai-voice-btn ai-widget-fab" aria-label="Albamen ile konuş">
+        <img src="/assets/images/albamenvelara.jpg" alt="Albamen avatar" />
+      </button>
     </div>
 
-    <script>
-      window.__disableAiWidgets = true;
-    </script>
+    <!-- NEW Albamen Mini Chat Window (floating) -->
+    <div class="ai-chat-mini" id="aiChatMini">
+      <button class="close-btn" id="miniChatClose" aria-label="Kapat">×</button>
+      <img src="/assets/images/albamenvelara.jpg" alt="Albamen avatar" class="avatar" />
+      <div class="text">Merhaba! Senin için buradayım. Konuşmaya hazır mısın?</div>
+    </div>
+
+    <!-- Voice modal (used by existing voice script) -->
+    <div class="ai-panel-voice" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="ai-voice-window">
+        <button class="ai-close-icon" aria-label="Kapat">×</button>
+        <div class="ai-chat-avatar-large">
+          <img src="/assets/images/albamenvelara.jpg" alt="Albamen avatar büyük" />
+        </div>
+        <div id="voice-status-text" aria-live="polite">Albamen hazır — butona tıklayın ve konuşun.</div>
+        <div id="voice-wave" class="hidden" aria-hidden="true"></div>
+        <div id="voice-inline-controls" class="hidden">
+          <button id="voice-stop-btn" class="btn" type="button">Durdur</button>
+        </div>
+      </div>
+    </div>
+
     <script src="/assets/js/include.js"></script>
+
+    <script>
+      // Mini Chat Window Logic (Turkish)
+      const aiChatMini = document.getElementById('aiChatMini');
+      const miniChatClose = document.getElementById('miniChatClose');
+      const aiVoiceBtn = document.getElementById('ai-voice-btn');
+      let miniChatOpen = false;
+
+      // Toggle mini chat on button click
+      if (aiVoiceBtn) {
+        aiVoiceBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          miniChatOpen = !miniChatOpen;
+          if (miniChatOpen) {
+            aiChatMini.classList.add('open');
+          } else {
+            aiChatMini.classList.remove('open');
+          }
+        });
+      }
+
+      // Close mini chat
+      if (miniChatClose) {
+        miniChatClose.addEventListener('click', () => {
+          miniChatOpen = false;
+          aiChatMini.classList.remove('open');
+        });
+      }
+
+      // Close mini chat when clicking outside
+      document.addEventListener('click', (e) => {
+        if (miniChatOpen && !aiChatMini.contains(e.target) && !aiVoiceBtn.contains(e.target)) {
+          miniChatOpen = false;
+          aiChatMini.classList.remove('open');
+        }
+      });
+    </script>
 
     <script>
       // ===========================
@@ -490,7 +538,8 @@
       const titleEl = document.getElementById('planetTitle');
       const descEl = document.getElementById('planetDesc');
       const detailBox = document.getElementById('planetDetailBox');
-      
+      const playBtn = document.getElementById('playAudioBtn');
+
       planets.forEach(planet => {
         planet.addEventListener('click', function() {
           // 1. Remove active class from all
@@ -514,6 +563,13 @@
           }
         });
       });
+
+      // Optional: Button click handler
+      if(playBtn) {
+        playBtn.addEventListener('click', () => {
+          alert('Ses dosyası oynatılıyor... (Demo)');
+        });
+      }
 
 
       // ===========================
