@@ -1,0 +1,51 @@
+/* Force readable text color: make dark/transparent text white */
+:root {
+  --force-white: #ffffff;
+}
+
+/* Make most text white to ensure visibility on dark backgrounds. */
+body, body * {
+  color: var(--force-white) !important;
+}
+
+/* SVG icons and strokes */
+svg, svg * {
+  stroke: var(--force-white) !important;
+  fill: var(--force-white) !important;
+}
+
+/* Form controls */
+button, input, textarea, select, option {
+  color: var(--force-white) !important;
+}
+
+/* Ensure any inline/author styles using dark hex values are overridden */
+[style*="#020617"], [style*="#000"], [style*="#000000"] {
+  color: var(--force-white) !important;
+}
+
+/* Gradient backgrounds for content containers (purple -> blue) */
+:root {
+  --content-grad-start: #6b21a8; /* purple */
+  --content-grad-end: #0ea5e9;   /* blue */
+}
+
+.container,
+.page-wrapper,
+.page-card,
+.contact-card,
+section,
+article,
+main,
+.content {
+  background: linear-gradient(135deg, var(--content-grad-start) 0%, var(--content-grad-end) 100%) !important;
+  transition: background 0.6s ease, box-shadow 0.4s ease;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(6,6,23,0.35) !important;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: var(--force-white) !important;
+}
+
+/* Keep structural elements (header/nav/footer) unaffected by the gradient rule */
+header, nav, footer, .site-header, .site-footer { background: unset !important; }
