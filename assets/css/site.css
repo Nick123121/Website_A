@@ -50,27 +50,19 @@ body{
     /* Keep positioning safe, but use gradient as primary background */
     background-position: center center !important;
     background-size: auto !important;
-    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
+    background: #020617 !important;
   }
 
   /* Apply same dark-blue gradient to index/home pages on mobile */
   body.home-page, body.index-page {
-    background: linear-gradient(to bottom, #021028, #0b2b56) !important;
+    background: #020617 !important;
   }
 }
 
 /* Restore fixed background on larger screens (desktop/tablet) */
 @media (min-width: 768px) {
   body {
-    background-image: url('/assets/images/space-bg11.jpg') !important;
-    background-repeat: no-repeat !important;
-    background-position: top center !important;
-    background-size: cover !important; /* Crop at edges, don't stretch */
-    background-attachment: scroll !important; /* Static, not fixed, as per user request for gradient below */
-    background-color: #020617 !important; /* Fallback */
-    /* Gradient below the image if page is longer */
-    background: url('/assets/images/space-bg11.jpg') top center / cover no-repeat,
-                linear-gradient(to bottom, #020617, #00c2ff) !important;
+    background: #020617 !important;
   }
 }
 
