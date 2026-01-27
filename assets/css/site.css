@@ -2774,7 +2774,7 @@ footer.footer{
 
 .btn-primary{background:#00c2ff;color:#020617;font-weight:600}
 
-.btn-outline{background: rgba(13, 42, 87, 0.85);color:#00c2ff}
+.btn-outline{background:transparent;color:#00c2ff}
 
 /* Cards */
 
