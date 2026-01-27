@@ -148,7 +148,7 @@ body{
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
-  background: transparent !important;
+  background: rgba(13, 42, 87, 0.85) !important;
   padding: 0 !important;
   /* Adjust height/width if necessary to match footer style */
   height: auto;
@@ -183,10 +183,10 @@ body{
 .footer-social--row img,
 .top-lang-switch .lang-flag img {
   border-radius: 0 !important;
-  background: transparent !important;
+  background: rgba(13, 42, 87, 0.85) !important;
   padding: 0 !important;
   box-shadow: none !important;
-  background-color: transparent !important;
+  background-color: rgba(13, 42, 87, 0.85) !important;
   object-fit: contain !important;
 }
 
@@ -194,7 +194,7 @@ body{
 .header-social a,
 .top-lang-switch a,
 .footer-social a {
-  background: transparent !important;
+  background: rgba(13, 42, 87, 0.85) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   padding: 0 !important;
@@ -486,7 +486,7 @@ body{
   max-height: 80vh;
   
   /* Transparent panel like hakkimizda page */
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   color: #ffffff;
   
   border-radius: 24px;
@@ -518,7 +518,7 @@ body{
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
 }
 
 .ai-panel-header .ai-voice-btn {
@@ -639,7 +639,7 @@ body{
 .ai-input {
   flex: 1;
   border: none;
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   outline: none;
   font-size: 14px;
   color: #1f2937;
@@ -746,7 +746,7 @@ body{
   padding:0;
   border-radius:6px;
   border:none;
-  background:transparent;
+  background: rgba(13, 42, 87, 0.85);
   text-decoration:none;
   transition:transform 0.15s,filter 0.2s;
 }
@@ -801,7 +801,7 @@ body{
 }
 
 .top-lang-switch .lang-flag.active{
-  background:transparent;
+  background: rgba(13, 42, 87, 0.85);
   border-color:transparent;
 }
 
@@ -828,7 +828,7 @@ body{
   width: 360px;
   max-width: 90vw;
   height: 380px;
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   color:#e5e7eb;
   border-radius:24px;
   border: 1px solid rgba(148, 163, 184, 0.4);
@@ -901,7 +901,7 @@ body{
 }
 .voice-auth-modal.open { opacity:1; pointer-events:auto; }
 .voice-auth-card {
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   color:#fff;
   padding:20px;
   border-radius:20px;
@@ -1420,7 +1420,7 @@ footer.footer{
   .mobile-portal-nav .dropdown-menu {
     position: static;
     display: none;
-    background: transparent;
+    background: rgba(13, 42, 87, 0.85);
     border: none;
     box-shadow: none;
     opacity: 1;
@@ -1568,7 +1568,7 @@ footer.footer{
 /* Buttons */
 .btn-primary,.btn-outline{padding:10px 18px;border-radius:999px;border:1px solid #00c2ff;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
 .btn-primary{background:#00c2ff;color:#020617;font-weight:600}
-.btn-outline{background:transparent;color:#00c2ff}
+.btn-outline{background: rgba(13, 42, 87, 0.85);color:#00c2ff}
 
 /* Cards */
 .card-container{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-top:20px}
@@ -1674,7 +1674,7 @@ footer.footer{
 model-viewer{
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
 
   border-radius: 18px;
   box-shadow: 0 0 32px rgba(120,160,255,0.35);
@@ -1862,7 +1862,7 @@ model-viewer{
   text-decoration:none;
   color:#e5e7eb;
 
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   border:1px solid rgba(148, 163, 184, 0.4);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85);
 
@@ -1986,7 +1986,7 @@ model-viewer{
 }
 
 .product-card {
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   border: 1px solid rgba(148, 163, 184, 0.4);
   border-radius: 20px;
   width: 280px;
@@ -2171,7 +2171,7 @@ model-viewer{
   height: 32px;
   border-radius: 50%;
   border: 1px solid var(--accent);
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   color: var(--accent);
   font-size: 20px;
   cursor: pointer;
@@ -2256,7 +2256,7 @@ model-viewer{
   height: 24px;
   border-radius: 50%;
   border: 1px solid var(--accent);
-  background: transparent;
+  background: rgba(13, 42, 87, 0.85);
   color: var(--accent);
   font-size: 16px;
   cursor: pointer;
