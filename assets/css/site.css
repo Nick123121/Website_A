@@ -97,7 +97,7 @@ body{
 
 .site-header{
   /* Match footer background and text color for visual consistency */
-  background:#020617;
+  background:transparent;
   color:#d1d5db;
   border-bottom:1px solid #0f172a;
 }
@@ -999,7 +999,7 @@ body{
    ========================= */
 
 footer.footer{
-  background: #020617;
+  background: transparent;
   color:#d1d5db;
   padding:26px 20px;
   font-size:13px;
