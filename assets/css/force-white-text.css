@@ -24,10 +24,10 @@ button, input, textarea, select, option {
   color: var(--force-white) !important;
 }
 
-/* Gradient backgrounds for content containers (purple -> blue) */
+/* Gradient backgrounds for content containers (removed purple, using semi-transparent blue/dark) */
 :root {
-  --content-grad-start: #6b21a8; /* purple */
-  --content-grad-end: #0ea5e9;   /* blue */
+  --content-grad-start: rgba(14, 165, 233, 0.15); /* light blue transparent */
+  --content-grad-end: rgba(2, 6, 23, 0.6);        /* dark blue transparent */
 }
 
 .container,
@@ -47,5 +47,7 @@ main,
   color: var(--force-white) !important;
 }
 
-/* Keep structural elements (header/nav/footer) unaffected by the gradient rule */
-header, nav, footer, .site-header, .site-footer { background: unset !important; }
+/* Keep structural elements (header/nav/footer) unaffected by the gradient rule and ensure they are transparent */
+header, nav, footer, .site-header, .site-footer, .header-inner, .footer-grid { 
+  background: transparent !important; 
+}
