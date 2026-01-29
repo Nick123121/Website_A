@@ -175,9 +175,73 @@
 .celestial-body[data-id="uranus"] { background: radial-gradient(circle at 40% 40%, #e0f7f9 0%, #b5e3e3 40%, #7dd3d3 70%, #4a9fa8 100%) !important; }
 .celestial-body[data-id="neptune"] { background: radial-gradient(circle at 35% 35%, #5a9fdb 0%, #4b70dd 40%, #3b4fc4 70%, #1f2a6b 100%) !important; }
 
-/* Specific class for the word Gazegeni */
-.gazegeni { color: #0ea5e9 !important; -webkit-text-fill-color: #0ea5e9 !important; background: none !important; text-shadow: 0 0 10px rgba(14,165,233,0.18); }
-</style>
+	/* Specific class for the word Gazegeni */
+	.gazegeni { color: #0ea5e9 !important; -webkit-text-fill-color: #0ea5e9 !important; background: none !important; text-shadow: 0 0 10px rgba(14,165,233,0.18); }
+
+    /* ========================= MOBILE RESPONSIVENESS ========================= */
+    .book-section { margin-top: 40px; margin-bottom: 80px; }
+    .book-container-new { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .book-visual { position: relative; }
+    .badge-top { position: absolute; top: -10px; right: 20px; z-index: 5; font-size: 10px; background: rgba(13, 42, 87, 0.85); }
+    .book-glow { padding: 10px; border-radius: 24px; }
+    .book-img-main { width: 100%; border-radius: 18px; display: block; }
+    .book-tag { margin-bottom: 16px; border-color: rgba(56, 189, 248, 0.4); color: #38bdf8; }
+    .book-title-main { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+    .book-desc-main { color: #94a3b8; margin-bottom: 30px; font-size: 1.05rem; line-height: 1.6; }
+    .book-specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 30px; }
+    .spec-item { display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.9rem; }
+    .rating-row { display: flex; align-items: center; gap: 8px; margin-bottom: 30px; }
+    .stars { display: flex; gap: 2px; }
+    .rating-text { color: #94a3b8; font-size: 0.85rem; }
+    .book-actions-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-incele { background: #6366f1; color: white !important; border-radius: 12px; padding: 14px 24px; font-weight: 600; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .btn-satin-al { background: #0ea5e9; color: white !important; border-radius: 12px; padding: 14px 24px; font-weight: 600; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .ar-link { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; margin-left: 10px; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 100px 0 40px; min-height: auto; }
+      .hero-title { font-size: 2rem; line-height: 1.2; }
+      .hero-subtitle { font-size: 1rem; margin-bottom: 1.5rem; }
+      .hero-buttons { gap: 12px; }
+      .btn { padding: 12px 20px; font-size: 0.9rem; width: 100%; justify-content: center; }
+      
+      .book-section { margin-top: 20px; margin-bottom: 40px; }
+      .book-container-new { grid-template-columns: 1fr; gap: 24px; }
+      .book-title-main { font-size: 1.8rem; }
+      .book-desc-main { font-size: 0.95rem; margin-bottom: 20px; }
+      .book-specs-grid { grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
+      .book-actions-row { flex-direction: column; align-items: stretch; gap: 12px; }
+      .ar-link { margin-left: 0; justify-content: center; padding: 10px; }
+      .btn-incele, .btn-satin-al { justify-content: center; width: 100%; }
+      
+      .space-system-row { gap: 8px; padding: 20px 0; justify-content: center; }
+      .sun { width: 60px; height: 60px; }
+      .planet { width: calc(var(--body-size) * 0.7); height: calc(var(--body-size) * 0.7); }
+      .celestial-body .label { font-size: 11px; bottom: -24px; }
+      .celestial-body.active { outline-offset: 3px; outline-width: 2px; }
+      
+      .quote-text { font-size: 1.4rem; }
+      .section-header-center { margin-bottom: 2rem; }
+      .section-header-center h2 { font-size: 1.6rem; }
+      .section-header-center p { font-size: 0.95rem; }
+
+      .timeline { margin: 2rem auto; }
+      .timeline-card { padding: 20px; }
+      .timeline-card h3 { font-size: 1.2rem; }
+      
+      .value-box { padding: 30px 20px; }
+    }
+
+    /* iPhone / Narrow Screen Specifics */
+    @media (max-width: 390px) {
+      .hero-title { font-size: 1.7rem; }
+      .book-title-main { font-size: 1.5rem; }
+      .btn { padding: 10px 16px; }
+      .space-system-row { gap: 6px; }
+      .sun { width: 50px; height: 50px; }
+      .planet { width: calc(var(--body-size) * 0.6); height: calc(var(--body-size) * 0.6); }
+    }
+	</style>
   </head>
 
   <body>
@@ -213,73 +277,73 @@
     </section>
 
     <!-- ========================= NEW BOOK SECTION (SCREENSHOT MATCH) ========================= -->
-    <section class="book-section container" id="book-section" style="margin-top: 40px; margin-bottom: 80px;">
-      <div class="book-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+    <section class="book-section container" id="book-section">
+      <div class="book-container-new">
         
         <!-- Left: Image with Astronaut -->
-        <div class="book-visual" style="position: relative;">
-          <div class="tag-pill outline" style="position: absolute; top: -10px; right: 20px; z-index: 5; font-size: 10px; background: rgba(13, 42, 87, 0.85);">TÜRKİYE'NİN İLKİ</div>
-          <div class="glow-box" style="padding: 10px; border-radius: 24px;">
-            <img src="/assets/images/anasayfa-hero.jpg" alt="Albamen Uzay Ansiklopedisi" style="width: 100%; border-radius: 18px; display: block;">
+        <div class="book-visual">
+          <div class="tag-pill outline badge-top">TÜRKİYE'NİN İLKİ</div>
+          <div class="glow-box book-glow">
+            <img src="/assets/images/anasayfa-hero.jpg" alt="Albamen Uzay Ansiklopedisi" class="book-img-main">
           </div>
         </div>
 
         <!-- Right: Info -->
         <div class="book-details">
-          <div class="tag-pill outline" style="margin-bottom: 16px; border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
+          <div class="tag-pill outline book-tag">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
             KİTAP EVRENİ
           </div>
           
-          <h2 style="font-size: 3rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;">
+          <h2 class="book-title-main">
             Türkiye'nin İlk <br>
             <span class="text-gradient-pink">Çocuk Uzay Ansiklopedisi</span>
           </h2>
           
-          <p style="color: #94a3b8; margin-bottom: 30px; font-size: 1.05rem; line-height: 1.6;">
+          <p class="book-desc-main">
             Albamen ve Lara ile uzayın derinliklerine yolculuğa çık. Türk astronotların hikayeleri, Mars görevleri ve evrenin sırları bu kitapta seni bekliyor.
           </p>
           
-          <div class="book-specs" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 30px;">
-            <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.9rem;">
+          <div class="book-specs-grid">
+            <div class="spec-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
               125 sayfa renkli içerik
             </div>
-            <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.9rem;">
+            <div class="spec-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
               Sert kapak, premium baskı
             </div>
-            <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.9rem;">
+            <div class="spec-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
               Artırılmış gerçeklik deneyimi
             </div>
-            <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.9rem;">
+            <div class="spec-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
               QR kod ile etkileşim
             </div>
           </div>
           
-          <div class="rating" style="display: flex; align-items: center; gap: 8px; margin-bottom: 30px;">
-            <div style="display: flex; gap: 2px;">
+          <div class="rating-row">
+            <div class="stars">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             </div>
-            <span style="color: #94a3b8; font-size: 0.85rem;">5.0 (250+ değerlendirme)</span>
+            <span class="rating-text">5.0 (250+ değerlendirme)</span>
           </div>
           
-          <div class="book-actions" style="display: flex; gap: 16px; align-items: center;">
-            <a href="/albamen-kitap.html" class="btn" style="background: #6366f1; color: white; border-radius: 12px; padding: 14px 24px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <div class="book-actions-row">
+            <a href="/albamen-kitap.html" class="btn-incele">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
               Kitabı İncele
             </a>
-            <a href="/iletisim.html" class="btn" style="background: #0ea5e9; color: white; border-radius: 12px; padding: 14px 24px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+            <a href="/iletisim.html" class="btn-satin-al">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
               Satın Al
             </a>
-            <a href="#" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; margin-left: 10px;">
+            <a href="#" class="ar-link">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
               AR Deneyimi
             </a>

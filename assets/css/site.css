@@ -186,13 +186,13 @@ body{
 
   margin:0 auto;
 
-  padding:10px 20px;
+  padding:10px 15px;
 
   display:flex;
 
   align-items:center;
 
-  gap:20px;
+  gap:10px;
 
   flex-wrap:wrap;
 
@@ -362,18 +362,27 @@ body{
 
   display:flex;
 
-  gap:16px;
+  gap:12px;
 
   flex-wrap:wrap;
 
-  font-size:14px;
+  font-size:13px;
 
   flex:1;
 
   justify-content:center;
 
-  margin:0 40px;
+  margin:0 10px;
 
+}
+
+@media (max-width: 480px) {
+  .main-nav {
+    gap: 8px;
+    margin: 10px 0;
+    order: 3;
+    width: 100%;
+  }
 }
 
 .main-nav a{
